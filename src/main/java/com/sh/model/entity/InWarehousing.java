@@ -23,7 +23,7 @@ public class InWarehousing {
     private int publisherMangerId;
     private int inventoryManagerId;
     private List<Order> orderList;
-    private STATUS;
+    private Status status;
 }
 
 // 홍지민 작업 끝
