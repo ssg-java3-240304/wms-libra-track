@@ -22,7 +22,7 @@ public class ExWarehousing {
     private String receiverEmail;
     private Timestamp date;
     private List<Order> orderList;
-    private STATUS;
+    private Status status;
 }
 
 //홍지민 개발 끝
