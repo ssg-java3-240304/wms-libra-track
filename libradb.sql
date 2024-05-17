@@ -195,14 +195,14 @@ ALTER TABLE `in_warehousing` ADD CONSTRAINT `FK_PublisherManager_TO_in_warehousi
 )
 REFERENCES `PublisherManager` (
 	`publisher_manager_id`
-);
+) ON DELETE SET NULL;
 
 ALTER TABLE `in_warehousing` ADD CONSTRAINT `FK_InventoryManager_TO_in_warehousing_1` FOREIGN KEY (
 	`inventory_manager_id`
 )
 REFERENCES `InventoryManager` (
 	`inventory_manager_id`
-);
+) ON DELETE SET NULL;
 
 ALTER TABLE `PublisherManager` ADD CONSTRAINT `FK_Member_TO_PublisherManager_1` FOREIGN KEY (
 	`member_id`
@@ -258,14 +258,14 @@ ALTER TABLE `ex_warehousing` ADD CONSTRAINT `FK_PublisherManager_TO_ex_warehousi
 )
 REFERENCES `PublisherManager` (
 	`publisher_manager_id`
-);
+) ON DELETE SET NULL;
 
 ALTER TABLE `ex_warehousing` ADD CONSTRAINT `FK_InventoryManager_TO_ex_warehousing_1` FOREIGN KEY (
 	`inventory_manager_id`
 )
 REFERENCES `InventoryManager` (
 	`inventory_manager_id`
-);
+) ON DELETE SET NULL;
 
 ALTER TABLE `order_area` ADD CONSTRAINT `FK_book_area_TO_order_area_1` FOREIGN KEY (
 	`book_area_id`

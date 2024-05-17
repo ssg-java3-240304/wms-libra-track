@@ -23,9 +23,9 @@ public class InWarehousingService {
         inWarehousing.setDate(new Timestamp(System.currentTimeMillis()));
         inWarehousing.setStatus(Status.PENDING);
 
-        int publisherId = publisherService.findPublisherId(publisherName);
-        inWarehousing.setPublisherId(publisherId);
-
+        //int publisherId = publisherService.findPublisherId(publisherName);
+        int publisherId = 1;
+        inWarehousing.setPublisherManagerId(publisherId);
 
 
         // iterate over orders
@@ -33,8 +33,8 @@ public class InWarehousingService {
         for (String ISBN : orders.keySet()) {
             int quantity = orders.get(ISBN);
             // db query to find bookId using ISBN
-            int bookId = bookService.findBookIdByPublisherIdAndISBN(publisherId, ISBN);
-
+            //int bookId = bookService.findBookIdByPublisherIdAndISBN(publisherId, ISBN);
+            int bookId = 1;
             Order order = new Order();
             order.setQuantity(quantity);
             order.setBookId(bookId);
