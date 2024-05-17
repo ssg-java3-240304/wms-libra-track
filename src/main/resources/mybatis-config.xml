@@ -24,6 +24,7 @@
         </environment>
     </environments>
     <mappers>
-
+        <mapper resource="sql/order/order-mapper.xml"/>
+        <mapper resource="sql/inwarehousing/inwarehousing-mapper.xml"/>
     </mappers>
 </configuration>

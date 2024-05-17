@@ -79,8 +79,8 @@ CREATE TABLE `in_warehousing` (
 	`in_warehousing_id`	INTEGER	NOT NULL  AUTO_INCREMENT,
 	`date`	TIMESTAMP	NOT NULL,
 	`status`	ENUM('pending','accepted', 'rejected','completed')	NOT NULL,
-	`publisher_manager_id`	INTEGER	NOT NULL,
-	`inventory_manager_id`	INTEGER	NOT NULL,
+	`publisher_manager_id`	INTEGER NULL,
+	`inventory_manager_id`	INTEGER NULL,
     PRIMARY KEY (`in_warehousing_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
@@ -133,8 +133,8 @@ CREATE TABLE `ex_warehousing` (
 	`receiver_email`	VARCHAR(65)	NOT NULL,
 	`date`	TIMESTAMP	NOT NULL,
 	`status`	ENUM('pending', 'accepted', 'rejected', 'waiting', 'completed')	NOT NULL,
-	`publisher_manager_id`	INTEGER	NOT NULL,
-	`inventory_manager_id`	INTEGER	NOT NULL,
+	`publisher_manager_id`	INTEGER NULL,
+	`inventory_manager_id`	INTEGER NULL,
     PRIMARY KEY (`ex_warehousing_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 

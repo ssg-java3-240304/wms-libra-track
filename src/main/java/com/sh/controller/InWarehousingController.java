@@ -1,9 +1,12 @@
 package com.sh.controller;
 
+import com.sh.model.entity.InWarehousing;
+import com.sh.model.entity.Order;
 import com.sh.model.entity.Status;
 import com.sh.model.service.InWarehousingService;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class InWarehousingController {
 
@@ -22,9 +25,5 @@ public class InWarehousingController {
         return inWarehousingService.findInWarehousingByStatus(status);
     }
 
-
-    public List<Order> findOrderByInWarehousingId(int inWarehousingId) {
-        return inWarehousingService.findOrderByInWarehousingId(inWarehousingId);
-    }
 
 }
