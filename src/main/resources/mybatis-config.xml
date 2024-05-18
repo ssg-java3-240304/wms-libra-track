@@ -24,7 +24,10 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="sql/order/order-mapper.xml"/>
-        <mapper resource="sql/inwarehousing/inwarehousing-mapper.xml"/>
+<!--        <mapper resource="sql/order/order-mapper.xml"/>-->
+<!--        <mapper resource="sql/inwarehousing/inwarehousing-mapper.xml"/>-->
+        <mapper resource="sql/book/book-mapper.xml"/>
+        <mapper resource="sql/genre/genre-mapper.xml"/>
+        <mapper resource="sql/publisher/publisher-mapper.xml"/>
     </mappers>
 </configuration>
