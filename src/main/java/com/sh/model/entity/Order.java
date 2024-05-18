@@ -9,8 +9,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-//홍지민 개발 시작
 
+//홍지민 작업 시작
 public class Order {
     private int orderId;
     private int quantity;
@@ -18,5 +18,4 @@ public class Order {
     private int inWarehousingId;
     private int exWarehousingId;
 }
-
-// 홍지민 개발 끝
+// 홍지민 작업 끝
