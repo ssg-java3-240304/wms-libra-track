@@ -1,7 +1,6 @@
 package com.sh.controller;
 
 import com.sh.model.entity.InWarehousing;
-import com.sh.model.entity.Order;
 import com.sh.model.entity.Status;
 import com.sh.model.service.InWarehousingService;
 
@@ -18,9 +17,12 @@ public class InWarehousingController {
         inWarehousingService.insertInWarehousing(orders, publisherName);
     }
 
-
     public List<InWarehousing> findInWarehousingByStatus(Status status) {
         return inWarehousingService.findInWarehousingByStatus(status);
+    }
+
+    public void updateInWarehousingStatus(int inWarehousingId, Status status) {
+        inWarehousingService.updateInWarehousingStatus(inWarehousingId, status);
     }
 
 

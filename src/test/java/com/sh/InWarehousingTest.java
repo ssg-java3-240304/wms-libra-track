@@ -2,6 +2,7 @@ package com.sh;
 
 import com.sh.model.dao.InWarehousingDao;
 import com.sh.model.entity.InWarehousing;
+import com.sh.model.entity.Order;
 import com.sh.model.entity.Status;
 import org.apache.ibatis.jdbc.Null;
 import org.apache.ibatis.session.SqlSession;
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.*;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.sh.common.MyBatisTemplate.getSqlSession;
@@ -27,7 +29,7 @@ public class InWarehousingTest {
     @AfterEach
     void tearDown() {
 
-        this.sqlSession.rollback();
+        //this.sqlSession.rollback();
         this.sqlSession.close();
     }
 
@@ -53,4 +55,42 @@ public class InWarehousingTest {
         assertThat(inWarehousing1.get(0).getInWarehousingId()).isEqualTo(id);
         assertThat(inWarehousing1.get(0).getDate()).isEqualTo(inWarehousing.getDate());
     }
+
+    @Test
+    @DisplayName("InWarehousing with orders Test")
+    void insertInWarehousingWithOrders() {
+
+        InWarehousing inWarehousing = new InWarehousing();
+
+        inWarehousing.setDate(new Timestamp(System.currentTimeMillis()));
+        inWarehousing.setStatus(Status.PENDING);
+        inWarehousing.setPublisherManagerId(1);
+
+        List<Order> orderList = new ArrayList<>();
+        for(int i = 1; i < 4; i++) {
+            com.sh.model.entity.Order order = new com.sh.model.entity.Order();
+            order.setQuantity(i);
+            order.setBookId(2);
+            orderList.add(order);
+        }
+        inWarehousing.setOrderList(orderList);
+
+        int result = inWarehousingDao.insertInWarehousing(inWarehousing);
+        System.out.println("result = " + result);
+        assertThat(result).isEqualTo(1);
+
+        inWarehousingDao.insertOrders(inWarehousing);
+
+        int id = inWarehousing.getInWarehousingId();
+        System.out.println("id = " + id);
+        assertThat(id).isNotZero();
+
+        List<InWarehousing> inWarehousing1 = inWarehousingDao.findInWarehousingByStatus(Status.PENDING);
+        assertThat(inWarehousing1.get(inWarehousing1.size()-1).getInWarehousingId()).isEqualTo(id);
+        assertThat(inWarehousing1.get(inWarehousing1.size()-1).getDate()).isEqualTo(inWarehousing.getDate());
+    }
+
+
+
+
 }
