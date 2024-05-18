@@ -85,4 +85,14 @@ public class InWarehousingService {
             sqlSession.close();
         }
     }
+
+    public int findPublisherIdByInWarehousingId(int inWarehousingId) {
+        SqlSession sqlSession = getSqlSession();
+        InWarehousingDao inWarehousingDAO = sqlSession.getMapper(InWarehousingDao.class);
+
+        int publisherId = inWarehousingDAO.findPublisherIdByInWarehousingId(inWarehousingId);
+        sqlSession.close();
+
+        return publisherId;
+    }
 }

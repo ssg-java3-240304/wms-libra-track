@@ -37,5 +37,15 @@
         where
             status = #{status}
     </select>
+    <select id="findPublisherIdByInWarehousingId" resultType="java.lang.Integer">
+        select
+            publisher_id
+        from
+            in_warehousing
+        join
+            publisher_manager on in_warehousing.publisher_manager_id = publisher_manager.publisher_manager_id
+        where
+            in_warehousing_id = #{inWarehousingId}
+    </select>
 
 </mapper>

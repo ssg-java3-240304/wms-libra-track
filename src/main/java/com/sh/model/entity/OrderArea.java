@@ -13,11 +13,9 @@ import lombok.Setter;
 //홍지민 개발 시작
 
 public class OrderArea {
+    private int orderAreaId;
     private int bookAreaId;
-    private int areaId;
-    private String bookId;
-    private int quantity;
-    private int reserved;
+    private int orderId;
 }
 
 // 홍지민 개발 끝

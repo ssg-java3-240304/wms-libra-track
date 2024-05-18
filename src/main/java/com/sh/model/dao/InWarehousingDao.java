@@ -12,4 +12,6 @@ public interface InWarehousingDao {
     List<InWarehousing> findInWarehousingByStatus(Status status);
 
     void updateInWarehousingStatus(int inWarehousingId, Status status);
+
+    int findPublisherIdByInWarehousingId(int inWarehousingId);
 }

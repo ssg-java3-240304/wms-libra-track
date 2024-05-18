@@ -12,7 +12,7 @@
     </insert>
     <select id="findOrderByOrderId" resultType="com.sh.model.dto.OrderDto">
         select
-            quantity, ISBN, title, author
+            order_id, book_id, quantity, ISBN, title, author
         from
             `order` o
         left join
@@ -23,12 +23,24 @@
 
     <select id="findOrderByInWarehousingId" resultType="com.sh.model.dto.OrderDto">
         select
-            quantity, ISBN, title, author
+            order_id, book_id,quantity, ISBN, title, author
         from
             `order` o
         left join
             book on o.book_id = book.book_id
         where
             in_warehousing_id = #{inWarehousingId}
+    </select>
+    <select id="findPublisherIdByOrderId" resultType="java.lang.Integer">
+        select
+            publisher_id
+        from
+            `order`
+        join
+            in_warehousing on `order`.in_warehousing_id = in_warehousing.in_warehousing_id
+        join
+            publisher_manager on in_warehousing.publisher_manager_id = publisher_manager.publisher_manager_id
+        where
+            order_id = #{orderId}
     </select>
 </mapper>

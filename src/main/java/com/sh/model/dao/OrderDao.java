@@ -7,9 +7,11 @@ import java.util.List;
 
 public interface OrderDao {
 
-    void insertOrder(Order order);
+    int insertOrder(Order order);
 
     List<OrderDto> findOrderByInWarehousingId(int inWarehousingId);
 
     OrderDto findOrderByOrderId(int orderId);
+
+    int findPublisherIdByOrderId(int orderId);
 }
