@@ -6,19 +6,27 @@
     <insert id="insertInWarehousing" useGeneratedKeys="true" keyProperty="inWarehousingId">
         insert into in_warehousing
         (date, status, publisher_manager_id)
-        values
+        values (
         #{date}, #{status}, #{publisherManagerId}
-
+        )
     </insert>
 
     <insert id="insertOrders">
         insert into
-        order (quantity, book_id, in_warehousing_id, ex_warehousing_id)
+        `order` (quantity, book_id, in_warehousing_id)
         values
         <foreach collection="orderList" item="order" separator=",">
-            (#{order.quantity}, #{order.bookId}, #{order.quantity}, #{inWarehousingId})
+            (#{order.quantity}, #{order.bookId}, #{inWarehousingId})
         </foreach>
     </insert>
+    <update id="updateInWarehousingStatus">
+        update
+            in_warehousing
+        set
+            status = #{status}
+        where
+            in_warehousing_id = #{inWarehousingId}
+    </update>
 
 
     <select id="findInWarehousingByStatus" resultType="com.sh.model.entity.InWarehousing">
