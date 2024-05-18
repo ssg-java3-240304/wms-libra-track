@@ -7,7 +7,7 @@ assignees: ''
 
 ---
 
-## 🌈Description
+## 🌈Success criteria
 
 ## 💪🏻To-do
 - [ ] 할일 1
