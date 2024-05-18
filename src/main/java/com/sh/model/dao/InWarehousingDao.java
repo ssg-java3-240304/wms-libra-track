@@ -11,5 +11,5 @@ public interface InWarehousingDao {
     void insertOrders(InWarehousing inWarehousing);
     List<InWarehousing> findInWarehousingByStatus(Status status);
 
-
+    void updateInWarehousingStatus(int inWarehousingId, Status status);
 }

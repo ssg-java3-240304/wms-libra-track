@@ -5,7 +5,7 @@
 <mapper namespace="com.sh.model.dao.OrderDao">
     <insert id="insertOrder" useGeneratedKeys="true" keyProperty="orderId">
         insert into
-        order
+        `order`
         values (
         null, #{quantity}, #{bookId}, #{inWarehousingId}, #{null}
         )
@@ -14,9 +14,9 @@
         select
             quantity, ISBN, title, author
         from
-            order
+            `order` o
         left join
-            book on order.book_id = book.book_id
+            book on o.book_id = book.book_id
         where
             order_id = #{orderId}
     </select>
@@ -25,9 +25,9 @@
         select
             quantity, ISBN, title, author
         from
-            order
+            `order` o
         left join
-            book on order.book_id = book.book_id
+            book on o.book_id = book.book_id
         where
             in_warehousing_id = #{inWarehousingId}
     </select>

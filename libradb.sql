@@ -35,7 +35,7 @@ CREATE TABLE `Member` (
 	`name`	VARCHAR(20)	NOT NULL,
 	`username`	VARCHAR(20)	NOT NULL,
 	`password`	VARCHAR(65)	NOT NULL,
-	`role`	ENUM('inventory', 'publisher', 'admin')	NOT NULL,
+	`role`	ENUM('INVENTORY', 'PUBLISHER', 'ADMIN')	NOT NULL,
 	`phone_number`	CHAR(11) NOT NULL,
 	`email`	VARCHAR(65)	NOT NULL,
     PRIMARY KEY (`member_id`)
@@ -78,7 +78,7 @@ DROP TABLE IF EXISTS `in_warehousing`;
 CREATE TABLE `in_warehousing` (
 	`in_warehousing_id`	INTEGER	NOT NULL  AUTO_INCREMENT,
 	`date`	TIMESTAMP	NOT NULL,
-	`status`	ENUM('pending','accepted', 'rejected','completed')	NOT NULL,
+	`status`	ENUM('PENDING','ACCEPTED', 'REJECTED','COMPLETED')	NOT NULL,
 	`publisher_manager_id`	INTEGER NULL,
 	`inventory_manager_id`	INTEGER NULL,
     PRIMARY KEY (`in_warehousing_id`)
@@ -132,7 +132,7 @@ CREATE TABLE `ex_warehousing` (
 	`receiver_phone`	VARCHAR(11)	NOT NULL,
 	`receiver_email`	VARCHAR(65)	NOT NULL,
 	`date`	TIMESTAMP	NOT NULL,
-	`status`	ENUM('pending', 'accepted', 'rejected', 'waiting', 'completed')	NOT NULL,
+	`status`	ENUM('PENDING', 'ACCEPTED', 'REJECTED', 'WAITING', 'COMPLETED')	NOT NULL,
 	`publisher_manager_id`	INTEGER NULL,
 	`inventory_manager_id`	INTEGER NULL,
     PRIMARY KEY (`ex_warehousing_id`)
@@ -195,14 +195,14 @@ ALTER TABLE `in_warehousing` ADD CONSTRAINT `FK_PublisherManager_TO_in_warehousi
 )
 REFERENCES `PublisherManager` (
 	`publisher_manager_id`
-);
+) ON DELETE SET NULL;
 
 ALTER TABLE `in_warehousing` ADD CONSTRAINT `FK_InventoryManager_TO_in_warehousing_1` FOREIGN KEY (
 	`inventory_manager_id`
 )
 REFERENCES `InventoryManager` (
 	`inventory_manager_id`
-);
+) ON DELETE SET NULL;
 
 ALTER TABLE `PublisherManager` ADD CONSTRAINT `FK_Member_TO_PublisherManager_1` FOREIGN KEY (
 	`member_id`
@@ -258,14 +258,14 @@ ALTER TABLE `ex_warehousing` ADD CONSTRAINT `FK_PublisherManager_TO_ex_warehousi
 )
 REFERENCES `PublisherManager` (
 	`publisher_manager_id`
-);
+) ON DELETE SET NULL;
 
 ALTER TABLE `ex_warehousing` ADD CONSTRAINT `FK_InventoryManager_TO_ex_warehousing_1` FOREIGN KEY (
 	`inventory_manager_id`
 )
 REFERENCES `InventoryManager` (
 	`inventory_manager_id`
-);
+) ON DELETE SET NULL;
 
 ALTER TABLE `order_area` ADD CONSTRAINT `FK_book_area_TO_order_area_1` FOREIGN KEY (
 	`book_area_id`

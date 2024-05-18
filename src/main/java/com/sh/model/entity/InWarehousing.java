@@ -20,7 +20,7 @@ import java.util.List;
 public class InWarehousing {
     private int inWarehousingId;
     private Timestamp date;
-    private int publisherMangerId;
+    private int publisherManagerId;
     private int inventoryManagerId;
     private List<Order> orderList;
     private Status status;
