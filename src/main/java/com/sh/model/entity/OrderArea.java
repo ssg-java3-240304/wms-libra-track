@@ -10,14 +10,12 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 
-//홍지민 개발 시작
-
+//홍지민 작업 시작
 public class OrderArea {
     private int bookAreaId;
     private int areaId;
-    private String bookId;
+    private String bookId;  
     private int quantity;
     private int reserved;
 }
-
-// 홍지민 개발 끝
+// 홍지민 작업 끝

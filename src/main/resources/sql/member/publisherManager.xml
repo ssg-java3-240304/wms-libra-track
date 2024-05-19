@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sh.model.dao.PublisherManagerMapper">
+
+    <insert id="registerPublisherManager" useGeneratedKeys="true" keyProperty="memberId">
+        insert into
+            publishermanager(publisher_manager_id, member_id, publisher_id)
+        values(
+            #{publisherManagerId},
+            #{memberId},
+            #{publisherId}
+        )
+    </insert>
+</mapper>

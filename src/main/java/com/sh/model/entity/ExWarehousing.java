@@ -13,8 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 
-//홍지민 개발 시작
-
+//홍지민 작업 시작
 public class ExWarehousing {
     private String address;
     private String receiver;
@@ -24,5 +23,4 @@ public class ExWarehousing {
     private List<Order> orderList;
     private Status status;
 }
-
-//홍지민 개발 끝
+//홍지민 작업 끝
