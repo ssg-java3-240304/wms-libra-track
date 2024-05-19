@@ -1,4 +1,4 @@
-package com.sh.controller;//package com.sh.controller;
+//package com.sh.controller;
 //
 //
 //import com.sh.model.entity.InventoryManagerDto;
@@ -19,6 +19,4 @@ package com.sh.controller;//package com.sh.controller;
 //
 //
 //        }
-//
-//
 //}
