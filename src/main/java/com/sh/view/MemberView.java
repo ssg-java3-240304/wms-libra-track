@@ -1,9 +1,13 @@
 package com.sh.view;
 
 import com.sh.controller.MemberController;
+import com.sh.controller.PublisherManagerController;
 import com.sh.model.entity.MemberDto;
+import com.sh.model.entity.PublisherManagerDto;
 import com.sh.model.entity.Role;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class MemberView {
@@ -20,7 +24,7 @@ public class MemberView {
                 0. 종료
                 ======================
                 입력 : 
-                        
+                  
                 """;
 
         while (true) {
@@ -28,10 +32,40 @@ public class MemberView {
             String choice = scanner.next();
             switch (choice) {
                 case "1":
+                    choiceMenu();
                     memberController.addMember(addMember());
+                    break;
+
+            }
+        }
+    }
 
 
 
+
+
+
+
+
+    private void choiceMenu() {
+        PublisherManagerController publisherManagerController = new PublisherManagerController();
+
+        String choiceMenu = """
+                ====================
+                회원 선택을 해주세요
+                ====================
+                1. 출판사 매니저
+                2. 창고 관리자
+                ====================
+                """;
+        while (true) {
+            System.out.println(choiceMenu);
+            String choice = scanner.next();
+            switch (choice) {
+                case "1" :
+                     memberController.addMember(addMember());
+//                    publisherManagerController.registerPublisherManager();
+                    break;
             }
         }
     }
@@ -46,14 +80,24 @@ public class MemberView {
         scanner.nextLine();
         System.out.println("> 비밀 번호 입력");
         String password = scanner.nextLine();
-        System.out.println("> PUBLISHER OR INVENTORY_MANAGER?");
-        String roleInput = scanner.nextLine();
-        Role role = Role.valueOf(roleInput.toUpperCase());
         System.out.println("> 전화 번호 입력");
         String phoneNumber = scanner.nextLine();
         System.out.println("> 이메일 입력하시오");
         String email = scanner.nextLine();
-        return new MemberDto(0,name, userName, password, role ,phoneNumber,email);
-
+        return new MemberDto(0,name, userName, password, Role.PUBLISHER ,phoneNumber,email);
     }
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
