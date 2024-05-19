@@ -1,4 +1,4 @@
-package com.sh.model.entity;
+package com.sh.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,11 +9,10 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class BookArea {
-    private int bookAreaId;
-    private int areaId;
-    private int bookId;
+public class OrderAreaDetailDto {
+    private String title;
+    private String ISBN;
     private int quantity;
-    private int reserved;
-    private OrderArea orderArea;
+    private String location;
+    private String areaName;
 }

@@ -11,6 +11,8 @@ import lombok.Setter;
 @AllArgsConstructor
 public class OrderDto {
 
+    private int orderId;
+    private int bookId;
     private int quantity;
     private String ISBN;
     private String title;
