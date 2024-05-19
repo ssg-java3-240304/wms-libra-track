@@ -20,10 +20,10 @@ public class InventoryResultView {
         }
         else {
             System.out.println("-----------------------------------------------");
-            System.out.printf("%s\t%s\t%s\n", "InventoryId", "Location", "Capacity");
+            System.out.printf("%-10s\t%-10s\t%-10s\n", "InventoryId", "Location", "Capacity");
             System.out.println("-----------------------------------------------");
             for(InventoryDto inventoryDto : list) {
-                System.out.printf("%s\t%s\t%s\n",
+                System.out.printf("%-10s\t%-10s\t%-10s\n",
                         inventoryDto.getInventoryId(),
                         inventoryDto.getLocation(),
                         inventoryDto.getCapacity()
