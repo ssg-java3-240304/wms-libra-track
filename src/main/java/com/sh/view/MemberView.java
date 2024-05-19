@@ -24,32 +24,21 @@ public class MemberView {
                 0. 종료
                 ======================
                 입력 : 
-                  
                 """;
 
         while (true) {
-            System.out.println(menu);
+            System.out.print(menu);
             String choice = scanner.next();
             switch (choice) {
                 case "1":
                     choiceMenu();
                     memberController.addMember(addMember());
                     break;
-
             }
         }
     }
 
-
-
-
-
-
-
-
     private void choiceMenu() {
-        PublisherManagerController publisherManagerController = new PublisherManagerController();
-
         String choiceMenu = """
                 ====================
                 회원 선택을 해주세요
@@ -59,7 +48,7 @@ public class MemberView {
                 ====================
                 """;
         while (true) {
-            System.out.println(choiceMenu);
+            System.out.print(choiceMenu);
             String choice = scanner.next();
             switch (choice) {
                 case "1" :
@@ -72,22 +61,20 @@ public class MemberView {
 
     private MemberDto addMember() {
         System.out.println("> ✏✏✏ 회원 등록할 정보 작성해주세요. ✏✏✏");
-        System.out.println("> 회원 이름 입력");
+        System.out.print("> 회원 이름 입력 : ");
         String name = scanner.next();
         scanner.nextLine();
-        System.out.println("> username 입력");
+        System.out.print("> username 입력 : ");
         String userName = scanner.next();
         scanner.nextLine();
-        System.out.println("> 비밀 번호 입력");
+        System.out.print("> 비밀 번호 입력 : ");
         String password = scanner.nextLine();
-        System.out.println("> 전화 번호 입력");
+        System.out.print("> 전화 번호 입력 : ");
         String phoneNumber = scanner.nextLine();
-        System.out.println("> 이메일 입력하시오");
+        System.out.print("> 이메일 입력 : ");
         String email = scanner.nextLine();
-        return new MemberDto(0,name, userName, password, Role.PUBLISHER ,phoneNumber,email);
+        return new MemberDto(0, name, userName, password, phoneNumber, email);
     }
-
-
 }
 
 
