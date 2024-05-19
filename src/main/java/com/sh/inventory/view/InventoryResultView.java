@@ -19,9 +19,9 @@ public class InventoryResultView {
             System.out.println("> 😅😅😅 조회된 창고가 없습니다. 😅😅😅");
         }
         else {
-            System.out.println("-----------------------------------------------");
+            System.out.println("----------------------------------------------------------------------------------------------");
             System.out.printf("%-10s\t%-10s\t%-10s\n", "InventoryId", "Location", "Capacity");
-            System.out.println("-----------------------------------------------");
+            System.out.println("----------------------------------------------------------------------------------------------");
             for(InventoryDto inventoryDto : list) {
                 System.out.printf("%-10s\t%-10s\t%-10s\n",
                         inventoryDto.getInventoryId(),
@@ -31,7 +31,7 @@ public class InventoryResultView {
 //                        inventoryDto.getOrderableStatus()
                     );
             }
-            System.out.println("-----------------------------------------------");
+            System.out.println("----------------------------------------------------------------------------------------------");
         }
     }
 
@@ -44,11 +44,11 @@ public class InventoryResultView {
             System.out.println("> 😅😅😅 조회된 창고가 없습니다. 😅😅😅");
         }
         else {
-            System.out.println("-----------------------------------------------");
+            System.out.println("----------------------------------------------------------------------------------------------");
             System.out.println("InventoryId : " + inventoryDto.getInventoryId());
             System.out.println("Location : " + inventoryDto.getLocation());
             System.out.println("Capacity : " + inventoryDto.getCapacity());
-            System.out.println("-----------------------------------------------");
+            System.out.println("----------------------------------------------------------------------------------------------");
         }
     }
 
