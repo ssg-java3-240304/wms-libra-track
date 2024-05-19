@@ -6,11 +6,11 @@
 
     <insert id="registerPublisherManager" useGeneratedKeys="true" keyProperty="memberId">
         insert into
-            publishermanager(publisher_manager_id, member_id, publisher_id) <!--db 컬럼값-->
+            publishermanager(publisher_manager_id, member_id, publisher_id)
         values(
             #{publisherManagerId},
             #{memberId},
-        #{publisherId}
+            #{publisherId}
         )
     </insert>
 </mapper>

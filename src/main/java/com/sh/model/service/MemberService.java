@@ -1,5 +1,6 @@
 package com.sh.model.service;
 
+import com.sh.controller.PublisherManagerController;
 import com.sh.model.dao.MemberMapper;
 import com.sh.model.dao.PublisherManagerMapper;
 import com.sh.model.entity.MemberDto;
@@ -14,12 +15,15 @@ public class MemberService {
     public int addMember(MemberDto memberDto) {
         try (SqlSession sqlSession = getSqlSession()) {
             MemberMapper memberMapper = sqlSession.getMapper(MemberMapper.class);
-
             int result = memberMapper.addMember(memberDto);
-//            publisherManagerService.insertPublisherManager(memberDto);
-            PublisherManagerMapper publisherManagerMapper = sqlSession.getMapper(PublisherManagerMapper.class);
-            PublisherManagerDto publisherManagerDto = new PublisherManagerDto(memberDto.getMemberId(), 10000);
-            publisherManagerMapper.registerPublisherManager(publisherManagerDto);
+
+
+            publisherManagerService.insertPublisherManager(sqlSession, memberDto.getMemberId(),"publisherId 스캐너로 입력받기");
+
+
+
+
+
             sqlSession.commit();
             return result;
         } catch (Exception e) {

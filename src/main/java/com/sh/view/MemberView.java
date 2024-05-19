@@ -26,28 +26,19 @@ public class MemberView {
                 0. 종료
                 ======================
                 입력 : 
-                  
                 """;
 
         while (true) {
-            System.out.println(menu);
+            System.out.print(menu);
             String choice = scanner.next();
             switch (choice) {
                 case "1":
                     choiceMenu();
                     memberController.addMember(addMember());
                     break;
-
             }
         }
     }
-
-
-
-
-
-
-
 
     private void choiceMenu() {
         PublisherManagerController publisherManagerController = new PublisherManagerController();
@@ -62,7 +53,7 @@ public class MemberView {
                 ====================
                 """;
         while (true) {
-            System.out.println(choiceMenu);
+            System.out.print(choiceMenu);
             String choice = scanner.next();
             switch (choice) {
                 case "1" :
@@ -74,7 +65,6 @@ public class MemberView {
                     memberController.addMember(addMember());
                     inventoryManagerController.selectInventoryManager();
                     break;
-
             }
         }
     }
