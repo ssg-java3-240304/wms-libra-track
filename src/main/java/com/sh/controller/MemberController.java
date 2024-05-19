@@ -10,12 +10,4 @@ public class MemberController {
         memberService.addMember(memberDto);
         return memberDto;
     }
-
-    public void selectPublisher(){
-
-    }
-
-    public void selectInventoryManager(){
-
-    }
 }
