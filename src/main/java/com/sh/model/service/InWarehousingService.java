@@ -71,12 +71,12 @@ public class InWarehousingService {
     }
 
 
-    public void updateInWarehousingStatus(int inWarehousingId, Status status) {
+    public void updateInWarehousingStatus(int inWarehousingId, int inventoryMangerId, Status status) {
         SqlSession sqlSession = getSqlSession();
         InWarehousingDao inWarehousingDAO = sqlSession.getMapper(InWarehousingDao.class);
 
         try {
-            inWarehousingDAO.updateInWarehousingStatus(inWarehousingId, status);
+            inWarehousingDAO.updateInWarehousingStatus(inWarehousingId, inventoryMangerId, status);
             sqlSession.commit();
         } catch (Exception e) {
             sqlSession.rollback();

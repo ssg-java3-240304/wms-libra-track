@@ -12,7 +12,9 @@ public interface InWarehousingDao {
     void insertOrders(InWarehousing inWarehousing);
     List<InWarehousing> findInWarehousingByStatus(Status status);
 
-    void updateInWarehousingStatus(@Param("inWarehousingId")int inWarehousingId,@Param("status") Status status);
+    void updateInWarehousingStatus(@Param("inWarehousingId")int inWarehousingId,
+                                      @Param("inventoryManagerId")int inventoryManagerId,
+                                   @Param("status") Status status);
 
     int findPublisherIdByInWarehousingId(int inWarehousingId);
 

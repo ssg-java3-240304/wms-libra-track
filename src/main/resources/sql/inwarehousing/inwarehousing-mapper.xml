@@ -24,6 +24,7 @@
             in_warehousing
         set
             status = #{status}
+            inventory_manager_id = #{inventoryManagerId}
         where
             in_warehousing_id = #{inWarehousingId}
     </update>

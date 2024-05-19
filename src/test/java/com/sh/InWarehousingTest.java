@@ -109,7 +109,7 @@ public class InWarehousingTest {
     @DisplayName("InWarehousing update status Test")
     void updateStatus() {
 
-        inWarehousingDao.updateInWarehousingStatus(1, Status.COMPLETED);
+        inWarehousingDao.updateInWarehousingStatus(1, 1, Status.COMPLETED);
         List<InWarehousing> inWarehousing = inWarehousingDao.findInWarehousingByPublisherIdAndStatus(1, Status.COMPLETED);
         for(InWarehousing in : inWarehousing) {
             System.out.println("id = " + in.getInWarehousingId() + " date = " + in.getDate() +

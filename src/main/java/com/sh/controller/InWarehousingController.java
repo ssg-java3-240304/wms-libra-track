@@ -22,8 +22,8 @@ public class InWarehousingController {
         return inWarehousingService.findInWarehousingByStatus(status);
     }
 
-    public void updateInWarehousingStatus(int inWarehousingId, Status status) {
-        inWarehousingService.updateInWarehousingStatus(inWarehousingId, status);
+    public void updateInWarehousingStatus(int inWarehousingId, int inventoryManagerId, Status status) {
+        inWarehousingService.updateInWarehousingStatus(inWarehousingId, inventoryManagerId, status);
     }
 
     // 출판사별 입고 내역 조회
