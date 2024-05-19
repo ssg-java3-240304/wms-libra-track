@@ -4,17 +4,18 @@ import com.sh.model.dao.InWarehousingDao;
 import com.sh.model.entity.InWarehousing;
 import com.sh.model.entity.Order;
 import com.sh.model.entity.Status;
-import org.apache.ibatis.jdbc.Null;
 import org.apache.ibatis.session.SqlSession;
-import org.junit.jupiter.api.*;
-
-import static org.assertj.core.api.Assertions.assertThat;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.sh.common.MyBatisTemplate.getSqlSession;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class InWarehousingTest {
     SqlSession sqlSession;
@@ -89,6 +90,37 @@ public class InWarehousingTest {
         assertThat(inWarehousing1.get(inWarehousing1.size()-1).getInWarehousingId()).isEqualTo(id);
         assertThat(inWarehousing1.get(inWarehousing1.size()-1).getDate()).isEqualTo(inWarehousing.getDate());
     }
+
+    @Test
+    @DisplayName("InWarehousing searching Test")
+    void findWithPublisherAndStatus() {
+
+        List<InWarehousing> inWarehousing = inWarehousingDao.findInWarehousingByPublisherIdAndStatus(1, Status.PENDING);
+        for(InWarehousing in : inWarehousing) {
+            System.out.println("id = " + in.getInWarehousingId() + " date = " + in.getDate() +
+                    " status = " + in.getStatus() + " publisherManagerId = " + in.getPublisherManagerId());
+        }
+
+        assertThat(inWarehousing.size()).isNotZero();
+
+    }
+
+    @Test
+    @DisplayName("InWarehousing update status Test")
+    void updateStatus() {
+
+        inWarehousingDao.updateInWarehousingStatus(1, Status.COMPLETED);
+        List<InWarehousing> inWarehousing = inWarehousingDao.findInWarehousingByPublisherIdAndStatus(1, Status.COMPLETED);
+        for(InWarehousing in : inWarehousing) {
+            System.out.println("id = " + in.getInWarehousingId() + " date = " + in.getDate() +
+                    " status = " + in.getStatus() + " publisherManagerId = " + in.getPublisherManagerId());
+        }
+
+        assertThat(inWarehousing.size()).isNotZero();
+
+    }
+
+
 
 
 

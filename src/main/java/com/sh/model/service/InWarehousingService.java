@@ -97,12 +97,42 @@ public class InWarehousingService {
     }
 
 
-    public List<InWarehousing> findInWarehousingByPublisher(String publisherName) {
+    public List<InWarehousing> findInWarehousingByPublisher(int publisherId) {
         SqlSession sqlSession = getSqlSession();
         InWarehousingDao inWarehousingDAO = sqlSession.getMapper(InWarehousingDao.class);
 
+        List<InWarehousing> inWarehousingList = inWarehousingDAO.findInWarehousingByPublisher(publisherId);
+        sqlSession.close();
 
-        List<InWarehousing> inWarehousingList = inWarehousingDAO.findInWarehousingByPublisher(publisherName);
+        return inWarehousingList;
+    }
+
+    public List<InWarehousing> findInWarehousingByPublisherManagerId(int publisherManagerId) {
+        SqlSession sqlSession = getSqlSession();
+        InWarehousingDao inWarehousingDAO = sqlSession.getMapper(InWarehousingDao.class);
+
+        List<InWarehousing> inWarehousingList = inWarehousingDAO.findInWarehousingByPublisherManagerId(publisherManagerId);
+        sqlSession.close();
+
+        return inWarehousingList;
+
+    }
+
+    public List<InWarehousing> findInWarehousingByPublisherManagerIdAndStatus(int publisherManagerId, Status status) {
+        SqlSession sqlSession = getSqlSession();
+        InWarehousingDao inWarehousingDAO = sqlSession.getMapper(InWarehousingDao.class);
+
+        List<InWarehousing> inWarehousingList = inWarehousingDAO.findInWarehousingByPublisherManagerIdAndStatus(publisherManagerId, status);
+        sqlSession.close();
+
+        return inWarehousingList;
+    }
+
+    public List<InWarehousing> findInWarehousingByPublisherIdAndStatus(int publisherId, Status status) {
+        SqlSession sqlSession = getSqlSession();
+        InWarehousingDao inWarehousingDAO = sqlSession.getMapper(InWarehousingDao.class);
+
+        List<InWarehousing> inWarehousingList = inWarehousingDAO.findInWarehousingByPublisherIdAndStatus(publisherId, status);
         sqlSession.close();
 
         return inWarehousingList;

@@ -27,9 +27,24 @@ public class InWarehousingController {
     }
 
     // 출판사별 입고 내역 조회
-    public List<InWarehousing> findInWarehousingByPublisher(String publisherName) {
-        return inWarehousingService.findInWarehousingByPublisher(publisherName);
+    public List<InWarehousing> findByPublisherId(int publisherId) {
+        return inWarehousingService.findInWarehousingByPublisher(publisherId);
     }
+    // 출판사의 상태별 입고 내역 조회
+    public List<InWarehousing> findByPublisherIdAndStatus(int publisherId, Status status) {
+        return inWarehousingService.findInWarehousingByPublisherIdAndStatus(publisherId, status);
+    }
+
+    // 출판사 직원별 입고 내역 조회
+    public List<InWarehousing> findByPublisherManager(int publisherManagerId) {
+        return inWarehousingService.findInWarehousingByPublisherManagerId(publisherManagerId);
+    }
+
+    // 출판사 직원의 상태별 입고 내역 조회
+    public List<InWarehousing> findByPublisherManagerAndStatus(int publisherManagerId, Status status) {
+        return inWarehousingService.findInWarehousingByPublisherManagerIdAndStatus(publisherManagerId, status);
+    }
+
 
 
 

@@ -48,7 +48,44 @@
             in_warehousing_id = #{inWarehousingId}
     </select>
     <select id="findInWarehousingByPublisher" resultType="com.sh.model.entity.InWarehousing">
-
+        select
+            *
+        from
+            in_warehousing
+        join
+            publisher_manager on in_warehousing.publisher_manager_id = publisher_manager.publisher_manager_id
+        where
+            publisher_manager.publisher_id = #{publisherId}
+    </select>
+    <select id="findInWarehousingByPublisherManagerId" resultType="com.sh.model.entity.InWarehousing">
+        select
+            *
+        from
+            in_warehousing
+        where
+            publisher_manager_id = #{publisherManagerId}
+    </select>
+    <select id="findInWarehousingByPublisherManagerIdAndStatus" resultType="com.sh.model.entity.InWarehousing">
+        select
+            *
+        from
+            in_warehousing
+        where
+            publisher_manager_id = #{publisherManagerId}
+        and
+            status = #{status}
+    </select>
+    <select id="findInWarehousingByPublisherIdAndStatus" resultType="com.sh.model.entity.InWarehousing">
+        select
+            *
+        from
+            in_warehousing
+        join
+            publisher_manager on in_warehousing.publisher_manager_id = publisher_manager.publisher_manager_id
+        where
+            publisher_manager.publisher_id = #{publisherId}
+        and
+            status = #{status}
     </select>
 
 </mapper>
