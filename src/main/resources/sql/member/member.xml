@@ -6,7 +6,7 @@
     <insert id="addMember" useGeneratedKeys="true" keyProperty="memberId">
         insert into member (name, userName, password, role, phone_number, email)
         values(
-            #{name}, #{userName}, #{password}, #{role}, #{phoneNumber}, #{email}
+        #{name}, #{userName}, #{password}, #{role}, #{phoneNumber}, #{email}
         )
     </insert>
 

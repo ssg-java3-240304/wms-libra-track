@@ -6,4 +6,6 @@ public interface MemberMapper {
 
     int addMember(MemberDto memberDto);
 
+
+
 }
