@@ -1,7 +1,9 @@
 package com.sh.view;
 
+import com.sh.controller.InventoryManagerController;
 import com.sh.controller.MemberController;
 import com.sh.controller.PublisherManagerController;
+import com.sh.model.entity.InventoryManagerDto;
 import com.sh.model.entity.MemberDto;
 import com.sh.model.entity.PublisherManagerDto;
 import com.sh.model.entity.Role;
@@ -49,6 +51,7 @@ public class MemberView {
 
     private void choiceMenu() {
         PublisherManagerController publisherManagerController = new PublisherManagerController();
+        InventoryManagerController inventoryManagerController = new InventoryManagerController();
 
         String choiceMenu = """
                 ====================
@@ -64,8 +67,14 @@ public class MemberView {
             switch (choice) {
                 case "1" :
                      memberController.addMember(addMember());
-//                    publisherManagerController.registerPublisherManager();
+                    publisherManagerController.registerPublisherManager();
                     break;
+
+                case "2" :
+                    memberController.addMember(addMember());
+                    inventoryManagerController.selectInventoryManager();
+                    break;
+
             }
         }
     }
