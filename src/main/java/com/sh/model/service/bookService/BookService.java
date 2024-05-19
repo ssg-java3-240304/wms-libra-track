@@ -4,7 +4,7 @@ import com.sh.model.dao.BookDAO;
 import com.sh.model.dao.GenreDAO;
 
 import com.sh.model.dto.bookDto.Book;
-import com.sh.view.bookResultView.DisplayResultView;
+import com.sh.view.bookView.bookResultView.DisplayResultView;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
@@ -84,10 +84,10 @@ public class BookService {
 
     }
 
-    public List<Book> findAll() {
+    public List<Book> findAll(int id) {
         sqlSession = getSqlSession();
         bookDAO = sqlSession.getMapper(BookDAO.class);
-        List<Book> bookList = bookDAO.findAll();
+        List<Book> bookList = bookDAO.findAll(id);
         DisplayResultView.displayBookList(bookList);
         return bookList;
     }

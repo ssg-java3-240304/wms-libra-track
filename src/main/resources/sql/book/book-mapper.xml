@@ -41,6 +41,7 @@
         select b.* , p.name
         from Book b join publisher p
         on b.publisher_id = p.publisher_id
+        where b.publisher_id = #{id}
         order by book_id
     </select>
 

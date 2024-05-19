@@ -5,15 +5,13 @@ import com.sh.common.error.ErrorCode;
 import com.sh.common.error.ErrorView;
 import com.sh.model.dto.bookDto.Book;
 import com.sh.model.service.bookService.BookService;
-import com.sh.view.bookResultView.DisplayResultView;
-
-import java.io.IOException;
+import com.sh.view.bookView.bookResultView.DisplayResultView;
 
 public class BookController {
     BookService bookService = new BookService();
 
-    public void findAll(){
-        bookService.findAll();
+    public void findAll(int id){
+        bookService.findAll(id);
     }
     public int getGenreId(String genreName) {
         return bookService.getGenreId(genreName);
