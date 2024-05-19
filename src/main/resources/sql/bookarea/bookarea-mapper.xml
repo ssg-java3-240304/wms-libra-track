@@ -30,4 +30,5 @@
             book_id = #{bookId}
 
     </select>
+
 </mapper>

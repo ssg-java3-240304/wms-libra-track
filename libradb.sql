@@ -38,6 +38,7 @@ CREATE TABLE `Member` (
 	`role`	ENUM('INVENTORY', 'PUBLISHER', 'ADMIN')	NOT NULL,
 	`phone_number`	CHAR(11) NOT NULL,
 	`email`	VARCHAR(65)	NOT NULL,
+	UNIQUE (`username`),
     PRIMARY KEY (`member_id`)
 )  ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
@@ -58,6 +59,7 @@ CREATE TABLE `Inventory` (
 	`inventory_id`	INTEGER	NOT NULL  AUTO_INCREMENT,
 	`location`	VARCHAR(20)	NOT NULL,
 	`capacity`	INTEGER	NOT NULL,
+	UNIQUE (`location`),
     PRIMARY KEY (`inventory_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 

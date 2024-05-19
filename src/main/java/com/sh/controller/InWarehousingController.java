@@ -17,12 +17,18 @@ public class InWarehousingController {
         inWarehousingService.insertInWarehousing(orders, publisherName);
     }
 
+    // 상태별 입고 내역 조회
     public List<InWarehousing> findInWarehousingByStatus(Status status) {
         return inWarehousingService.findInWarehousingByStatus(status);
     }
 
     public void updateInWarehousingStatus(int inWarehousingId, Status status) {
         inWarehousingService.updateInWarehousingStatus(inWarehousingId, status);
+    }
+
+    // 출판사별 입고 내역 조회
+    public List<InWarehousing> findInWarehousingByPublisher(String publisherName) {
+        return inWarehousingService.findInWarehousingByPublisher(publisherName);
     }
 
 

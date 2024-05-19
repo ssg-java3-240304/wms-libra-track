@@ -95,4 +95,16 @@ public class InWarehousingService {
 
         return publisherId;
     }
+
+
+    public List<InWarehousing> findInWarehousingByPublisher(String publisherName) {
+        SqlSession sqlSession = getSqlSession();
+        InWarehousingDao inWarehousingDAO = sqlSession.getMapper(InWarehousingDao.class);
+
+
+        List<InWarehousing> inWarehousingList = inWarehousingDAO.findInWarehousingByPublisher(publisherName);
+        sqlSession.close();
+
+        return inWarehousingList;
+    }
 }

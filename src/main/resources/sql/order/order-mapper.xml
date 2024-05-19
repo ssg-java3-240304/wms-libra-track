@@ -43,4 +43,27 @@
         where
             order_id = #{orderId}
     </select>
+
+    <select id="findOrderAreaDetailByOrderId" resultType="com.sh.model.dto.OrderAreaDetailDto">
+        select
+            b.title as title,
+            b.ISBN as ISBN,
+            o.quantity as quantity,
+            i.location as location,
+            a.area_name as areaName
+        from
+            `order`  o
+        join
+            order_area oa on o.order_id = oa.order_id
+        join
+            book_area ba on oa.book_area_id = ba.book_area_id
+        join
+            book b on ba.book_id = b.book_id
+        join
+            area a on ba.area_id = a.area_id
+        join
+            inventory i on a.inventory_id = i.inventory_id
+        where
+            o.order_id = #{orderId}
+    </select>
 </mapper>

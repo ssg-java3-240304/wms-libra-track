@@ -9,4 +9,6 @@ public interface BookAreaDao {
     int insertBookArea(BookArea bookArea);
 
     void updateBookArea(BookArea bookArea);
+
+
 }

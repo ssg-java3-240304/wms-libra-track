@@ -1,5 +1,6 @@
 package com.sh.model.dao;
 
+import com.sh.model.dto.OrderAreaDetailDto;
 import com.sh.model.dto.OrderDto;
 import com.sh.model.entity.Order;
 
@@ -14,4 +15,6 @@ public interface OrderDao {
     OrderDto findOrderByOrderId(int orderId);
 
     int findPublisherIdByOrderId(int orderId);
+
+    OrderAreaDetailDto findOrderAreaDetailByOrderId(int orderId);
 }

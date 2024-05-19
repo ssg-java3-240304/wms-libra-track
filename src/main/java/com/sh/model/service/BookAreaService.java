@@ -8,6 +8,7 @@ import static com.sh.common.MyBatisTemplate.getSqlSession;
 
 public class BookAreaService {
 
+    // 입고 허가를 위한 구역 배정
     public int  reserveBookArea( int areaId, int bookId, int quantity, String areaName) {
 
         SqlSession sqlSession = getSqlSession();
@@ -40,6 +41,9 @@ public class BookAreaService {
 
     }
 
+
+
+    // 입고 후 배정된 구역 업데이트
     public void updateQuantity(int orderId, int quantity) {
         SqlSession sqlSession = getSqlSession();
         BookAreaDao bookAreaDao = sqlSession.getMapper(BookAreaDao.class);

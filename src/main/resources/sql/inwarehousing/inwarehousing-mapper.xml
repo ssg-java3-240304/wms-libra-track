@@ -47,5 +47,8 @@
         where
             in_warehousing_id = #{inWarehousingId}
     </select>
+    <select id="findInWarehousingByPublisher" resultType="com.sh.model.entity.InWarehousing">
+
+    </select>
 
 </mapper>

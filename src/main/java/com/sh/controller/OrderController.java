@@ -1,5 +1,6 @@
 package com.sh.controller;
 
+import com.sh.model.dto.OrderAreaDetailDto;
 import com.sh.model.dto.OrderDto;
 import com.sh.model.service.BookAreaService;
 import com.sh.model.service.OrderAreaService;
@@ -40,6 +41,12 @@ public class OrderController {
         int bookAreaId = 1;
         orderAreaService.insertOrderArea(orderId, bookAreaId);
 
+    }
+
+    // 입고 내역의 배정된 구역 확인
+    // 제목, ISBN, 수량, 창고 위치, 구역 이름
+    public OrderAreaDetailDto findOrderAreaDetailByOrderId(int orderId) {
+        return orderService.findOrderAreaDetailByOrderId(orderId);
     }
 
     public void completeOrder(int orderId) {
