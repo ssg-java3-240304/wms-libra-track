@@ -4,7 +4,8 @@ import com.sh.controller.book.BookController;
 
 import com.sh.controller.publisher.PublisherController;
 import com.sh.model.dto.bookDto.Book;
-import com.sh.view.bookResultView.DisplayResultView;
+import com.sh.model.dto.publishserDto.PublisherManager;
+import com.sh.view.bookView.bookResultView.DisplayResultView;
 
 import java.time.LocalDateTime;
 import java.util.Scanner;
@@ -12,8 +13,11 @@ import java.util.Scanner;
 public class BookMenuView {
     BookController bookController = new BookController();
     PublisherController publisherController = new PublisherController();
+
+    PublisherManager publisherManager;
     Scanner scanner = new Scanner(System.in);
-    public void showMenu() {
+    public void showMenu(PublisherManager publisherManger) {
+        this.publisherManager = publisherManger;
         String menu = """
         ======================
         1. 출판 등록된 책 조회하기
@@ -32,8 +36,9 @@ public class BookMenuView {
             System.out.println("원하시는 메뉴를 선택해주세요!");
             System.out.print("메뉴 : ");
             int n  = scanner.nextInt();
+
             switch (n) {
-                case 1 : bookController.findAll(); // 출판 등록된 모든 도서 확인하기
+                case 1 : bookController.findAll(publisherManager.getPublisherId()); // 출판 등록된 모든 도서 확인하기
                     break;
                 case 2 : bookController.insertBook(input()); //도서정보 입력하기
                     break;
@@ -70,6 +75,8 @@ public class BookMenuView {
         System.out.print("ISBN 정보를 입력해주세요 : ");
         return scanner.next();
     }
+
+    //책 정보 입력
     public Book input() {
         System.out.println("================================");
         System.out.println("책의 정보 입력");
@@ -77,10 +84,6 @@ public class BookMenuView {
         String title = scanner.next();
         System.out.print("ISBN 코드 : ");
         String ISBN = scanner.next();
-        System.out.print("출판사 이름 : ");
-        String publisherName = scanner.next();
-        int publisherId = getPublisherId(publisherName);
-        //출판사 이름 입력했을 때 등록되지 않은 출판사가 있을 수도 있으니까 publisher쪽에서 수정 해야함
         System.out.print("책 가격 : ");
         int price = scanner.nextInt();
         LocalDateTime pubDate = LocalDateTime.now();// 수정
@@ -97,7 +100,7 @@ public class BookMenuView {
         System.out.println("================================");
 
 
-        return new Book(0, title, ISBN, publisherId, pubDate, price, author, page, size, genreId);
+        return new Book(0, title, ISBN, publisherManager.getPublisherId(), pubDate, price, author, page, size, genreId);
     }
 
     //이름 입력하고 -> 이름에 해당하는 genreId값 반환하는 메소드
@@ -105,6 +108,7 @@ public class BookMenuView {
         return bookController.getGenreId(genreName);
     }
 
+    //출판사 이름에 해당하는 publisherId값 호출
     public int getPublisherId(String publisherName){
         return publisherController.getPublisherId(publisherName);
     }

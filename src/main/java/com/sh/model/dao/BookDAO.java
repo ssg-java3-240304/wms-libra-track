@@ -15,7 +15,7 @@ public interface BookDAO {
 
     int deleteBook(String ISBN);
 
-   List<Book> findAll();
+   List<Book> findAll(int id);
 
 
 }

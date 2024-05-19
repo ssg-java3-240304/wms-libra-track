@@ -8,4 +8,11 @@
         from publisher
         where name = #{publisherName}
     </select>
+
+    <insert id = 'insertPublisher' useGeneratedKeys="true" keyProperty = "publisherId">
+        insert into publisher
+        values(#{publisherId},#{name},#{email},#{phoneNumber},#{businessNumber})
+
+
+    </insert>
 </mapper>

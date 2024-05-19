@@ -1,4 +1,4 @@
-package com.sh.view.bookResultView;
+package com.sh.view.bookView.bookResultView;
 
 
 import com.sh.model.dto.bookDto.Book;
