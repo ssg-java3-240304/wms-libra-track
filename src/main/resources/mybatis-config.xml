@@ -26,5 +26,6 @@
     <mappers>
         <mapper resource="sql/order/order-mapper.xml"/>
         <mapper resource="sql/inwarehousing/inwarehousing-mapper.xml"/>
+        <mapper resource="sql/member/member.xml"/>
     </mappers>
 </configuration>
