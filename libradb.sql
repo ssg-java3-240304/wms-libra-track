@@ -42,9 +42,9 @@ CREATE TABLE `Member` (
     PRIMARY KEY (`member_id`)
 )  ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS `InventoryManager`;
+DROP TABLE IF EXISTS `Inventory_Manager`;
 
-CREATE TABLE `InventoryManager` (
+CREATE TABLE `Inventory_Manager` (
 	`inventory_manager_id`	INTEGER	NOT NULL  AUTO_INCREMENT,
 	`entry_date`	TIMESTAMP	NOT NULL,
 	`emp_number`	INTEGER	NOT NULL,
@@ -86,9 +86,9 @@ CREATE TABLE `in_warehousing` (
     PRIMARY KEY (`in_warehousing_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
-DROP TABLE IF EXISTS `PublisherManager`;
+DROP TABLE IF EXISTS `Publisher_Manager`;
 
-CREATE TABLE `PublisherManager` (
+CREATE TABLE `Publisher_Manager` (
 	`publisher_manager_id`	INTEGER	NOT NULL  AUTO_INCREMENT,
 	`member_id`	INTEGER	NOT NULL,
 	`publisher_id`	INTEGER	NOT NULL,
@@ -164,14 +164,14 @@ REFERENCES `Genre` (
 	`genre_id`
 );
 
-ALTER TABLE `InventoryManager` ADD CONSTRAINT `FK_Inventory_TO_InventoryManager_1` FOREIGN KEY (
+ALTER TABLE `Inventory_Manager` ADD CONSTRAINT `FK_Inventory_TO_InventoryManager_1` FOREIGN KEY (
 	`inventory_id`
 )
 REFERENCES `Inventory` (
 	`inventory_id`
 );
 
-ALTER TABLE `InventoryManager` ADD CONSTRAINT `FK_Member_TO_InventoryManager_1` FOREIGN KEY (
+ALTER TABLE `Inventory_Manager` ADD CONSTRAINT `FK_Member_TO_InventoryManager_1` FOREIGN KEY (
 	`member_id`
 )
 REFERENCES `Member` (
@@ -195,25 +195,25 @@ REFERENCES `Publisher` (
 ALTER TABLE `in_warehousing` ADD CONSTRAINT `FK_PublisherManager_TO_in_warehousing_1` FOREIGN KEY (
 	`publisher_manager_id`
 )
-REFERENCES `PublisherManager` (
+REFERENCES `Publisher_Manager` (
 	`publisher_manager_id`
 ) ON DELETE SET NULL;
 
 ALTER TABLE `in_warehousing` ADD CONSTRAINT `FK_InventoryManager_TO_in_warehousing_1` FOREIGN KEY (
 	`inventory_manager_id`
 )
-REFERENCES `InventoryManager` (
+REFERENCES `Inventory_Manager` (
 	`inventory_manager_id`
 ) ON DELETE SET NULL;
 
-ALTER TABLE `PublisherManager` ADD CONSTRAINT `FK_Member_TO_PublisherManager_1` FOREIGN KEY (
+ALTER TABLE `Publisher_Manager` ADD CONSTRAINT `FK_Member_TO_PublisherManager_1` FOREIGN KEY (
 	`member_id`
 )
 REFERENCES `Member` (
 	`member_id`
 );
 
-ALTER TABLE `PublisherManager` ADD CONSTRAINT `FK_Publisher_TO_PublisherManager_1` FOREIGN KEY (
+ALTER TABLE `Publisher_Manager` ADD CONSTRAINT `FK_Publisher_TO_PublisherManager_1` FOREIGN KEY (
 	`publisher_id`
 )
 REFERENCES `Publisher` (
@@ -258,14 +258,14 @@ REFERENCES `ex_warehousing` (
 ALTER TABLE `ex_warehousing` ADD CONSTRAINT `FK_PublisherManager_TO_ex_warehousing_1` FOREIGN KEY (
 	`publisher_manager_id`
 )
-REFERENCES `PublisherManager` (
+REFERENCES `Publisher_Manager` (
 	`publisher_manager_id`
 ) ON DELETE SET NULL;
 
 ALTER TABLE `ex_warehousing` ADD CONSTRAINT `FK_InventoryManager_TO_ex_warehousing_1` FOREIGN KEY (
 	`inventory_manager_id`
 )
-REFERENCES `InventoryManager` (
+REFERENCES `Inventory_Manager` (
 	`inventory_manager_id`
 ) ON DELETE SET NULL;
 
