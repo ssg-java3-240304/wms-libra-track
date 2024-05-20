@@ -1,6 +1,7 @@
 package com.sh.view;
 
 import com.sh.controller.OrderController;
+import com.sh.model.dto.OrderAreaDetailDto;
 import com.sh.model.dto.OrderDto;
 import com.sh.model.entity.InWarehousing;
 import com.sh.model.entity.Status;
@@ -87,6 +88,7 @@ public class OrderView {
 
 
     public static void displayOrderDto(List<OrderDto> orderList) {
+        ids.clear();
         if (orderList.isEmpty()) {
             System.out.println("입고 주문 정보가 없습니다.");
         } else {
@@ -95,7 +97,6 @@ public class OrderView {
             System.out.println("-----------------------------------------------");
             int idx = 1;
             for(OrderDto order : orderList) {
-                ids.clear();
                 ids.add(order.getOrderId());
                 System.out.printf("%d\t%d\t%s\t%s\t%s\t%d\n",
                         idx,
@@ -121,4 +122,17 @@ public class OrderView {
     }
 
 
+    public static void displayOrderAreaDetail(OrderAreaDetailDto orderAreaDetailDto) {
+        if(orderAreaDetailDto == null) {
+            System.out.println("입고 주문 정보가 없습니다.");
+        } else {
+            System.out.println("----------------------------");
+            System.out.println("Title : " + orderAreaDetailDto.getTitle());
+            System.out.println("ISBN : " + orderAreaDetailDto.getISBN());
+            System.out.println("Quantity : " + orderAreaDetailDto.getQuantity());
+            System.out.println("Location : " + orderAreaDetailDto.getLocation());
+            System.out.println("Area Name : " + orderAreaDetailDto.getAreaName());
+            System.out.println("----------------------------");
+        }
+    }
 }

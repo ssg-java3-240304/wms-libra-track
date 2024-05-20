@@ -36,4 +36,17 @@ public class InWarehousingViewTest {
         InWarehousingView.inWarehousingPublisherMenu();
 
     }
+
+    @Test
+    public void inventoryManagerQueryTest() {
+
+        String input = "1\nPENDING\n1\n1\n1\n1\n0\n0\n0";
+        InputStream in = new ByteArrayInputStream(input.getBytes());
+        System.setIn(in);
+
+        InWarehousingView.INVEN_MANAGER_ID = 1;
+
+        InWarehousingView.inWarehousingInventoryManagerMainMenu();
+
+    }
 }

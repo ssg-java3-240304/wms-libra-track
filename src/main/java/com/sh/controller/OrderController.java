@@ -50,7 +50,9 @@ public class OrderController {
     // 입고 내역의 배정된 구역 확인
     // 제목, ISBN, 수량, 창고 위치, 구역 이름
     public OrderAreaDetailDto findOrderAreaDetailByOrderId(int orderId) {
-        return orderService.findOrderAreaDetailByOrderId(orderId);
+        OrderAreaDetailDto orderAreaDetailDto = orderService.findOrderAreaDetailByOrderId(orderId);
+        OrderView.displayOrderAreaDetail(orderAreaDetailDto);
+        return orderAreaDetailDto;
     }
 
     public void completeOrder(int orderId) {
