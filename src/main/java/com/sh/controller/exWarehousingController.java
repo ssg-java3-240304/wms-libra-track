@@ -1,6 +1,7 @@
 package com.sh.controller;
 
 import com.sh.model.entity.ExWarehousing;
+import com.sh.model.entity.Status;
 import com.sh.model.service.exWarehousingService;
 
 import java.util.HashMap;
@@ -15,17 +16,17 @@ public class exWarehousingController {
     }
 
     // 출고 상태 조회
-    public List<ExWarehousing> findByStatus(Enum status) {
-        // Todo
-        return null;
+    public List<ExWarehousing> findExwarehousingByStatus(Status status) {
+        return exWarehousingService.findExwarehousingByStatus(status);
     }
 
-    // 업데이트
-    public void update(ExWarehousing exWarehousing) {
+    // 출고 상태 업데이트
+    public void updateExWarehousingStatus(int exWarehousingId, int inventoryManagerId, Status status) {
         // Todo
+        exWarehousingService.updateExWarehousingStatus(exWarehousingId, inventoryManagerId, status);
     }
 
-    //
+    // 출판사 매니저 아이디로 조회
     public List<ExWarehousing> findByPubManagerId() {
         // Todo
         return null;
