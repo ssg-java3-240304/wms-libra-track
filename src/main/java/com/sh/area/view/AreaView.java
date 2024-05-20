@@ -28,6 +28,7 @@ public class AreaView {
             4. 구역 등록
             5. 구역 수정
             6. 구역 삭제
+            7. 구역 reserved 수정
             0. 종료
             ==============================================================================================
             입력 : """;
@@ -41,6 +42,7 @@ public class AreaView {
                 case "4" : areaController.insertArea(inputArea()); break;
                 case "5" : areaController.updateArea(inputAreaUpdated()); break;
                 case "6" : areaController.deleteArea(inputAreaId("삭제")); break;
+                case "7" : areaController.updateReserved(inputAreaReservedUpdated()); break;
                 case "0" : return;
                 default:
                     System.out.println("잘못 입력하셨습니다.");
@@ -67,15 +69,21 @@ public class AreaView {
         int quantity = sc.nextInt();
         return new AreaDto(areaId, inventoryId, publisherId, areaName, capacity, reserved, quantity);
     }
+    private AreaDto inputAreaReservedUpdated() {
+        System.out.println("> ✏️✏️✏️ 수정할 구역 정보를 작성해주세요. ✏️✏️✏️");
+        areaController.findAllArea();
+        System.out.println("> 수정하고 싶은 구역의 코드 : ");
+        int areaId = sc.nextInt();
+        AreaDto areaDto = areaController.findReservedAreaByAreaId(areaId);
+        System.out.println("> 수정될 구역에 예약된 책의 양: ");
+        int quantity = sc.nextInt();
+        return new AreaDto(areaId, areaDto.getInventoryId(), areaDto.getPublisherId(), areaDto.getAreaName(), areaDto.getCapacity(), areaDto.getReserved() + quantity, areaDto.getQuantity());
+    }
 
     private int inputInventoryId() {
         inventoryController.findAllInventory();
         System.out.println("> 조회할 창고 코드 : ");
         return sc.nextInt();
-    }
-
-    private void displayInventoryList() {
-        areaController.findAllInventory();
     }
 
     private AreaDto inputArea() {
@@ -95,8 +103,14 @@ public class AreaView {
     }
 
     private int inputAreaId(String type) {
-        areaController.findAllArea();
         System.out.printf("> %s할 구역코드 : ", type);
         return sc.nextInt();
     }
+    private int inputQuantity() {
+        System.out.print("> 수정할 구역 reserved의 양 : ");
+        return sc.nextInt();
+    }
+
+
+
 }

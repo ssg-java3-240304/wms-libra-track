@@ -8,11 +8,13 @@ import java.util.List;
 public interface AreaMapper {
     List<AreaDto> findAllArea();
     AreaDto findAreaByAreaId(int areaId);
-    List<AreaDto> findAreaByAreaName(String areaName);
-    List<AreaDto> findAreaByCapacity(int capacity);
     int insertArea(AreaDto areaDto);
     int updateArea(AreaDto areaDto);
     int deleteArea(int areaId);
+    List<AreaDto> findAreaByAreaName(String areaName);
+    List<AreaDto> findAreaByCapacity(int capacity);
+    int updateReserved(AreaDto areaDto);
+    AreaDto findByLocationAndAreaName(String location, String areaName);
 
     List<AreaDto> findAreaByInventoryId(int inventoryId);
     List<InventoryDto> findAllInventory();

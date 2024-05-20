@@ -90,6 +90,22 @@ public class AreaService {
         sqlSession.close();
         return inventoryList;
     }
+    public int updateReserved(AreaDto areaDto) {
+        SqlSession sqlSession = getSqlSession();
+        AreaMapper areaMapper = sqlSession.getMapper(AreaMapper.class);
+        try {
+            // dao 메세지 전달
+            int result = areaMapper.updateReserved(areaDto);
+            sqlSession.commit();
+            return result;
+        } catch (Exception e) {
+            sqlSession.rollback();
+            throw new RuntimeException(e);
+        } finally {
+            sqlSession.close();
+        }
+    }
+
 //
 //    public List<InventoryDto> findMenuOrderable() {
 //        SqlSession sqlSession = getSqlSession();

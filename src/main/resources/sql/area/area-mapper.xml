@@ -67,6 +67,14 @@
         where
             area_id = #{areaId}
     </delete>
+    <update id="updateReserved">
+        update
+            area
+        set
+            reserved = #{reserved}
+        where
+            area_id = #{areaId}
+    </update>
 <!--    <select id="findMenuOrderable" resultType="areaDto">-->
 <!--        select-->
 <!--            *-->

@@ -36,6 +36,11 @@ public class AreaController {
         AreaResultView.displayArea(areaDto);
     }
 
+    public AreaDto findReservedAreaByAreaId(int areaId) {
+        // 0~1개의 InventoryDto 반환 : InventoryDto
+        return areaService.findAreaByAreaId(areaId);
+    }
+
     public void insertArea(AreaDto areaDto) {
         int result = areaService.insertArea(areaDto);
         AreaResultView.displayResult("구역 등록", result);
@@ -44,6 +49,11 @@ public class AreaController {
     public void updateArea(AreaDto areaDto) {
         int result = areaService.updateArea(areaDto);
         AreaResultView.displayResult("구역 수정", result);
+    }
+
+    public void updateReserved(AreaDto areaDto) {
+        int result = areaService.updateReserved(areaDto);
+        AreaResultView.displayResult("구역 reserved 수정", result);
     }
 
     public void deleteArea(int areaId) {
