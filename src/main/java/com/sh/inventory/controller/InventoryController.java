@@ -40,16 +40,6 @@ public class InventoryController {
         InventoryResultView.displayResult("창고 등록", result);
     }
 
-//    public void insertCategoryAndMenu(CategoryDto categoryDto, InventoryDto inventoryDto) {
-//        int result = menuService.insertCategoryAndMenu(categoryDto, menuDto);
-//        ResultView.displayResult("카테고리 & 메뉴 등록", result);
-//    }
-
-//    public void findByCategoryCode(int categoryCode) {
-//        List<InventoryDto> list = inventoryService.findByCategoryCode(categoryCode);
-//        ResultView.displayInventoryList(list);
-//    }
-
     public void updateInventory(InventoryDto inventoryDto) {
         int result = inventoryService.updateInventory(inventoryDto);
         InventoryResultView.displayResult("창고 수정", result);
@@ -60,19 +50,4 @@ public class InventoryController {
         InventoryResultView.displayResult("창고 삭제", result);
     }
 
-//    public void findAllCategory() {
-//        List<CategoryDto> categoryList = inventoryService.findAllCategory();
-//        ResultView.displayCategoryList(categoryList);
-//    }
-
-//    public void findMenuOrderable() {
-//        List<InventoryDto> list = inventoryService.findMenuOrderable();
-//        ResultView.displayInventoryList(list);
-//    }
-//
-//    public List<InventoryDto> findMenuOrderableByCategoryCode(int categoryCode) {
-//        List<InventoryDto> list = inventoryService.findMenuOrderableByCategoryCode(categoryCode);
-//        ResultView.displayInventoryList(list);
-//        return list;
-//    }
 }

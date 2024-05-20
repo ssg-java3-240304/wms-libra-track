@@ -24,7 +24,7 @@ public class AreaResultView {
             System.out.printf("%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s\n", "AreaId", "InventoryId", "PublisherId", "AreaName", "Capacity", "Reserved", "Quantity");
             System.out.println("----------------------------------------------------------------------------------------------");
             for(AreaDto areaDto : list) {
-                System.out.printf("%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s\t%-10s\n",
+                System.out.printf("%-10s\t%-10s\t%-10s\t%-10s\t%-10d\t%-10d\t%-10d\n",
                         areaDto.getAreaId(),
                         areaDto.getInventoryId(),
                         areaDto.getPublisherId(),
@@ -60,14 +60,14 @@ public class AreaResultView {
     }
 
     public static void displayResult(String type, int result) {
-        System.out.println("> 📢📢📢 " + type + " " + (result > 0 ? "성공!" : "실패!") + "📢📢📢");
+        System.out.println("> 📢📢📢 " + type + " " + (result > 0 ? "성공!" : "실패!") + " 📢📢📢");
     }
 
     public static void displayInventoryList(List<InventoryDto> inventoryList) {
         System.out.print("> ");
         for (int i = 0; i < inventoryList.size(); i++) {
-            InventoryDto categoryDto = inventoryList.get(i);
-            System.out.printf("%d.%s ", categoryDto.getInventoryId(), categoryDto.getLocation(), categoryDto.getCapacity());
+            InventoryDto inventoryDto = inventoryList.get(i);
+            System.out.printf("%-10d %-10s %-10s", inventoryDto.getInventoryId(), inventoryDto.getLocation(), inventoryDto.getCapacity());
         }
         System.out.println();
     }

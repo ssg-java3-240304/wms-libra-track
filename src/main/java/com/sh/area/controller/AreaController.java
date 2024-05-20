@@ -8,6 +8,7 @@ import com.sh.area.model.service.AreaService;
 import com.sh.area.view.AreaResultView;
 import com.sh.inventory.model.dto.InventoryDto;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -35,6 +36,16 @@ public class AreaController {
         AreaDto areaDto = areaService.findAreaByAreaId(areaId);
         AreaResultView.displayArea(areaDto);
     }
+    public void findByLocationAndAreaName(String location, String areaName) {
+        // 0~1개의 InventoryDto 반환 : InventoryDto
+        AreaDto areaDto = areaService.findByLocationAndAreaName(location, areaName);
+        AreaResultView.displayArea(areaDto);
+    }
+
+    public AreaDto findReservedAreaByAreaId(int areaId) {
+        // 0~1개의 InventoryDto 반환 : InventoryDto
+        return areaService.findAreaByAreaId(areaId);
+    }
 
     public void insertArea(AreaDto areaDto) {
         int result = areaService.insertArea(areaDto);
@@ -44,6 +55,11 @@ public class AreaController {
     public void updateArea(AreaDto areaDto) {
         int result = areaService.updateArea(areaDto);
         AreaResultView.displayResult("구역 수정", result);
+    }
+
+    public void updateReserved(AreaDto areaDto) {
+        int result = areaService.updateReserved(areaDto);
+        AreaResultView.displayResult("구역 reserved 수정", result);
     }
 
     public void deleteArea(int areaId) {
@@ -61,19 +77,4 @@ public class AreaController {
         AreaResultView.displayInventoryList(inventoryList);
     }
 
-//    public void insertCategoryAndMenu(CategoryDto categoryDto, InventoryDto inventoryDto) {
-//        int result = menuService.insertCategoryAndMenu(categoryDto, menuDto);
-//        ResultView.displayResult("카테고리 & 메뉴 등록", result);
-//    }
-
-//    public void findMenuOrderable() {
-//        List<InventoryDto> list = inventoryService.findMenuOrderable();
-//        ResultView.displayInventoryList(list);
-//    }
-//
-//    public List<InventoryDto> findMenuOrderableByCategoryCode(int categoryCode) {
-//        List<InventoryDto> list = inventoryService.findMenuOrderableByCategoryCode(categoryCode);
-//        ResultView.displayInventoryList(list);
-//        return list;
-//    }
 }

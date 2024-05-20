@@ -27,8 +27,6 @@ public class InventoryResultView {
                         inventoryDto.getInventoryId(),
                         inventoryDto.getLocation(),
                         inventoryDto.getCapacity()
-//                        inventoryDto.getCategoryCode(),
-//                        inventoryDto.getOrderableStatus()
                     );
             }
             System.out.println("----------------------------------------------------------------------------------------------");
@@ -53,7 +51,7 @@ public class InventoryResultView {
     }
 
     public static void displayResult(String type, int result) {
-        System.out.println("> 📢📢📢 " + type + " " + (result > 0 ? "성공!" : "실패!") + "📢📢📢");
+        System.out.println("> 📢📢📢 " + type + " " + (result > 0 ? "성공!" : "실패!") + " 📢📢📢");
     }
 
 }
