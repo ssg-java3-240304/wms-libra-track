@@ -11,7 +11,7 @@ public class exWarehousingController {
 
     // 출고 요청
     public void save(ExWarehousing exWarehousing) {
-        // Todo
+        exWarehousingService.save();
     }
 
     // 출고 상태 조회
