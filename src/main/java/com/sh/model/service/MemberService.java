@@ -56,10 +56,9 @@ public class MemberService {
         try (SqlSession sqlSession = getSqlSession()) {
             MemberMapper memberMapper = sqlSession.getMapper(MemberMapper.class);
             MemberDto memberDto = memberMapper.loginCheck(id, password);
-
         return memberDto;
         } catch (Exception e) {
-            throw new RuntimeException("Failed to selectMember", e);
+            throw new RuntimeException("Failed to login", e);
 
         }
     }
