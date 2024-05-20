@@ -15,6 +15,7 @@ import java.util.List;
 
 //홍지민 작업 시작
 public class ExWarehousing {
+    private int exWarehousingId;
     private String address;
     private String receiver;
     private String receiverPhone;

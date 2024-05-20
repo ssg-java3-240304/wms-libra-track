@@ -30,6 +30,12 @@ public class OrderController {
         return orderDtoList;
     }
 
+    // 출고 내역의 상세 정보 조회
+    public List<OrderDto> findOrdersWithExWarehousingId(int exWarehousingId) {
+        return orderService.findOrdersByExWarehousingId(exWarehousingId);
+
+    }
+
     public void reserveOrder(int orderId, String location, String areaName) {
 
         //Area area = areaService.findByLocationAndAreaName(location, areaName);
@@ -67,5 +73,8 @@ public class OrderController {
         bookAreaService.updateQuantity(orderId, bookId);
 
     }
+    // 출고 내역의 배정된 구역 확인
+    // 제목, ISBN, 수량, 창고 위치, 구역 이름
+
 
 }
