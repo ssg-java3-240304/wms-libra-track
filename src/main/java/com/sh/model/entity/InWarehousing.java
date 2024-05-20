@@ -16,14 +16,12 @@ import java.util.List;
 @AllArgsConstructor
 
 // 홍지민 작업 시작
-
 public class InWarehousing {
     private int inWarehousingId;
     private Timestamp date;
-    private int publisherMangerId;
+    private int publisherManagerId;
     private int inventoryManagerId;
     private List<Order> orderList;
     private Status status;
 }
-
 // 홍지민 작업 끝

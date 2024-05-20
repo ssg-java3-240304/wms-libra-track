@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sh.model.dao.OrderDao">
+    <insert id="insertOrder" useGeneratedKeys="true" keyProperty="orderId">
+        insert into
+        `order`
+        values (
+        null, #{quantity}, #{bookId}, #{inWarehousingId}, #{null}
+        )
+    </insert>
+    <select id="findOrderByOrderId" resultType="com.sh.model.dto.OrderDto">
+        select
+            order_id, b.book_id, o.quantity, b.ISBN, b.title, b.author
+        from
+        `order` o
+        left join
+            book b on o.book_id = b.book_id
+        where
+            order_id = #{orderId}
+    </select>
+
+    <select id="findOrderByInWarehousingId" resultType="com.sh.model.dto.OrderDto">
+        select
+            o.order_id, o.book_id, o.quantity, b.ISBN, b.title, b.author
+        from
+            `order` o
+        left join
+            book b on o.book_id = b.book_id
+        where
+            in_warehousing_id = #{inWarehousingId}
+    </select>
+    <select id="findPublisherIdByOrderId" resultType="java.lang.Integer">
+        select
+            publisher_id
+        from
+            `order`
+        join
+            in_warehousing on `order`.in_warehousing_id = in_warehousing.in_warehousing_id
+        join
+            publisher_manager on in_warehousing.publisher_manager_id = publisher_manager.publisher_manager_id
+        where
+            order_id = #{orderId}
+    </select>
+
+    <select id="findOrderAreaDetailByOrderId" resultType="com.sh.model.dto.OrderAreaDetailDto">
+        select
+            b.title as title,
+            b.ISBN as ISBN,
+            o.quantity as quantity,
+            i.location as location,
+            a.area_name as areaName
+        from
+            `order`  o
+        join
+            order_area oa on o.order_id = oa.order_id
+        join
+            book_area ba on oa.book_area_id = ba.book_area_id
+        join
+            book b on ba.book_id = b.book_id
+        join
+            area a on ba.area_id = a.area_id
+        join
+            inventory i on a.inventory_id = i.inventory_id
+        where
+            o.order_id = #{orderId}
+    </select>
+</mapper>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sh.inventory.model.dao.InventoryMapper">
+    <select id="findAllInventory" resultType="inventoryDto">
+        select
+            *
+        from
+            inventory
+        order by
+            inventory_id
+    </select>
+
+    <select id="findInventoryByInventoryId" resultType="inventoryDto">
+        select
+            *
+        from
+            inventory
+        where
+            inventory_id = #{inventoryId}
+    </select>
+<!--    <select id="findByCategoryCode" resultType="areaDto">-->
+<!--        select-->
+<!--            *-->
+<!--        from-->
+<!--            inventory-->
+<!--        where-->
+<!--            category_code = #{categoryCode}-->
+<!--    </select>-->
+
+    <!-- 작성한 속성명은 필드이름이 아니다. private 필드라 직접 접근 불가 -->
+    <!-- 실제로는 getter를 사용. getter의 get을 제외하고, 소문자로 시작하는 이름을 작성한 것이다. -->
+    <!-- property 접근 방식. (OGNL 표준) -->
+    <!-- useGeneratedKeys=true를 통해 auto_increment값을 가져온다. 전달된 객체 areaDto#inventoryId에 대입 -->
+    <insert id="insertInventory" useGeneratedKeys="true" keyProperty="inventoryId">
+        insert into
+            inventory
+        values (
+            null, #{location}, #{capacity}
+        )
+    </insert>
+    <update id="updateInventory">
+        update
+            inventory
+        set
+            location = #{location},
+            capacity = #{capacity}
+        where
+            inventory_id = #{inventoryId}
+    </update>
+    <delete id="deleteInventory">
+        delete from
+            inventory
+        where
+            inventory_id = #{inventoryId}
+    </delete>
+<!--    <select id="findAllCategory" resultType="categoryDto">-->
+<!--        select-->
+<!--            *-->
+<!--        from-->
+<!--            tbl_category-->
+<!--        where-->
+<!--            ref_category_code is not null-->
+<!--    </select>-->
+<!--    <select id="findMenuOrderable" resultType="areaDto">-->
+<!--        select-->
+<!--            *-->
+<!--        from-->
+<!--            inventory-->
+<!--        where-->
+<!--            orderable_status = 'Y'-->
+<!--    </select>-->
+<!--    <select id="findMenuOrderableByCategoryCode" resultType="areaDto">-->
+<!--        select-->
+<!--            *-->
+<!--        from-->
+<!--            inventory-->
+<!--        where-->
+<!--            category_code = #{categoryCode}-->
+<!--            and orderable_status = 'Y'-->
+<!--    </select>-->
+</mapper>

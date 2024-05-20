@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sh.model.dao.InWarehousingDao">
+    <insert id="insertInWarehousing" useGeneratedKeys="true" keyProperty="inWarehousingId">
+        insert into in_warehousing
+        (date, status, publisher_manager_id)
+        values (
+        #{date}, #{status}, #{publisherManagerId}
+        )
+    </insert>
+
+    <insert id="insertOrders">
+        insert into
+        `order` (quantity, book_id, in_warehousing_id)
+        values
+        <foreach collection="orderList" item="order" separator=",">
+            (#{order.quantity}, #{order.bookId}, #{inWarehousingId})
+        </foreach>
+    </insert>
+    <update id="updateInWarehousingStatus">
+        update
+            in_warehousing
+        set
+            status = #{status}
+            inventory_manager_id = #{inventoryManagerId}
+        where
+            in_warehousing_id = #{inWarehousingId}
+    </update>
+
+
+    <select id="findInWarehousingByStatus" resultType="com.sh.model.entity.InWarehousing">
+        select
+            *
+        from
+            in_warehousing
+        where
+            status = #{status}
+    </select>
+    <select id="findPublisherIdByInWarehousingId" resultType="java.lang.Integer">
+        select
+            publisher_id
+        from
+            in_warehousing
+        join
+            publisher_manager on in_warehousing.publisher_manager_id = publisher_manager.publisher_manager_id
+        where
+            in_warehousing_id = #{inWarehousingId}
+    </select>
+    <select id="findInWarehousingByPublisher" resultType="com.sh.model.entity.InWarehousing">
+        select
+            *
+        from
+            in_warehousing
+        join
+            publisher_manager on in_warehousing.publisher_manager_id = publisher_manager.publisher_manager_id
+        where
+            publisher_manager.publisher_id = #{publisherId}
+    </select>
+    <select id="findInWarehousingByPublisherManagerId" resultType="com.sh.model.entity.InWarehousing">
+        select
+            *
+        from
+            in_warehousing
+        where
+            publisher_manager_id = #{publisherManagerId}
+    </select>
+    <select id="findInWarehousingByPublisherManagerIdAndStatus" resultType="com.sh.model.entity.InWarehousing">
+        select
+            *
+        from
+            in_warehousing
+        where
+            publisher_manager_id = #{publisherManagerId}
+        and
+            status = #{status}
+    </select>
+    <select id="findInWarehousingByPublisherIdAndStatus" resultType="com.sh.model.entity.InWarehousing">
+        select
+            *
+        from
+            in_warehousing
+        join
+            publisher_manager on in_warehousing.publisher_manager_id = publisher_manager.publisher_manager_id
+        where
+            publisher_manager.publisher_id = #{publisherId}
+        and
+            status = #{status}
+    </select>
+
+</mapper>

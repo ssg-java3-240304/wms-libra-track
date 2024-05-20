@@ -7,15 +7,12 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
-public class OrderDto {
-
-    private int orderId;
-    private int bookId;
-    private int quantity;
-    private String ISBN;
+@NoArgsConstructor
+public class OrderAreaDetailDto {
     private String title;
-    private String author;
-
+    private String ISBN;
+    private int quantity;
+    private String location;
+    private String areaName;
 }

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sh.model.dao.BookAreaDao">
+    <insert id="insertBookArea">
+        insert into
+            book_area
+        values (
+            #{areaId}, #{bookId}, #{quantity}, #{reserved})
+        )
+    </insert>
+    <update id="updateBookArea">
+        update
+            book_area
+        set
+            quantity = #{quantity},
+            reserved = #{reserved}
+        where
+            book_area_id = #{bookAreaId}
+    </update>
+    <select id="findBookAreaByAreaIdAndBookId" resultType="com.sh.model.entity.BookArea">
+        select
+            *
+        from
+            book_area
+        where
+            area_id = #{areaId}
+        and
+            book_id = #{bookId}
+
+    </select>
+
+</mapper>
