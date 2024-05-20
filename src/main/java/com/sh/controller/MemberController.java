@@ -1,6 +1,7 @@
 package com.sh.controller;
 
 import com.sh.model.entity.MemberDto;
+import com.sh.model.entity.Role;
 import com.sh.model.service.MemberService;
 
 public class MemberController {
@@ -14,5 +15,6 @@ public class MemberController {
     public MemberDto addInventoryManager(MemberDto memberDto) {
         memberService.inventoryAddMember(memberDto);
         return memberDto;
-    }
+
+
 }

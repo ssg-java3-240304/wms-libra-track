@@ -1,10 +1,10 @@
 package com.sh.model.service;
 
-import com.sh.controller.PublisherManagerController;
 import com.sh.model.dao.MemberMapper;
-import com.sh.model.dao.PublisherManagerMapper;
+import com.sh.view.InventoryManagerView;
 import com.sh.model.entity.MemberDto;
-import com.sh.model.entity.PublisherManagerDto;
+import com.sh.model.entity.Role;
+import com.sh.view.PublisherManagerView;
 import org.apache.ibatis.session.SqlSession;
 
 import java.sql.Timestamp;
@@ -16,12 +16,17 @@ public class MemberService {
 
     PublisherManagerService publisherManagerService = new PublisherManagerService();
     InventoryManagerService inventoryManagerService = new InventoryManagerService();
+
+    PublisherManagerView publisherManagerView = new PublisherManagerView();
+    InventoryManagerView inventoryManagerView = new InventoryManagerView();
+
     public int addMember(MemberDto memberDto) {
         try (SqlSession sqlSession = getSqlSession()) {
             MemberMapper memberMapper = sqlSession.getMapper(MemberMapper.class);
             int result = memberMapper.addMember(memberDto);
-            publisherManagerService.insertPublisherManager(sqlSession, memberDto.getMemberId(),10000);
 
+            //🆘🆘🆘publisherId 스캐너로 입력받기!!🆘🆘🆘
+            publisherManagerService.insertPublisherManager(sqlSession, memberDto.getMemberId(),10000);
 
             sqlSession.commit();
             return result;
@@ -43,6 +48,16 @@ public class MemberService {
         } catch (Exception e) {
             throw new RuntimeException("Failed to selectMember", e);
 
+    public MemberDto loginCheck(String id, String password) {
+        try (SqlSession sqlSession = getSqlSession()){
+            MemberMapper memberMapper = sqlSession.getMapper(MemberMapper.class);
+            MemberDto memberChoice = memberMapper.loginCheck(id, password);
+            if(memberChoice.getRole() == Role.PUBLISHER) {
+                publisherManagerView.choicePublisherMenu(memberChoice.getUserName());
+            }
+            return memberChoice;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 }

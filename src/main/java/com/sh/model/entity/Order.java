@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -17,5 +19,6 @@ public class Order {
     private int bookId;
     private int inWarehousingId;
     private int exWarehousingId;
+    private List<OrderArea> orderAreaList;
 }
 // 홍지민 작업 끝

@@ -1,8 +1,8 @@
 package com.sh.model.service;
 
 import com.sh.model.dao.OrderDao;
+import com.sh.model.dto.OrderAreaDetailDto;
 import com.sh.model.dto.OrderDto;
-import com.sh.model.entity.Order;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
@@ -32,4 +32,15 @@ public class OrderService {
         return orderList;
 
     }
+
+    public OrderAreaDetailDto findOrderAreaDetailByOrderId(int orderId) {
+        SqlSession sqlSession = getSqlSession();
+        OrderDao orderDao = sqlSession.getMapper(OrderDao.class);
+        OrderAreaDetailDto orderAreaDetailDto = orderDao.findOrderAreaDetailByOrderId(orderId);
+        sqlSession.close();
+        return orderAreaDetailDto;
+    }
+
+
+
 }

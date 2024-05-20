@@ -71,12 +71,12 @@ public class InWarehousingService {
     }
 
 
-    public void updateInWarehousingStatus(int inWarehousingId, Status status) {
+    public void updateInWarehousingStatus(int inWarehousingId, int inventoryMangerId, Status status) {
         SqlSession sqlSession = getSqlSession();
         InWarehousingDao inWarehousingDAO = sqlSession.getMapper(InWarehousingDao.class);
 
         try {
-            inWarehousingDAO.updateInWarehousingStatus(inWarehousingId, status);
+            inWarehousingDAO.updateInWarehousingStatus(inWarehousingId, inventoryMangerId, status);
             sqlSession.commit();
         } catch (Exception e) {
             sqlSession.rollback();
@@ -84,5 +84,57 @@ public class InWarehousingService {
         } finally {
             sqlSession.close();
         }
+    }
+
+    public int findPublisherIdByInWarehousingId(int inWarehousingId) {
+        SqlSession sqlSession = getSqlSession();
+        InWarehousingDao inWarehousingDAO = sqlSession.getMapper(InWarehousingDao.class);
+
+        int publisherId = inWarehousingDAO.findPublisherIdByInWarehousingId(inWarehousingId);
+        sqlSession.close();
+
+        return publisherId;
+    }
+
+
+    public List<InWarehousing> findInWarehousingByPublisher(int publisherId) {
+        SqlSession sqlSession = getSqlSession();
+        InWarehousingDao inWarehousingDAO = sqlSession.getMapper(InWarehousingDao.class);
+
+        List<InWarehousing> inWarehousingList = inWarehousingDAO.findInWarehousingByPublisher(publisherId);
+        sqlSession.close();
+
+        return inWarehousingList;
+    }
+
+    public List<InWarehousing> findInWarehousingByPublisherManagerId(int publisherManagerId) {
+        SqlSession sqlSession = getSqlSession();
+        InWarehousingDao inWarehousingDAO = sqlSession.getMapper(InWarehousingDao.class);
+
+        List<InWarehousing> inWarehousingList = inWarehousingDAO.findInWarehousingByPublisherManagerId(publisherManagerId);
+        sqlSession.close();
+
+        return inWarehousingList;
+
+    }
+
+    public List<InWarehousing> findInWarehousingByPublisherManagerIdAndStatus(int publisherManagerId, Status status) {
+        SqlSession sqlSession = getSqlSession();
+        InWarehousingDao inWarehousingDAO = sqlSession.getMapper(InWarehousingDao.class);
+
+        List<InWarehousing> inWarehousingList = inWarehousingDAO.findInWarehousingByPublisherManagerIdAndStatus(publisherManagerId, status);
+        sqlSession.close();
+
+        return inWarehousingList;
+    }
+
+    public List<InWarehousing> findInWarehousingByPublisherIdAndStatus(int publisherId, Status status) {
+        SqlSession sqlSession = getSqlSession();
+        InWarehousingDao inWarehousingDAO = sqlSession.getMapper(InWarehousingDao.class);
+
+        List<InWarehousing> inWarehousingList = inWarehousingDAO.findInWarehousingByPublisherIdAndStatus(publisherId, status);
+        sqlSession.close();
+
+        return inWarehousingList;
     }
 }
