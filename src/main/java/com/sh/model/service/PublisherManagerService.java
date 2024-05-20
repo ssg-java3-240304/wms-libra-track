@@ -27,11 +27,11 @@ public class PublisherManagerService {
     }
 
     // 출판사 매니저 정보 수정
-    public int updatePublisherManager(int memberId) {
+    public int updatePublisherManager(MemberDto memberDto) {
         SqlSession sqlSession = getSqlSession();
         PublisherManagerMapper publisherManagerMapper = sqlSession.getMapper(PublisherManagerMapper.class);
         try {
-            int result = publisherManagerMapper.updatePublisherManagerInfo(memberId);
+            int result = publisherManagerMapper.updatePublisherManagerInfo(memberDto);
             sqlSession.commit();
             return result;
         } catch (Exception e) {
@@ -41,5 +41,7 @@ public class PublisherManagerService {
             sqlSession.close();
         }
     }
+
+    // 출판사 매니저 정보 삭제
 }
 //홍지민 작업 끝

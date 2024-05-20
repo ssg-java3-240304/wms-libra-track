@@ -60,19 +60,38 @@ public class PublisherManagerView {
 
             switch (choice) {
                 case 1:
-                    PublisherManagerDto publisherManagerDto1 = publisherManagerController.findPublisherManagerInfo(memberDto);
-                    PublisherResultView.displayPublisherManager(publisherManagerDto1);
+//                    PublisherManagerDto publisherManagerDto1 = publisherManagerController.findPublisherManagerInfo(memberDto);
+                    publisherManagerController.findPublisherManagerInfo(memberDto);
                     break;
                 case 2:
-                    publisherManagerController.updatePublisherManager(PublisherResultView.updatePublisherManager(memberDto).getMemberId());
-//                    PublisherManagerDto publisherManagerDto3 = PublisherResultView.updatePublisherManager(publisherManagerDto2);
-//                    publisherManagerDto2.update();
-//                    publisherManagerController.updatePublisherManager(publisherManagerDto3);
+                    publisherManagerController.updatePublisherManager(updatePublisherManager());
+
                     break;
                 case 3:
 //                    publisherManagerController.deletePublisherManager(); break;
             }
         }
+    }
+
+
+    private MemberDto updatePublisherManager() {
+        System.out.println("️✏️️✏️️✏️회원 정보 수정✏️✏️️✏️");
+        System.out.print("1. 이름 입력: ");
+        String name = sc.next();
+
+        System.out.print("2. 아이디 입력 : ");
+        String username = sc.next();
+
+        System.out.print("3. 비밀 번호 입력 : ");
+        String password = sc.next();
+
+        System.out.print("4. 연락처 입력: ");
+        String phoneNumber = sc.next();
+
+        System.out.print("5. 이메일 주소 입력 : ");
+        String email = sc.next();
+
+        return new MemberDto(name, username, password, phoneNumber, email);
     }
 
 }

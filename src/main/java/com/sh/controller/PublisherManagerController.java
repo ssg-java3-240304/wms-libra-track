@@ -13,13 +13,13 @@ import java.nio.channels.Pipe;
 public class PublisherManagerController {
     PublisherManagerService publisherManagerService = new PublisherManagerService();
 
-    public PublisherManagerDto findPublisherManagerInfo(MemberDto memberDto) {
+    public void findPublisherManagerInfo(MemberDto memberDto) {
         PublisherManagerDto publisherManagerDto = publisherManagerService.findPublisherManagerInfo(memberDto);
-        return publisherManagerDto;
+        PublisherResultView.displayPublisherManager(publisherManagerDto);
     }
 
-    public int updatePublisherManager(int memberId) {
-        int result  = publisherManagerService.updatePublisherManager(memberId);
-        return result;
+    public void updatePublisherManager(MemberDto memberDto) {
+        int result  = publisherManagerService.updatePublisherManager(memberDto);
+
     }
 }

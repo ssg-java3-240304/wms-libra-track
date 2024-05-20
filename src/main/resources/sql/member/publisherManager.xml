@@ -39,7 +39,7 @@
         )
     </insert>
 
-    <update id="updatePublisherManagerInfo" parameterType="int">
+    <update id="updatePublisherManagerInfo">
         update
             member
         set

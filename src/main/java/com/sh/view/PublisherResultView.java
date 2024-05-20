@@ -37,24 +37,4 @@ public class PublisherResultView {
         );
     }
 
-    public static MemberDto updatePublisherManager(MemberDto memberDto) {
-
-        System.out.println("️✏️️✏️️✏️회원 정보 수정✏️✏️️✏️");
-        System.out.print("1. 이름 입력: ");
-        memberDto.setPhoneNumber(sc.next());
-
-        System.out.print("2. 아이디 입력 : ");
-        memberDto.setName(sc.next());
-
-        System.out.print("3. 비밀 번호 입력 : ");
-        memberDto.setPassword(sc.next());
-
-        System.out.print("4. 연락처 입력: ");
-        memberDto.setPhoneNumber(sc.next());
-
-        System.out.print("5. 이메일 주소 입력 : ");
-        memberDto.setEmail(sc.next());
-
-        return memberDto;
-    }
 }
