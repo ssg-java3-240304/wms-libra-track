@@ -31,6 +31,6 @@
         <mapper resource="sql/member/member.xml"/>
         <mapper resource="sql/member/publisherManager.xml"/>
         <mapper resource="sql/area/area-mapper.xml"/>
-        <mapper resource="sql/Inventory/inventory-mapper.xml"/>
+        <mapper resource="sql/inventory/inventory-mapper.xml"/>
     </mappers>
 </configuration>
