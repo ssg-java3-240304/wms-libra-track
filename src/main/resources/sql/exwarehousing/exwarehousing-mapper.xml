@@ -24,7 +24,7 @@
         update
             ex_warehousing
         set
-            status = #{status}
+            status = #{status},
             inventory_manager_id = #{inventoryManagerId}
         where
             ex_warehousing_id = #{exWarehousingId}

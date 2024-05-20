@@ -49,8 +49,8 @@ public class ExWarehousingTest {
     @DisplayName("update status")
     @Test
     void updateExwarehousingStatus() {
-        exWarehousingDao.updateExWarehousingStatus(1,1, Status.PENDING);
-        List<ExWarehousing> exWarehousing = exWarehousingDao.findExWarehousingByStatus(Status.PENDING);
+        exWarehousingDao.updateExWarehousingStatus(1,1, Status.COMPLETED);
+        List<ExWarehousing> exWarehousing = exWarehousingDao.findExWarehousingByStatus(Status.COMPLETED);
         for (ExWarehousing ex : exWarehousing) {
             System.out.println(" status = " + ex.getStatus() + " address = " + ex.getAddress()
                     + " date = " + ex.getDate() + " receiver = " + ex.getReceiver()
