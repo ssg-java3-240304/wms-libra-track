@@ -5,25 +5,29 @@ import com.sh.model.dto.OrderDto;
 import com.sh.model.service.BookAreaService;
 import com.sh.model.service.OrderAreaService;
 import com.sh.model.service.OrderService;
+import com.sh.view.OrderView;
 
 import java.util.List;
 
 public class OrderController {
 
-    private OrderService orderService;
+    private OrderService orderService = new OrderService();
 
     //private AreaService areaService;
 
-    private BookAreaService bookAreaService;
+    private BookAreaService bookAreaService = new BookAreaService();
 
-    private OrderAreaService orderAreaService;
+    private OrderAreaService orderAreaService = new OrderAreaService();
+
 
     public OrderDto findOrderByOrderId(int orderId) {
         return orderService.findOrderByOrderId(orderId);
     }
 
     public List<OrderDto> findOrderByInWarehousingId(int inWarehousingId) {
-        return orderService.findOrderByInWarehousingId(inWarehousingId);
+        List<OrderDto> orderDtoList = orderService.findOrderByInWarehousingId(inWarehousingId);
+        OrderView.displayOrderDto(orderDtoList);
+        return orderDtoList;
     }
 
     public void reserveOrder(int orderId, String location, String areaName) {
@@ -46,7 +50,9 @@ public class OrderController {
     // 입고 내역의 배정된 구역 확인
     // 제목, ISBN, 수량, 창고 위치, 구역 이름
     public OrderAreaDetailDto findOrderAreaDetailByOrderId(int orderId) {
-        return orderService.findOrderAreaDetailByOrderId(orderId);
+        OrderAreaDetailDto orderAreaDetailDto = orderService.findOrderAreaDetailByOrderId(orderId);
+        OrderView.displayOrderAreaDetail(orderAreaDetailDto);
+        return orderAreaDetailDto;
     }
 
     public void completeOrder(int orderId) {

@@ -1,67 +1,32 @@
 package com.sh.model.entity;
 
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.sql.Timestamp;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 
 public class InventoryManagerDto {
 
-
-
-
     private int inventoryManagerId;
+    private Timestamp entryDate;
     private int empNumber;
-    private String entryDate;
     private int inventoryId;
+    private int memberId;
 
-
-    public InventoryManagerDto() {
-    }
-
-    public InventoryManagerDto(int inventoryManagerId, int empNumber, String entryDate, int inventoryId) {
-        this.inventoryManagerId = inventoryManagerId;
-        this.empNumber = empNumber;
+    public InventoryManagerDto(Timestamp entryDate, int empNumber ,int inventoryId, int memberId) {
         this.entryDate = entryDate;
-        this.inventoryId = inventoryId;
-    }
-
-    public int getInventoryManagerId() {
-        return inventoryManagerId;
-    }
-
-    public void setInventoryManagerId(int inventoryManagerId) {
-        this.inventoryManagerId = inventoryManagerId;
-    }
-
-    public int getEmpNumber() {
-        return empNumber;
-    }
-
-    public void setEmpNumber(int empNumber) {
         this.empNumber = empNumber;
-    }
-
-    public String getEntryDate() {
-        return entryDate;
-    }
-
-    public void setEntryDate(String entryDate) {
-        this.entryDate = entryDate;
-    }
-
-    public int getInventoryId() {
-        return inventoryId;
-    }
-
-    public void setInventoryId(int inventoryId) {
         this.inventoryId = inventoryId;
-    }
-
-    @Override
-    public String toString() {
-        return "InventoryManagerDto{" +
-                "inventoryManagerId=" + inventoryManagerId +
-                ", empNumber=" + empNumber +
-                ", entryDate='" + entryDate + '\'' +
-                ", inventoryId=" + inventoryId +
-                '}';
+        this.memberId = memberId;
     }
 }
+
+
