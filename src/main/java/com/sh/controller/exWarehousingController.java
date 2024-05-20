@@ -16,7 +16,7 @@ public class exWarehousingController {
 //        exWarehousingService.save();
 //    }
 
-    // 출고 상태 조회
+    // 출고 상태 내역 조회
     public List<ExWarehousing> findExWarehousingByStatus(Status status) {
         return exWarehousingService.findExWarehousingByStatus(status);
     }
@@ -26,13 +26,23 @@ public class exWarehousingController {
         exWarehousingService.updateExWarehousingStatus(exWarehousingId, inventoryManagerId, status);
     }
 
-    // 출판사별 출고 조회
+    // 출판사별 출고 내역 조회
     public List<ExWarehousing> findByPublisherId(int publisherId) {
         return exWarehousingService.findExWarehousingByPublisher(publisherId);
     }
 
-    // 출판사 직원별 출고 조회
+    // 출판사 직원별 출고 내역 조회
     public List<ExWarehousing> findByPublisherManager(int publisherManagerId) {
         return exWarehousingService.findExWarehousingByPublisherManagerId(publisherManagerId);
+    }
+
+    // 출판사별 출고 상태 조회
+    public List<ExWarehousing> findByPublisherIdAndStatus(int publisherId, Status status) {
+        return exWarehousingService.findExWarehousingByPublisherIdAndStatus(publisherId, status);
+    }
+
+    // 출판사 직원별 출고 상태 조회
+    public List<ExWarehousing> findByPublisherManagerAndStatus(int publisherManagerId, Status status) {
+        return exWarehousingService.findExWarehousingByPublisherManagerIdAndStatus(publisherManagerId, status);
     }
 }

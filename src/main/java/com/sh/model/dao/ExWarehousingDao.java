@@ -16,4 +16,8 @@ public interface ExWarehousingDao {
     List<ExWarehousing> findExWarehousingByPublisher(int publisherId);
 
     List<ExWarehousing> findExWarehousingByPublisherManager(int publisherManagerId);
+
+    List<ExWarehousing> findExWarehousingByPublisherIdAndStatus(@Param("publisherId") int publisherId, @Param("status") Status status);
+
+    List<ExWarehousing> findExWarehousingByPublisherManagerIdAndStatus(@Param("publisherManagerId") int publisherManagerId, @Param("status") Status status);
 }

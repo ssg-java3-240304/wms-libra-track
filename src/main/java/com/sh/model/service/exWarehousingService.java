@@ -54,8 +54,25 @@ public class exWarehousingService {
         SqlSession sqlSession = getSqlSession();
         ExWarehousingDao exWarehousingDao = sqlSession.getMapper(ExWarehousingDao.class);
 
-        List<ExWarehousing> exWarehousingsList = exWarehousingDao.findExWarehousingByPublisherManager(publisherManagerId);
+        List<ExWarehousing> exWarehousingList = exWarehousingDao.findExWarehousingByPublisherManager(publisherManagerId);
         sqlSession.close();
-        return exWarehousingsList;
+        return exWarehousingList;
+    }
+
+    public List<ExWarehousing> findExWarehousingByPublisherIdAndStatus(int publisherId, Status status) {
+        SqlSession sqlSession = getSqlSession();
+        ExWarehousingDao exWarehousingDao = sqlSession.getMapper(ExWarehousingDao.class);
+
+        List<ExWarehousing> exWarehousingList = exWarehousingDao.findExWarehousingByPublisherIdAndStatus(publisherId, status);
+        sqlSession.close();
+        return exWarehousingList;
+    }
+
+    public List<ExWarehousing> findExWarehousingByPublisherManagerIdAndStatus(int publisherManagerId, Status status) {
+        SqlSession sqlSession = getSqlSession();
+        ExWarehousingDao exWarehousingDao = sqlSession.getMapper(ExWarehousingDao.class);
+
+        List<ExWarehousing> exWarehousingList = exWarehousingDao.findExWarehousingByPublisherManagerIdAndStatus(publisherManagerId, status);
+        return exWarehousingList;
     }
 }
