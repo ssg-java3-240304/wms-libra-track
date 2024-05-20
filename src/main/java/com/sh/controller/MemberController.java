@@ -10,4 +10,9 @@ public class MemberController {
         memberService.addMember(memberDto);
         return memberDto;
     }
+
+    public MemberDto addInventoryManager(MemberDto memberDto) {
+        memberService.inventoryAddMember(memberDto);
+        return memberDto;
+    }
 }

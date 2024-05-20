@@ -4,7 +4,7 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sh.model.dao.PublisherManagerMapper">
 
-    <insert id="registerPublisherManager" useGeneratedKeys="true" keyProperty="memberId">
+    <insert id="insertPublisherManager" useGeneratedKeys="true" keyProperty="memberId">
         insert into
             publishermanager(publisher_manager_id, member_id, publisher_id)
         values(

@@ -9,7 +9,5 @@ import java.util.List;
 
 public class InventoryManagerController {
     private InventoryManagerService inventoryManagerService = new InventoryManagerService();
-    public void selectInventoryManager() {
-        inventoryManagerService.selectInventoryManager();
-    }
+
 }

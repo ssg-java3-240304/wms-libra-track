@@ -27,23 +27,20 @@ public class MemberView {
                 ======================
                 입력 : 
                 """;
-
+// view 에다가 static 처럼 저장을 해둬라 (로그인)!!
         while (true) {
-            System.out.print(menu);
+            System.out.println(menu);
             String choice = scanner.next();
             switch (choice) {
                 case "1":
-                    choiceMenu();
-                    memberController.addMember(addMember());
+                    choiceMenu(); // 이걸 이름 바꿔서 사용
+//                    memberController.addMember(addMember()); - 이거 없어도 됨
                     break;
             }
         }
     }
 
     private void choiceMenu() {
-        PublisherManagerController publisherManagerController = new PublisherManagerController();
-        InventoryManagerController inventoryManagerController = new InventoryManagerController();
-
         String choiceMenu = """
                 ====================
                 회원 선택을 해주세요
@@ -53,23 +50,25 @@ public class MemberView {
                 ====================
                 """;
         while (true) {
-            System.out.print(choiceMenu);
+            System.out.println(choiceMenu);
             String choice = scanner.next();
             switch (choice) {
                 case "1" :
                      memberController.addMember(addMember());
-                    publisherManagerController.registerPublisherManager();
+
                     break;
 
                 case "2" :
-                    memberController.addMember(addMember());
-                    inventoryManagerController.selectInventoryManager();
+                    memberController.addInventoryManager(inventoryAddMember());
+
                     break;
             }
         }
     }
 
-    private MemberDto addMember() {
+    // Publisher 회원가입
+    private MemberDto addMember()
+    {
         System.out.println("> ✏✏✏ 회원 등록할 정보 작성해주세요. ✏✏✏");
         System.out.println("> 회원 이름 입력");
         String name = scanner.next();
@@ -85,6 +84,25 @@ public class MemberView {
         String email = scanner.nextLine();
         return new MemberDto(0,name, userName, password, Role.PUBLISHER ,phoneNumber,email);
     }
+
+    //InventoryManager 회원가입
+    private MemberDto inventoryAddMember() {
+        System.out.println("> ✏✏✏ 회원 등록할 정보 작성해주세요. ✏✏✏");
+        System.out.println("> 회원 이름 입력");
+        String name = scanner.next();
+        scanner.nextLine();
+        System.out.println("> username 입력");
+        String userName = scanner.next();
+        scanner.nextLine();
+        System.out.println("> 비밀 번호 입력");
+        String password = scanner.nextLine();
+        System.out.println("> 전화 번호 입력");
+        String phoneNumber = scanner.nextLine();
+        System.out.println("> 이메일 입력하시오");
+        String email = scanner.nextLine();
+        return new MemberDto(0,name, userName, password, Role.INVENTORY ,phoneNumber,email);
+    }
+
 
 
 }
