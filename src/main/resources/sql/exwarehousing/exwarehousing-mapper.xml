@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sh.model.dao.ExWarehousingDao">
+<!--    <insert id="save" useGeneratedKeys="true" keyProperty="exWarehousingId">-->
+<!--        insert into-->
+<!--            ex_warehousing-->
+<!--        values (-->
+<!--            null, #{address}, #{receiver}, #{receiver_phone}, #{}-->
+<!--        )-->
+<!--    </insert>-->
+
+    <select id="findExWarehousingByStatus" resultType="com.sh.model.entity.ExWarehousing">
+        select
+            *
+        from
+            ex_warehousing
+        where
+            status = #{status}
+    </select>
+
+    <update id="updateExWarehousingStatus">
+        update
+            ex_warehousing
+        set
+            status = #{status}
+            inventory_manager_id = #{inventoryManagerId}
+        where
+            ex_warehousing_id = #{exWarehousingId}
+    </update>
+
+    <select id="findExWarehousingByPublisher" resultType="com.sh.model.entity.ExWarehousing">
+        select
+            *
+        from
+            ex_warehousing
+        join
+            publisher_manager on ex_warehousing.publisher_manager_id = publisher_manager.publisher_manager_id
+        where
+            publisher_manager.publisher_id = #{publisherId}
+    </select>
+</mapper>
