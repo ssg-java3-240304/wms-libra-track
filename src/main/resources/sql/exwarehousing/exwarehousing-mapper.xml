@@ -20,7 +20,7 @@
             status = #{status}
     </select>
 
-    <update id="updateInWarehousingStatus">
+    <update id="updateExWarehousingStatus">
         update
             ex_warehousing
         set
