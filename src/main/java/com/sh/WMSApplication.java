@@ -1,5 +1,6 @@
 package com.sh;
 
+import com.sh.view.InWarehousingView;
 import com.sh.view.MemberView;
 
 public class WMSApplication {
