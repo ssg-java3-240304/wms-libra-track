@@ -2,13 +2,13 @@ package com.sh.controller;
 
 import com.sh.model.entity.ExWarehousing;
 import com.sh.model.entity.Status;
-import com.sh.model.service.exWarehousingService;
+import com.sh.model.service.ExWarehousingService;
 import com.sh.view.ExWarehousingView;
 
 import java.util.List;
 
 public class ExWarehousingController {
-    private exWarehousingService exWarehousingService;
+    private final ExWarehousingService exWarehousingService = new ExWarehousingService();
 
     // 출고 요청
 //    public void save(ExWarehousing exWarehousing) {
