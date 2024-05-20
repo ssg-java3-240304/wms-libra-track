@@ -7,8 +7,8 @@ import com.sh.model.service.MemberService;
 public class MemberController {
     MemberService memberService = new MemberService();
 
-    public MemberDto addMember(MemberDto memberDto) {
-        memberService.addMember(memberDto);
+    public MemberDto insertPublisherMember(MemberDto memberDto) {
+        memberService.insertPublisherMember(memberDto);
         return memberDto;
     }
 

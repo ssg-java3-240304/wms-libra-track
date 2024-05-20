@@ -7,7 +7,7 @@
     <insert id="insertPublisherManager" useGeneratedKeys="true" keyProperty="memberId">
     <insert id="insertPublisherManager" useGeneratedKeys="true" keyProperty="publisherManagerId">
         insert into
-            publishermanager(member_id, publisher_id)
+            publisher_manager(member_id, publisher_id)
         values(
             #{memberId},
             #{publisherId}
