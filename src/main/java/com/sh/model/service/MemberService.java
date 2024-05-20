@@ -6,8 +6,10 @@ import com.sh.model.dao.PublisherManagerMapper;
 import com.sh.model.entity.InventoryManagerDto;
 import com.sh.model.entity.PublisherManagerDto;
 import com.sh.model.entity.MemberDto;
+import com.sh.model.entity.Role;
 import org.apache.ibatis.session.SqlSession;
 
+import java.lang.reflect.Member;
 import java.sql.Timestamp;
 
 import static com.sh.common.MyBatisTemplate.getSqlSession;
@@ -45,6 +47,17 @@ public class MemberService {
             int result2 = inventoryManagerMapper.insertInventoryManager(inventoryManagerDto);
             sqlSession.commit();
             return result;
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to selectMember", e);
+        }
+    }
+
+    public MemberDto loginCheck(String id, String password) {
+        try (SqlSession sqlSession = getSqlSession()) {
+            MemberMapper memberMapper = sqlSession.getMapper(MemberMapper.class);
+            MemberDto memberDto = memberMapper.loginCheck(id, password);
+
+        return memberDto;
         } catch (Exception e) {
             throw new RuntimeException("Failed to selectMember", e);
 
