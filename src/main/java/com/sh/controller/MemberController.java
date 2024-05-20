@@ -12,8 +12,9 @@ public class MemberController {
         return memberDto;
     }
 
+    public MemberDto addInventoryManager(MemberDto memberDto) {
+        memberService.inventoryAddMember(memberDto);
+        return memberDto;
 
-    public MemberDto loginCheck(String id, String password) {
-        return memberService.loginCheck(id, password);
-    }
+
 }

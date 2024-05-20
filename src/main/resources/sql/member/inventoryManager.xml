@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sh.model.dao.InventoryManagerMapper">
+
+    <insert id="selectInventoryManager" useGeneratedKeys="true" keyProperty="memberId">
+        insert into
+            inventorymanager(inventory_manager_id, entry_date , emp_number, inventory_id, member_id)
+        values(
+            #{inventoryManagerId},
+            #{entryDate},
+            #{empNumber},
+            #{inventoryId},
+            #{memberId}
+        )
+    </insert>
+</mapper>

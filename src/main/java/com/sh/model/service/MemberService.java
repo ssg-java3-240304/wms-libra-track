@@ -9,11 +9,16 @@ import com.sh.model.entity.Role;
 import com.sh.view.PublisherManagerView;
 import org.apache.ibatis.session.SqlSession;
 
+import java.sql.Timestamp;
+import java.time.LocalDate;
+
 import static com.sh.common.MyBatisTemplate.getSqlSession;
 
 public class MemberService {
 
     PublisherManagerService publisherManagerService = new PublisherManagerService();
+    InventoryManagerService inventoryManagerService = new InventoryManagerService();
+
     PublisherManagerView publisherManagerView = new PublisherManagerView();
     InventoryManagerView inventoryManagerView = new InventoryManagerView();
 
@@ -28,7 +33,6 @@ public class MemberService {
             int result2 = publisherManagerMapper.insertPublisherManager(publisherManagerDto);
 
 
-
             sqlSession.commit();
             return result1;
         } catch (Exception e) {
@@ -38,6 +42,18 @@ public class MemberService {
             throw new RuntimeException("Failed to add member", e);
         }
     }
+
+
+
+    public int inventoryAddMember(MemberDto memberDto){
+        try(SqlSession sqlSession = getSqlSession()) {
+            MemberMapper memberMapper = sqlSession.getMapper(MemberMapper.class);
+            int result = memberMapper.addMember(memberDto);
+            inventoryManagerService.selectInventoryManager(sqlSession, new Timestamp(System.currentTimeMillis()) ,0 ,10, memberDto.getMemberId());
+            sqlSession.commit();
+            return result;
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to selectMember", e);
 
 
     public MemberDto loginCheck(String id, String password) {
