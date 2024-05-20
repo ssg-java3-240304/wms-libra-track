@@ -14,4 +14,6 @@ public interface ExWarehousingDao {
     void updateExWarehousingStatus(@Param("exWarehousingId") int exWarehousingId, @Param("inventoryManagerId") int inventoryManagerId, @Param("status") Status status);
 
     List<ExWarehousing> findExWarehousingByPublisher(int publisherId);
+
+    List<ExWarehousing> findExWarehousingByPublisherManager(int publisherManagerId);
 }

@@ -31,9 +31,8 @@ public class exWarehousingController {
         return exWarehousingService.findExWarehousingByPublisher(publisherId);
     }
 
-    // 창고매니저 아이디로 조회
-    public List<ExWarehousing> findByInventoryManagerId() {
-        // Todo
-        return null;
+    // 출판사 직원별 출고 조회
+    public List<ExWarehousing> findByPublisherManager(int publisherManagerId) {
+        return exWarehousingService.findExWarehousingByPublisherManagerId(publisherManagerId);
     }
 }

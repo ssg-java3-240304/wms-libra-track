@@ -49,4 +49,13 @@ public class exWarehousingService {
 
         return exWarehousingList;
     }
+
+    public List<ExWarehousing> findExWarehousingByPublisherManagerId(int publisherManagerId) {
+        SqlSession sqlSession = getSqlSession();
+        ExWarehousingDao exWarehousingDao = sqlSession.getMapper(ExWarehousingDao.class);
+
+        List<ExWarehousing> exWarehousingsList = exWarehousingDao.findExWarehousingByPublisherManager(publisherManagerId);
+        sqlSession.close();
+        return exWarehousingsList;
+    }
 }

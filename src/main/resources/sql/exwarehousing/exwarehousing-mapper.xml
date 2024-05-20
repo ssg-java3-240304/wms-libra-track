@@ -40,4 +40,13 @@
         where
             publisher_manager.publisher_id = #{publisherId}
     </select>
+
+    <select id="findExWarehousingByPublisherManager" resultType="com.sh.model.entity.ExWarehousing">
+        select
+            *
+        from
+            ex_warehousing
+        where
+            publisher_manager_id = #{publisherManagerId}
+    </select>
 </mapper>

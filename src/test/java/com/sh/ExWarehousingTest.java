@@ -2,6 +2,7 @@ package com.sh;
 
 import com.sh.model.dao.ExWarehousingDao;
 import com.sh.model.entity.ExWarehousing;
+import com.sh.model.entity.InWarehousing;
 import com.sh.model.entity.Order;
 import com.sh.model.entity.Status;
 import org.apache.ibatis.session.SqlSession;
@@ -51,6 +52,30 @@ public class ExWarehousingTest {
     void updateExwarehousingStatus() {
         exWarehousingDao.updateExWarehousingStatus(1,1, Status.COMPLETED);
         List<ExWarehousing> exWarehousing = exWarehousingDao.findExWarehousingByStatus(Status.COMPLETED);
+        for (ExWarehousing ex : exWarehousing) {
+            System.out.println(" status = " + ex.getStatus() + " address = " + ex.getAddress()
+                    + " date = " + ex.getDate() + " receiver = " + ex.getReceiver()
+                    + " receiverEmail " + ex.getReceiverEmail());
+        }
+        assertThat(exWarehousing.size()).isNotZero();
+    }
+    @DisplayName("ExWarehousing searching Test")
+    @Test
+    void findExWarehousingByPublisher() {
+        List<ExWarehousing> exWarehousing = exWarehousingDao.findExWarehousingByPublisher(1);
+
+        for (ExWarehousing ex : exWarehousing) {
+            System.out.println(" status = " + ex.getStatus() + " address = " + ex.getAddress()
+                    + " date = " + ex.getDate() + " receiver = " + ex.getReceiver()
+                    + " receiverEmail " + ex.getReceiverEmail());
+        }
+        assertThat(exWarehousing.size()).isNotZero();
+    }
+    @DisplayName("findExWarehousingByPublisherManager")
+    @Test
+    void findExWarehousingByPublisherManager() {
+        List<ExWarehousing> exWarehousing = exWarehousingDao.findExWarehousingByPublisherManager(1);
+
         for (ExWarehousing ex : exWarehousing) {
             System.out.println(" status = " + ex.getStatus() + " address = " + ex.getAddress()
                     + " date = " + ex.getDate() + " receiver = " + ex.getReceiver()
