@@ -1,8 +1,11 @@
 package com.sh.model.service;
 
+import com.sh.area.model.dto.AreaDto;
 import com.sh.model.dao.BookAreaDao;
 import com.sh.model.entity.BookArea;
 import org.apache.ibatis.session.SqlSession;
+
+import java.awt.geom.Area;
 
 import static com.sh.common.MyBatisTemplate.getSqlSession;
 
@@ -44,11 +47,11 @@ public class BookAreaService {
 
 
     // 입고 후 배정된 구역 업데이트
-    public void updateQuantity(int orderId, int quantity) {
+    public void updateQuantity(int areaId, int bookId, int quantity) {
         SqlSession sqlSession = getSqlSession();
         BookAreaDao bookAreaDao = sqlSession.getMapper(BookAreaDao.class);
         try {
-            BookArea bookArea = bookAreaDao.findBookAreaByAreaIdAndBookId(orderId, orderId);
+            BookArea bookArea = bookAreaDao.findBookAreaByAreaIdAndBookId(areaId, bookId);
             bookArea.setQuantity(bookArea.getQuantity() + quantity);
             bookArea.setReserved(bookArea.getReserved() - quantity);
             bookAreaDao.updateBookArea(bookArea);
@@ -61,5 +64,13 @@ public class BookAreaService {
         }
 
 
+    }
+
+    public AreaDto findAreaByOrderId(int orderId) {
+        SqlSession sqlSession = getSqlSession();
+        BookAreaDao bookAreaDao = sqlSession.getMapper(BookAreaDao.class);
+        AreaDto area = bookAreaDao.findAreaByOrderId(orderId);
+        sqlSession.close();
+        return area;
     }
 }

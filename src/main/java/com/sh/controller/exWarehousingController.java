@@ -2,13 +2,13 @@ package com.sh.controller;
 
 import com.sh.model.entity.ExWarehousing;
 import com.sh.model.entity.Status;
-import com.sh.model.service.exWarehousingService;
+import com.sh.model.service.ExWarehousingService;
 
 import java.util.HashMap;
 import java.util.List;
 
 public class exWarehousingController {
-    private exWarehousingService exWarehousingService;
+    private final ExWarehousingService exWarehousingService = new ExWarehousingService();
 
      //출고 요청
     public void insertExWarehousing(HashMap<String, Integer> orders, int publisherId) {

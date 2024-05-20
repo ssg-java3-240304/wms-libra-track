@@ -1,5 +1,6 @@
 package com.sh.model.dao;
 
+import com.sh.area.model.dto.AreaDto;
 import com.sh.model.entity.BookArea;
 
 public interface BookAreaDao {
@@ -10,5 +11,5 @@ public interface BookAreaDao {
 
     void updateBookArea(BookArea bookArea);
 
-
+    AreaDto findAreaByOrderId(int orderId);
 }

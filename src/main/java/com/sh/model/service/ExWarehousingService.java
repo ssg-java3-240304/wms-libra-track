@@ -1,9 +1,7 @@
 package com.sh.model.service;
 
 import com.sh.model.dao.ExWarehousingDao;
-import com.sh.model.dao.InWarehousingDao;
 import com.sh.model.entity.ExWarehousing;
-import com.sh.model.entity.InWarehousing;
 import com.sh.model.entity.Order;
 import com.sh.model.entity.Status;
 import org.apache.ibatis.session.SqlSession;
@@ -14,7 +12,7 @@ import java.util.List;
 
 import static com.sh.common.MyBatisTemplate.getSqlSession;
 
-public class exWarehousingService {
+public class ExWarehousingService {
 
     public List<ExWarehousing> findExWarehousingByStatus(Status status) {
         SqlSession sqlSession = getSqlSession();
@@ -56,9 +54,6 @@ public class exWarehousingService {
         exWarehousing.setPublisherManagerId(publisherManagerId);
         exWarehousing.setStatus(Status.PENDING);
 
-        SqlSession sqlSession = getSqlSession();
-        ExWarehousingDao exWarehousingDAO = sqlSession.getMapper(ExWarehousingDao.class);
-
         // iterate over orders
         List<Order> orderList = new ArrayList<>();
         for (String ISBN : orders.keySet()) {
@@ -74,6 +69,10 @@ public class exWarehousingService {
 
         }
         exWarehousing.setOrderList(orderList);
+
+        SqlSession sqlSession = getSqlSession();
+        ExWarehousingDao exWarehousingDAO = sqlSession.getMapper(ExWarehousingDao.class);
+
 
         try {
             int exWarehousingId = exWarehousingDAO.insertExWarehousing(exWarehousing);
