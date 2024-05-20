@@ -70,7 +70,7 @@ CREATE TABLE `Area` (
 	`area_name`	VARCHAR(100)	NOT NULL,
 	`capacity`	INTEGER	NOT NULL,
 	`inventory_id`	INTEGER	NULL,
-	`publisher_id`	INTEGER	NOT NULL,
+	`publisher_id`	INTEGER	NULL,
 	`reserved`	INTEGER	NULL,
     PRIMARY KEY (`area_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
