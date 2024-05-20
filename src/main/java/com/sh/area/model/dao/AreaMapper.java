@@ -3,6 +3,7 @@ package com.sh.area.model.dao;
 import com.sh.area.model.dto.AreaDto;
 import com.sh.inventory.model.dto.InventoryDto;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface AreaMapper {
@@ -14,7 +15,7 @@ public interface AreaMapper {
     List<AreaDto> findAreaByAreaName(String areaName);
     List<AreaDto> findAreaByCapacity(int capacity);
     int updateReserved(AreaDto areaDto);
-    AreaDto findByLocationAndAreaName(String location, String areaName);
+    AreaDto findByLocationAndAreaName(HashMap<String, String> map);
 
     List<AreaDto> findAreaByInventoryId(int inventoryId);
     List<InventoryDto> findAllInventory();

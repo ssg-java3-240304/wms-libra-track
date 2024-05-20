@@ -4,6 +4,7 @@ import com.sh.area.controller.AreaController;
 import com.sh.area.model.dto.AreaDto;
 import com.sh.inventory.controller.InventoryController;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 /**
@@ -29,12 +30,13 @@ public class AreaView {
             5. 구역 수정
             6. 구역 삭제
             7. 구역 reserved 수정
+            8. 창고 위치와 구역 이름으로 구역 조회
             0. 종료
             ==============================================================================================
             입력 : """;
         while(true) {
             System.out.print(menu);
-            String choice = sc.next();
+            String choice = sc.nextLine();
             switch (choice) {
                 case "1" : areaController.findAllArea(); break;
                 case "2" : areaController.findAreaByAreaId(inputAreaId("조회")); break;
@@ -43,6 +45,7 @@ public class AreaView {
                 case "5" : areaController.updateArea(inputAreaUpdated()); break;
                 case "6" : areaController.deleteArea(inputAreaId("삭제")); break;
                 case "7" : areaController.updateReserved(inputAreaReservedUpdated()); break;
+                case "8" : areaController.findByLocationAndAreaName(inputLocationAndAreaName()); break;
                 case "0" : return;
                 default:
                     System.out.println("잘못 입력하셨습니다.");
@@ -80,12 +83,6 @@ public class AreaView {
         return new AreaDto(areaId, areaDto.getInventoryId(), areaDto.getPublisherId(), areaDto.getAreaName(), areaDto.getCapacity(), areaDto.getReserved() + quantity, areaDto.getQuantity());
     }
 
-    private int inputInventoryId() {
-        inventoryController.findAllInventory();
-        System.out.println("> 조회할 창고 코드 : ");
-        return sc.nextInt();
-    }
-
     private AreaDto inputArea() {
         System.out.println("> ✏️✏️✏️ 등록할 구역 정보를 작성해주세요. ✏️✏️✏️");
         inventoryController.findAllInventory();
@@ -106,11 +103,30 @@ public class AreaView {
         System.out.printf("> %s할 구역코드 : ", type);
         return sc.nextInt();
     }
+
     private int inputQuantity() {
         System.out.print("> 수정할 구역 reserved의 양 : ");
         return sc.nextInt();
     }
 
+    private int inputInventoryId() {
+        inventoryController.findAllInventory();
+        System.out.print("> 조회할 창고 코드 : ");
+        return sc.nextInt();
+    }
+    private String inputLocation() {
+        System.out.print("> 조회할 창고 위치 : ");
+        return sc.nextLine();
+    }
+    private String inputAreaName() {
+        System.out.print("> 조회할 구역 이름 : ");
+        return sc.nextLine();
+    }
 
-
+    private HashMap<String, String> inputLocationAndAreaName() {
+        HashMap<String, String> map = new HashMap<String, String>();
+        map.put("location", inputLocation());
+        map.put("areaName", inputAreaName());
+        return map;
+    }
 }

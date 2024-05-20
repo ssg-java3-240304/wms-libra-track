@@ -8,6 +8,7 @@ import com.sh.area.model.service.AreaService;
 import com.sh.area.view.AreaResultView;
 import com.sh.inventory.model.dto.InventoryDto;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -33,6 +34,11 @@ public class AreaController {
     public void findAreaByAreaId(int areaId) {
         // 0~1개의 InventoryDto 반환 : InventoryDto
         AreaDto areaDto = areaService.findAreaByAreaId(areaId);
+        AreaResultView.displayArea(areaDto);
+    }
+    public void findByLocationAndAreaName(HashMap<String, String> map) {
+        // 0~1개의 InventoryDto 반환 : InventoryDto
+        AreaDto areaDto = areaService.findByLocationAndAreaName(map);
         AreaResultView.displayArea(areaDto);
     }
 

@@ -5,6 +5,7 @@ import com.sh.area.model.dto.AreaDto;
 import com.sh.inventory.model.dto.InventoryDto;
 import org.apache.ibatis.session.SqlSession;
 
+import java.util.HashMap;
 import java.util.List;
 
 import static com.sh.common.MyBatisTemplate.getSqlSession;
@@ -22,6 +23,13 @@ public class AreaService {
         SqlSession sqlSession = getSqlSession();
         AreaMapper areaMapper = sqlSession.getMapper(AreaMapper.class);
         AreaDto areaDto = areaMapper.findAreaByAreaId(areaId);
+        sqlSession.close();
+        return areaDto;
+    }
+    public AreaDto findByLocationAndAreaName(HashMap<String, String> map) {
+        SqlSession sqlSession = getSqlSession();
+        AreaMapper areaMapper = sqlSession.getMapper(AreaMapper.class);
+        AreaDto areaDto = areaMapper.findByLocationAndAreaName(map);
         sqlSession.close();
         return areaDto;
     }
