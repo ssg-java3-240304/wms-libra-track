@@ -8,6 +8,7 @@ import com.sh.view.bookView.bookResultView.DisplayResultView;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.sh.common.MyBatisTemplate.getSqlSession;
 
@@ -51,11 +52,11 @@ public class BookService {
         return book;
     }
 
-    public int updateMenu(Book book) {
+    public int updateInforamtion(Book book) {
         SqlSession sqlSession = getSqlSession();
         BookDAO bookDAO = sqlSession.getMapper(BookDAO.class);
         try{
-            int result = bookDAO.updateMenu(book);
+            int result = bookDAO.updateInforamtion(book);
             sqlSession.commit();
             return result;
 
@@ -90,5 +91,9 @@ public class BookService {
         List<Book> bookList = bookDAO.findAll(id);
         DisplayResultView.displayBookList(bookList);
         return bookList;
+    }
+
+    public Book duplicateISBN(String ISBN) {
+        return bookDAO.findBookByISBN(ISBN);
     }
 }

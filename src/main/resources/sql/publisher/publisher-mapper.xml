@@ -12,7 +12,26 @@
     <insert id = 'insertPublisher' useGeneratedKeys="true" keyProperty = "publisherId">
         insert into publisher
         values(#{publisherId},#{name},#{email},#{phoneNumber},#{businessNumber})
-
-
     </insert>
+
+
+    <update id = "updatePublisher">
+        Update Publisher
+        <set>
+            <if test="name != null">name = #{name},</if>
+            <if test="email != null">email = #{email},</if>
+            <if test="name != null">phone_number = #{phoneNumber},</if>
+            <if test="name != null">business_number = #{businessNumber}</if>
+        </set>
+        where publisher_id = #{publisherId}
+    </update>
+
+    <select id = "findPublisherInformation" resultType="Publisher">
+        select * from publisher where publisher_id = #{publisherId}
+    </select>
+
+    <delete id = "deletePublisher">
+        delete from Publisher
+        where publisher_id = #{id}
+    </delete>
 </mapper>

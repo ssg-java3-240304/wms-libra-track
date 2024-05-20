@@ -5,9 +5,9 @@
 <mapper namespace="com.sh.model.dao.BookDAO">
     <insert id="insertBook" useGeneratedKeys="true" keyProperty="bookId">
         insert into Book
-        (book_id, title, ISBN, publisher_id, pub_date, price, author, pages, size, genre_id)
+        (book_id, title, ISBN, publisher_id, pub_date,genre_id, price, author, pages, size )
         values
-        (#{bookId}, #{title}, #{ISBN}, #{publisherId}, #{pubDate}, #{price}, #{author}, #{page}, #{size}, #{genreId});
+        (0, #{title}, #{ISBN}, #{publisherId}, #{pubDate},#{genreId}, #{price}, #{author}, #{pages}, #{size})
     </insert>
 
     <select id="findBookByISBN" resultType = "Book">
@@ -22,12 +22,12 @@
             <if test="title != null">title = #{title},</if>
             <if test="ISBN != null">ISBN = #{ISBN},</if>
             <if test="publisherId != null">publisher_id = #{publisherId},</if>
-            <if test="pubDate != null">pub_date = #{pubDate},</if>
+            <if test="genreId != null">genre_id = #{genreId},</if>
             <if test="price != null">price = #{price},</if>
+            <if test="pubDate != null">pub_date = #{pubDate},</if>
             <if test="author != null">author = #{author},</if>
-            <if test="page != null">pages = #{page},</if>
-            <if test="size != null">size = #{size},</if>
-            <if test="genreId != null">genre_id = #{genreId}</if>
+            <if test="pages != null">pages = #{pages},</if>
+            <if test="size != null">size = #{size}</if>
         </set>
         where ISBN = #{ISBN}
     </update>
