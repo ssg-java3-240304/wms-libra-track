@@ -19,7 +19,7 @@ public class PublisherManagerView {
 
     }
 
-    public void choicePublisherMenu(int memberId) {
+    public void choicePublisherMenu(MemberDto memberDto) {
         String choicePublisherMenu = """
                 📖📖📖출판사 매니저 메뉴📖📖📖
                 =============================
@@ -34,7 +34,7 @@ public class PublisherManagerView {
             int choice = sc.nextInt();
             switch (choice) {
                 case 1:
-                    publisherManagement(memberId);
+                    publisherManagement(memberDto);
 //            case 2 : BookView.(); break;
 //            case 3 : InventoryView(); break;
                 default:
@@ -44,7 +44,7 @@ public class PublisherManagerView {
         }
     }
 
-    private void publisherManagement(int memberId) {
+    private void publisherManagement(MemberDto memberDto) {
         String publihserManagement = ("""
                 ===================
                 ℹ️ 회원 정보 관리 ℹ️
@@ -57,40 +57,22 @@ public class PublisherManagerView {
         while (true) {
             System.out.println(publihserManagement);
             int choice = sc.nextInt();
+
             switch (choice) {
                 case 1:
-                    publisherManagerController.findPublisherManagerInfo(memberId);
+                    PublisherManagerDto publisherManagerDto1 = publisherManagerController.findPublisherManagerInfo(memberDto);
+                    PublisherResultView.displayPublisherManager(publisherManagerDto1);
                     break;
                 case 2:
-                    publisherManagerController.updatePublisherManager(memberId); break;
+                    publisherManagerController.updatePublisherManager(PublisherResultView.updatePublisherManager(memberDto).getMemberId());
+//                    PublisherManagerDto publisherManagerDto3 = PublisherResultView.updatePublisherManager(publisherManagerDto2);
+//                    publisherManagerDto2.update();
+//                    publisherManagerController.updatePublisherManager(publisherManagerDto3);
+                    break;
                 case 3:
 //                    publisherManagerController.deletePublisherManager(); break;
             }
         }
-    }
-
-    public static void displayPublisherManager(PublisherManagerDto publisherManagerDto) {
-        if (publisherManagerDto == null)System.out.println("조회되지 않는 회원 정보입니다.");
-        System.out.printf(
-                "1. 회원 ID : %d \n" +
-                "2. 이름 :  %s \n" +
-                "3. 아이디 : %s \n" +
-                "4. 비밀 번호 :  %s \n" +
-                "5. 구분 : %s \n" +
-                "6. 개인 핸드폰 : %s \n" +
-                "7. 이메일주소 : %s \n" +
-                "8. 출판사 매니저 ID : %s \n" +
-                "9. 출판사 ID : %s \n",
-                publisherManagerDto.getMemberDto().getMemberId(),
-                publisherManagerDto.getMemberDto().getName(),
-                publisherManagerDto.getMemberDto().getUserName(),
-                publisherManagerDto.getMemberDto().getPassword(),
-                publisherManagerDto.getMemberDto().getRole(),
-                publisherManagerDto.getMemberDto().getPhoneNumber(),
-                publisherManagerDto.getMemberDto().getEmail(),
-                publisherManagerDto.getPublisherManagerId(),
-                publisherManagerDto.getPublisherId()
-                );
     }
 
 }

@@ -42,24 +42,6 @@ public class MemberView {
     }
 
     // 홍지민 작업 시작
-    private void loginCheck() {
-        System.out.print("▶ ID 입력 : ");
-        String id = sc.next();
-        System.out.print("▶ Password 입력 : ");
-        String password = sc.next();
-        System.out.println();
-        MemberDto memberDto =  memberController.loginCheck(id, password);
-
-        if(memberDto.getRole() == Role.ADMIN){
-            PublisherManagerView publisherManagerView = new PublisherManagerView();
-            publisherManagerView.choicePublisherMenu(memberDto.getMemberId());
-        } else {
-            InventoryManagerView inventoryManagerView = new InventoryManagerView();
-//            inventoryManagerView.choiceInventoryMenu();
-        }
-    }
-
-
     private void choiceRole() {
         String choiceRole = """
                 ✅ 회원 선택을 해주세요
@@ -80,6 +62,25 @@ public class MemberView {
                 case "2":
                     memberController.insertInventoryManager(insertInventoryMember());
             }
+        }
+    }
+
+    private void loginCheck() {
+        System.out.print("▶ ID 입력 : ");
+        String id = sc.next();
+        System.out.print("▶ Password 입력 : ");
+        String password = sc.next();
+        System.out.println();
+        MemberDto memberDto =  memberController.loginCheck(id, password);
+
+        if(memberDto.getRole() == Role.PUBLISHER){
+            PublisherManagerView publisherManagerView = new PublisherManagerView();
+            publisherManagerView.choicePublisherMenu(memberDto);
+        } else if (memberDto.getRole() == Role.INVENTORY) {
+            InventoryManagerView inventoryManagerView = new InventoryManagerView();
+//            inventoryManagerView.choiceInventoryMenu();
+        }
+        {
         }
     }
 
