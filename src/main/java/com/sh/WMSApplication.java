@@ -8,6 +8,5 @@ public class WMSApplication {
     public static void main(String[] args) {
         MemberView memberView = new MemberView();
         memberView.mainMenu();
-        System.out.println("Hello, World!");
     }
 }

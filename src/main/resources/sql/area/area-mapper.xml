@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sh.area.model.dao.AreaMapper">
+    <select id="findAllArea" resultType="areaDto">
+        select
+            *
+        from
+            area
+        order by
+            area_id
+    </select>
+    <select id="findAreaByAreaId" resultType="areaDto">
+        select
+            *
+        from
+            area
+        where
+            area_id = #{areaId}
+    </select>
+    <select id="findAreaByInventoryId" resultType="areaDto">
+        select
+            *
+        from
+            area
+        where
+            inventory_id = #{inventoryId}
+    </select>
+    <select id="findAllInventory" resultType="inventoryDto">
+        select
+            *
+        from
+            inventory
+        order by
+            inventory_id
+    </select>
+
+    <!-- 작성한 속성명은 필드이름이 아니다. private 필드라 직접 접근 불가 -->
+    <!-- 실제로는 getter를 사용. getter의 get을 제외하고, 소문자로 시작하는 이름을 작성한 것이다. -->
+    <!-- property 접근 방식. (OGNL 표준) -->
+    <!-- useGeneratedKeys=true를 통해 auto_increment값을 가져온다. 전달된 객체 areaDto#areaId에 대입 -->
+    <insert id="insertArea" useGeneratedKeys="true" keyProperty="areaId">
+        insert into
+            area (area_id, inventory_id, publisher_id, area_name, capacity, reserved, quantity)
+        values (
+            null, #{inventoryId}, null, #{areaName}, #{capacity}, #{reserved}, #{quantity}
+        )
+    </insert>
+    <update id="updateArea">
+        update
+            area
+        set
+            inventory_id = #{inventoryId},
+            publisher_id = #{publisherId},
+            area_name = #{areaName},
+            capacity = #{capacity},
+            reserved = #{reserved},
+            quantity = #{quantity}
+        where
+            area_id = #{areaId}
+    </update>
+    <delete id="deleteArea">
+        delete
+        from
+            area
+        where
+            area_id = #{areaId}
+    </delete>
+<!--    <select id="findMenuOrderable" resultType="areaDto">-->
+<!--        select-->
+<!--            *-->
+<!--        from-->
+<!--            area-->
+<!--        where-->
+<!--            orderable_status = 'Y'-->
+<!--    </select>-->
+<!--    <select id="findMenuOrderableByCategoryCode" resultType="areaDto">-->
+<!--        select-->
+<!--            *-->
+<!--        from-->
+<!--            area-->
+<!--        where-->
+<!--            category_code = #{categoryCode}-->
+<!--            and orderable_status = 'Y'-->
+<!--    </select>-->
+</mapper>
