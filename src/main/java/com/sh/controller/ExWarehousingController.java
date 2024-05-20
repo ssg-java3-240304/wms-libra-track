@@ -7,7 +7,7 @@ import com.sh.model.service.ExWarehousingService;
 import java.util.HashMap;
 import java.util.List;
 
-public class exWarehousingController {
+public class ExWarehousingController {
     private final ExWarehousingService exWarehousingService = new ExWarehousingService();
 
      //출고 요청
