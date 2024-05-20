@@ -3,20 +3,24 @@ package com.sh.view;
 import com.sh.controller.OrderController;
 import com.sh.model.dto.OrderDto;
 import com.sh.model.entity.InWarehousing;
+import com.sh.model.entity.Status;
+import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+@AllArgsConstructor
 public class OrderView {
 
     private static final OrderController orderController = new OrderController();
 
-    private static final List<Integer> ids = new ArrayList<>();
+    public static List<Integer> ids = new ArrayList<>();
 
-    private static final Scanner scanner = new Scanner(System.in);
+    private static final Scanner scanner = InWarehousingView.getScanner();
 
-    public static void orderDetailMenu() {
+
+    public static void orderDetailPublisherMenu() {
         String menu = """
                 ======================
                 1. 입고 완료된 주문 상세 조회
@@ -30,7 +34,7 @@ public class OrderView {
             switch (choice) {
                 case "1":
                     System.out.printf("입고 정보 ID를 입력해주세요. (입고 정보 ID : %s)\n", ids);
-                    orderController.findOrderAreaDetailByOrderId(ids.get(Integer.parseInt(scanner.nextLine())));
+                    orderController.findOrderAreaDetailByOrderId(ids.get(Integer.parseInt(scanner.nextLine()) - 1));
                     break;
                 case "0":
                     return;
@@ -40,25 +44,36 @@ public class OrderView {
         }
     }
 
-    public static void orderMenu(List<Integer> ids) {
-        System.out.println("입고 상세 정보를 조회합니다.");
-
-        String readMenu = """
-                📦📦📦 입고 정보 상세 조회 📦📦📦
+    public static void orderDetailInventoryMenu() {
+        String menu = """
                 ======================
-                1. 입고 정보 상세 조회
+                1. 입고 주문별 구역 상세 정보 조회
+                2. 입고 주문별 구역 배정
+                3. 입고 주문별 입하 처리
                 0. 뒤로 가기
                 ======================
                 입력 : 
                 """;
-
         while(true) {
-            System.out.println(readMenu);
-            String choice = scanner.nextLine();
+            System.out.println(menu);
+            String choice = OrderView.scanner.nextLine();
             switch (choice) {
                 case "1":
                     System.out.printf("입고 정보 ID를 입력해주세요. (입고 정보 ID : %s)\n", ids);
-                    orderController.findOrderByInWarehousingId(ids.get(Integer.parseInt(scanner.nextLine())));
+                    orderController.findOrderAreaDetailByOrderId(ids.get(Integer.parseInt(scanner.nextLine()) - 1));
+                    break;
+                case "2":
+                    System.out.printf("입고 정보 ID를 입력해주세요. (입고 정보 ID : %s)\n", ids);
+                    int idx = Integer.parseInt(scanner.nextLine()) - 1;
+                    System.out.println("창고 위치를 입력해주세요.");
+                    String location = scanner.nextLine();
+                    System.out.println("입고 구역명을 입력해주세요.");
+                    String areaName = scanner.nextLine();
+                    orderController.reserveOrder(idx, location, areaName);
+                    break;
+                case "3":
+                    System.out.printf("입고 정보 ID를 입력해주세요. (입고 정보 ID : %s)\n", ids);
+                    orderController.completeOrder(ids.get(Integer.parseInt(scanner.nextLine()) - 1));
                     break;
                 case "0":
                     return;
@@ -67,26 +82,39 @@ public class OrderView {
             }
         }
     }
+
+
+
+
     public static void displayOrderDto(List<OrderDto> orderList) {
         if (orderList.isEmpty()) {
             System.out.println("입고 주문 정보가 없습니다.");
         } else {
             System.out.println("-----------------------------------------------");
-            System.out.printf("%s\t%s\t%s\t%s\t%s\n", "Order Id", "title", "author", "ISBN", "quantity");
+            System.out.printf("%s\t%s\t%s\t%s\t%s\t%s\n", "idx", "Order Id", "title", "author", "ISBN", "quantity");
             System.out.println("-----------------------------------------------");
+            int idx = 1;
             for(OrderDto order : orderList) {
                 ids.clear();
                 ids.add(order.getOrderId());
-                System.out.printf("%d\t%s\t%s\t%s\t%d\n",
+                System.out.printf("%d\t%d\t%s\t%s\t%s\t%d\n",
+                        idx,
                         order.getOrderId(),
                         order.getTitle(),
                         order.getAuthor(),
                         order.getISBN(),
                         order.getQuantity()
                 );
+                idx += 1;
             }
             System.out.println("-----------------------------------------------");
-            orderDetailMenu();
+            if(InWarehousingView.PUB_MANAGER_ID != 0) {
+                orderDetailPublisherMenu();
+            } else {
+                orderDetailInventoryMenu();
+            }
+
+
         }
 
 

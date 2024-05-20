@@ -10,14 +10,12 @@ import java.util.List;
 
 public class InWarehousingController {
 
-    private InWarehousingService inWarehousingService;
-
-    private InWarehousingView inWarehousingView;
+    private final InWarehousingService inWarehousingService = new InWarehousingService();
 
 
-    public void insertInWarehousing(HashMap<String, Integer> orders, String publisherManagerName) {
+    public void insertInWarehousing(HashMap<String, Integer> orders, int publisherManagerId) {
 
-        inWarehousingService.insertInWarehousing(orders, publisherManagerName);
+        inWarehousingService.insertInWarehousing(orders, publisherManagerId);
     }
 
     // 상태별 입고 내역 조회

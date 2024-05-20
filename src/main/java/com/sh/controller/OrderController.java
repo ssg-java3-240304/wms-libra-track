@@ -11,15 +11,14 @@ import java.util.List;
 
 public class OrderController {
 
-    private OrderService orderService;
+    private OrderService orderService = new OrderService();
 
     //private AreaService areaService;
 
-    private BookAreaService bookAreaService;
+    private BookAreaService bookAreaService = new BookAreaService();
 
-    private OrderAreaService orderAreaService;
+    private OrderAreaService orderAreaService = new OrderAreaService();
 
-    private OrderView orderView;
 
     public OrderDto findOrderByOrderId(int orderId) {
         return orderService.findOrderByOrderId(orderId);
