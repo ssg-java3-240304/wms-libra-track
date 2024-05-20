@@ -77,19 +77,4 @@ public class AreaController {
         AreaResultView.displayInventoryList(inventoryList);
     }
 
-//    public void insertCategoryAndMenu(CategoryDto categoryDto, InventoryDto inventoryDto) {
-//        int result = menuService.insertCategoryAndMenu(categoryDto, menuDto);
-//        ResultView.displayResult("카테고리 & 메뉴 등록", result);
-//    }
-
-//    public void findMenuOrderable() {
-//        List<InventoryDto> list = inventoryService.findMenuOrderable();
-//        ResultView.displayInventoryList(list);
-//    }
-//
-//    public List<InventoryDto> findMenuOrderableByCategoryCode(int categoryCode) {
-//        List<InventoryDto> list = inventoryService.findMenuOrderableByCategoryCode(categoryCode);
-//        ResultView.displayInventoryList(list);
-//        return list;
-//    }
 }

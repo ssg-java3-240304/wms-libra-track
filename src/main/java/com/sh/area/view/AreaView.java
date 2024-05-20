@@ -36,7 +36,7 @@ public class AreaView {
             입력 : """;
         while(true) {
             System.out.print(menu);
-            String choice = sc.nextLine();
+            String choice = sc.next();
             switch (choice) {
                 case "1" : areaController.findAllArea(); break;
                 case "2" : areaController.findAreaByAreaId(inputAreaId("조회")); break;
@@ -88,6 +88,7 @@ public class AreaView {
         inventoryController.findAllInventory();
         System.out.println("> 창고 코드 : ");
         int inventoryId = sc.nextInt();
+        areaController.findAllArea();
         System.out.println("> 구역 이름 : ");
         String areaName = sc.next();
         System.out.println("> 구역 용량 : ");
@@ -116,11 +117,11 @@ public class AreaView {
     }
     private String inputLocation() {
         System.out.print("> 조회할 창고 위치 : ");
-        return sc.nextLine();
+        return sc.next();
     }
     private String inputAreaName() {
         System.out.print("> 조회할 구역 이름 : ");
-        return sc.nextLine();
+        return sc.next();
     }
 
     private HashMap<String, String> inputLocationAndAreaName() {

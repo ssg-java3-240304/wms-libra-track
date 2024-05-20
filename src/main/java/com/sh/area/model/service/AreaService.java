@@ -114,20 +114,4 @@ public class AreaService {
         }
     }
 
-//
-//    public List<InventoryDto> findMenuOrderable() {
-//        SqlSession sqlSession = getSqlSession();
-//        InventoryMapper inventoryMapper = sqlSession.getMapper(InventoryMapper.class);
-//        List<InventoryDto> list = inventoryMapper.findMenuOrderable();
-//        sqlSession.close();
-//        return list;
-//    }
-
-//    public List<MenuDto> findMenuOrderableByCategoryCode(int categoryCode) {
-//        SqlSession sqlSession = getSqlSession();
-//        MenuMapper menuMapper = sqlSession.getMapper(MenuMapper.class);
-//        List<MenuDto> list = menuMapper.findMenuOrderableByCategoryCode(categoryCode);
-//        sqlSession.close();
-//        return list;
-//    }
 }
