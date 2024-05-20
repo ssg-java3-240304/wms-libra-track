@@ -60,17 +60,17 @@ public class OrderView {
             String choice = OrderView.scanner.nextLine();
             switch (choice) {
                 case "1":
-                    System.out.printf("입고 정보 ID를 입력해주세요. (입고 정보 ID : %s)\n", ids);
+                    System.out.printf("입고 정보 ID를 입력해주세요. (입고 주문 정보 ID : %s)\n", ids);
                     orderController.findOrderAreaDetailByOrderId(ids.get(Integer.parseInt(scanner.nextLine()) - 1));
                     break;
                 case "2":
-                    System.out.printf("입고 정보 ID를 입력해주세요. (입고 정보 ID : %s)\n", ids);
+                    System.out.printf("입고 정보 ID를 입력해주세요. (입고 주문 정보 ID : %s)\n", ids);
                     int idx = Integer.parseInt(scanner.nextLine()) - 1;
                     System.out.println("창고 위치를 입력해주세요.");
                     String location = scanner.nextLine();
                     System.out.println("입고 구역명을 입력해주세요.");
                     String areaName = scanner.nextLine();
-                    orderController.reserveOrder(idx, location, areaName,true);
+                    orderController.reserveOrder(ids.get(idx), location, areaName,true);
                     break;
                 case "3":
                     System.out.printf("입고 정보 ID를 입력해주세요. (입고 정보 ID : %s)\n", ids);

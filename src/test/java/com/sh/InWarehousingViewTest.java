@@ -40,7 +40,7 @@ public class InWarehousingViewTest {
     @Test
     public void inventoryManagerQueryTest() {
 
-        String input = "1\nPENDING\n1\n1\n1\n1\n0\n0\n0";
+        String input = "1\nPENDING\n1\n1\n1\n1\n2\n1\n서울\na\n3\n1";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 

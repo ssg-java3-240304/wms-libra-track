@@ -3,6 +3,8 @@ package com.sh;
 import com.sh.model.dao.OrderDao;
 import com.sh.model.dto.OrderAreaDetailDto;
 import com.sh.model.dto.OrderDto;
+import com.sh.model.entity.InWarehousing;
+import com.sh.model.entity.Status;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.jupiter.api.*;
 
@@ -57,4 +59,6 @@ public class OrderTest {
         System.out.println("Inventory Location = " + result.getLocation() +"Order Area = " + result.getAreaName());
         assertThat(result.getISBN()).isNotNull();
     }
+
+
 }

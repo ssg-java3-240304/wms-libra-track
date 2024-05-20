@@ -27,12 +27,14 @@ public class BookAreaService {
                 bookArea.setBookId(bookId);
                 bookArea.setQuantity(0);
                 bookArea.setReserved(quantity);
-                book_area_id = bookAreaDao.insertBookArea(bookArea);
+                bookAreaDao.insertBookArea(bookArea);
+                book_area_id = bookArea.getBookAreaId();
             } else {
                 book_area_id = bookArea.getBookAreaId();
                 bookArea.setReserved(bookArea.getReserved() + quantity);
                 bookAreaDao.updateBookArea(bookArea);
             }
+            sqlSession.commit();
         } catch (Exception e) {
                 sqlSession.rollback();
                 throw new RuntimeException(e);
@@ -40,7 +42,6 @@ public class BookAreaService {
             sqlSession.close();
         }
         return book_area_id;
-
 
     }
 
