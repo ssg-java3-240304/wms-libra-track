@@ -10,4 +10,6 @@ public interface ExWarehousingDao {
     List<ExWarehousing> findExWarehousingByStatus(Status status);
 
     void updateExWarehousingStatus(int exWarehousingId, int inventoryManagerId, Status status);
+
+    List<ExWarehousing> findExWarehousingByPublisher(int publisherId);
 }

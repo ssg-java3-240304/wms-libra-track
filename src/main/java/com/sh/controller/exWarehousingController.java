@@ -12,24 +12,23 @@ public class exWarehousingController {
 
     // 출고 요청
     public void save(ExWarehousing exWarehousing) {
+        // Todo
         exWarehousingService.save();
     }
 
     // 출고 상태 조회
-    public List<ExWarehousing> findExwarehousingByStatus(Status status) {
-        return exWarehousingService.findExwarehousingByStatus(status);
+    public List<ExWarehousing> findExWarehousingByStatus(Status status) {
+        return exWarehousingService.findExWarehousingByStatus(status);
     }
 
     // 출고 상태 업데이트
     public void updateExWarehousingStatus(int exWarehousingId, int inventoryManagerId, Status status) {
-        // Todo
         exWarehousingService.updateExWarehousingStatus(exWarehousingId, inventoryManagerId, status);
     }
 
-    // 출판사 매니저 아이디로 조회
-    public List<ExWarehousing> findByPubManagerId() {
-        // Todo
-        return null;
+    // 출판사별 출고 조회
+    public List<ExWarehousing> findByPublisherId(int publisherId) {
+        return exWarehousingService.findExWarehousingByPublisher(publisherId);
     }
 
     // 창고매니저 아이디로 조회

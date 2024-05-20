@@ -16,7 +16,7 @@ public class exWarehousingService {
         // Todo
     }
 
-    public List<ExWarehousing> findExwarehousingByStatus(Status status) {
+    public List<ExWarehousing> findExWarehousingByStatus(Status status) {
         SqlSession sqlSession = getSqlSession();
         ExWarehousingDao exWarehousingDao = sqlSession.getMapper(ExWarehousingDao.class);
 
@@ -28,15 +28,25 @@ public class exWarehousingService {
 
     public void updateExWarehousingStatus(int exWarehousingId, int inventoryManagerId, Status status) {
         SqlSession sqlSession = getSqlSession();
-        ExWarehousingDao exWarehousingDao = sqlSession.getMapper(ExWarehousingDao.class);
+        ExWarehousingDao exWarehousingDAO = sqlSession.getMapper(ExWarehousingDao.class);
 
         try {
-            exWarehousingDao.updateExWarehousingStatus(exWarehousingId, inventoryManagerId, status);
+            exWarehousingDAO.updateExWarehousingStatus(exWarehousingId, inventoryManagerId, status);
             sqlSession.commit();
         } catch (Exception e) {
             sqlSession.rollback();
         } finally {
             sqlSession.close();
         }
+    }
+
+    public List<ExWarehousing> findExWarehousingByPublisher(int publisherId) {
+        SqlSession sqlSession = getSqlSession();
+        ExWarehousingDao exWarehousingDAO = sqlSession.getMapper(ExWarehousingDao.class);
+
+        List<ExWarehousing> exWarehousingList = exWarehousingDAO.findExWarehousingByPublisher(publisherId);
+        sqlSession.close();
+
+        return exWarehousingList;
     }
 }
