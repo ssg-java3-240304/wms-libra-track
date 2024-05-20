@@ -33,5 +33,29 @@ public class ExWarehousingTest {
         //this.sqlSession.rollback();
         this.sqlSession.close();
     }
+    @DisplayName("Find Exwarehousing by status test")
+    @Test
+    void findExWarehousingByStatus() {
+        List<ExWarehousing> exWarehousing = exWarehousingDao.findExWarehousingByStatus(Status.COMPLETED);
 
+        for (ExWarehousing ex : exWarehousing) {
+            System.out.println(" status = " + ex.getStatus() + " address = " + ex.getAddress()
+                                + " date = " + ex.getDate() + " receiver = " + ex.getReceiver()
+                                + " receiverEmail " + ex.getReceiverEmail());
+        }
+
+        assertThat(exWarehousing.size()).isNotZero();
+    }
+    @DisplayName("update status")
+    @Test
+    void updateExwarehousingStatus() {
+        exWarehousingDao.updateExWarehousingStatus(1,1, Status.PENDING);
+        List<ExWarehousing> exWarehousing = exWarehousingDao.findExWarehousingByStatus(Status.PENDING);
+        for (ExWarehousing ex : exWarehousing) {
+            System.out.println(" status = " + ex.getStatus() + " address = " + ex.getAddress()
+                    + " date = " + ex.getDate() + " receiver = " + ex.getReceiver()
+                    + " receiverEmail " + ex.getReceiverEmail());
+        }
+        assertThat(exWarehousing.size()).isNotZero();
+    }
 }

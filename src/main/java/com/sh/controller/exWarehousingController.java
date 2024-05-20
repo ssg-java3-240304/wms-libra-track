@@ -11,10 +11,10 @@ public class exWarehousingController {
     private exWarehousingService exWarehousingService;
 
     // 출고 요청
-    public void save(ExWarehousing exWarehousing) {
-        // Todo
-        exWarehousingService.save();
-    }
+//    public void save(ExWarehousing exWarehousing) {
+//        // Todo
+//        exWarehousingService.save();
+//    }
 
     // 출고 상태 조회
     public List<ExWarehousing> findExWarehousingByStatus(Status status) {
@@ -32,7 +32,7 @@ public class exWarehousingController {
     }
 
     // 창고매니저 아이디로 조회
-    public List<ExWarehousing> findByInvenManagerId() {
+    public List<ExWarehousing> findByInventoryManagerId() {
         // Todo
         return null;
     }
