@@ -17,7 +17,7 @@ import java.util.List;
 import static com.sh.common.MyBatisTemplate.getSqlSession;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class InWarehousingTest {
+public class InWarehousingDaoTest {
     SqlSession sqlSession;
     InWarehousingDao inWarehousingDao;
 
