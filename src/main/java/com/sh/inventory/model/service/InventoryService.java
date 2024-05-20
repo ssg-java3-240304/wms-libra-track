@@ -42,14 +42,6 @@ public class InventoryService {
         }
     }
 
-//    public List<MenuDto> findByCategoryCode(int categoryCode) {
-//        SqlSession sqlSession = getSqlSession();
-//        MenuMapper menuMapper = sqlSession.getMapper(MenuMapper.class);
-//        List<MenuDto> list = menuMapper.findByCategoryCode(categoryCode);
-//        sqlSession.close();
-//        return list;
-//    }
-
     public int updateInventory(InventoryDto inventoryDto) {
         SqlSession sqlSession = getSqlSession();
         InventoryMapper inventoryMapper = sqlSession.getMapper(InventoryMapper.class);
@@ -82,27 +74,4 @@ public class InventoryService {
         }
     }
 
-//    public List<CategoryDto> findAllCategory() {
-//        SqlSession sqlSession = getSqlSession();
-//        MenuMapper menuMapper = sqlSession.getMapper(MenuMapper.class);
-//        List<CategoryDto> categoryList = menuMapper.findAllCategory();
-//        sqlSession.close();
-//        return categoryList;
-//    }
-//
-//    public List<InventoryDto> findMenuOrderable() {
-//        SqlSession sqlSession = getSqlSession();
-//        InventoryMapper inventoryMapper = sqlSession.getMapper(InventoryMapper.class);
-//        List<InventoryDto> list = inventoryMapper.findMenuOrderable();
-//        sqlSession.close();
-//        return list;
-//    }
-
-//    public List<MenuDto> findMenuOrderableByCategoryCode(int categoryCode) {
-//        SqlSession sqlSession = getSqlSession();
-//        MenuMapper menuMapper = sqlSession.getMapper(MenuMapper.class);
-//        List<MenuDto> list = menuMapper.findMenuOrderableByCategoryCode(categoryCode);
-//        sqlSession.close();
-//        return list;
-//    }
 }
