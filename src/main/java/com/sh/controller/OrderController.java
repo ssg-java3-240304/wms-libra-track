@@ -5,6 +5,7 @@ import com.sh.model.dto.OrderDto;
 import com.sh.model.service.BookAreaService;
 import com.sh.model.service.OrderAreaService;
 import com.sh.model.service.OrderService;
+import com.sh.view.OrderView;
 
 import java.util.List;
 
@@ -18,12 +19,16 @@ public class OrderController {
 
     private OrderAreaService orderAreaService;
 
+    private OrderView orderView;
+
     public OrderDto findOrderByOrderId(int orderId) {
         return orderService.findOrderByOrderId(orderId);
     }
 
     public List<OrderDto> findOrderByInWarehousingId(int inWarehousingId) {
-        return orderService.findOrderByInWarehousingId(inWarehousingId);
+        List<OrderDto> orderDtoList = orderService.findOrderByInWarehousingId(inWarehousingId);
+        OrderView.displayOrderDto(orderDtoList);
+        return orderDtoList;
     }
 
     public void reserveOrder(int orderId, String location, String areaName) {
