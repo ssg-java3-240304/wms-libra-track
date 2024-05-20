@@ -20,12 +20,14 @@
                 <property name="url" value="jdbc:mysql://techbrew4.iptime.org/libradb"/>
                 <property name="username" value="libra"/>
                 <property name="password" value="libra"/>
+
             </dataSource>
         </environment>
     </environments>
     <mappers>
         <mapper resource="sql/order/order-mapper.xml"/>
         <mapper resource="sql/inwarehousing/inwarehousing-mapper.xml"/>
+        <mapper resource="sql/exwarehousing/exwarehousing-mapper.xml"/>
         <mapper resource="sql/member/member.xml"/>
         <mapper resource="sql/member/publisherManager.xml"/>
         <mapper resource="sql/member/inventoryManager.xml"/>
