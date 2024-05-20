@@ -10,11 +10,10 @@ import java.util.List;
 public class exWarehousingController {
     private exWarehousingService exWarehousingService;
 
-    // 출고 요청
-//    public void save(ExWarehousing exWarehousing) {
-//        // Todo
-//        exWarehousingService.save();
-//    }
+     //출고 요청
+    public void insertExWarehousing(HashMap<String, Integer> orders, int publisherId) {
+        exWarehousingService.insertExWarehousing(orders, publisherId);
+    }
 
     // 출고 상태 조회
     public List<ExWarehousing> findExWarehousingByStatus(Status status) {

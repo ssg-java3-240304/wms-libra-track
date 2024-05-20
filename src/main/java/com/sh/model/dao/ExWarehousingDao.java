@@ -12,4 +12,8 @@ public interface ExWarehousingDao {
     void updateExWarehousingStatus(int exWarehousingId, int inventoryManagerId, Status status);
 
     List<ExWarehousing> findExWarehousingByPublisher(int publisherId);
+
+    int insertExWarehousing(ExWarehousing exWarehousing);
+
+    void insertOrders(ExWarehousing exWarehousing);
 }
