@@ -26,9 +26,12 @@ public class AreaService {
         sqlSession.close();
         return areaDto;
     }
-    public AreaDto findByLocationAndAreaName(HashMap<String, String> map) {
+    public AreaDto findByLocationAndAreaName(String location, String areaName) {
         SqlSession sqlSession = getSqlSession();
         AreaMapper areaMapper = sqlSession.getMapper(AreaMapper.class);
+        HashMap<String, String> map = new HashMap<String, String>();
+        map.put("location", location);
+        map.put("areaName", areaName);
         AreaDto areaDto = areaMapper.findByLocationAndAreaName(map);
         sqlSession.close();
         return areaDto;

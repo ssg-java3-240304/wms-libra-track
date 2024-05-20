@@ -45,7 +45,7 @@ public class AreaView {
                 case "5" : areaController.updateArea(inputAreaUpdated()); break;
                 case "6" : areaController.deleteArea(inputAreaId("삭제")); break;
                 case "7" : areaController.updateReserved(inputAreaReservedUpdated()); break;
-                case "8" : areaController.findByLocationAndAreaName(inputLocationAndAreaName()); break;
+                case "8" : areaController.findByLocationAndAreaName(inputLocation(), inputAreaName()); break;
                 case "0" : return;
                 default:
                     System.out.println("잘못 입력하셨습니다.");
@@ -124,10 +124,4 @@ public class AreaView {
         return sc.next();
     }
 
-    private HashMap<String, String> inputLocationAndAreaName() {
-        HashMap<String, String> map = new HashMap<String, String>();
-        map.put("location", inputLocation());
-        map.put("areaName", inputAreaName());
-        return map;
-    }
 }

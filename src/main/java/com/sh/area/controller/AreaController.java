@@ -36,9 +36,9 @@ public class AreaController {
         AreaDto areaDto = areaService.findAreaByAreaId(areaId);
         AreaResultView.displayArea(areaDto);
     }
-    public void findByLocationAndAreaName(HashMap<String, String> map) {
+    public void findByLocationAndAreaName(String location, String areaName) {
         // 0~1개의 InventoryDto 반환 : InventoryDto
-        AreaDto areaDto = areaService.findByLocationAndAreaName(map);
+        AreaDto areaDto = areaService.findByLocationAndAreaName(location, areaName);
         AreaResultView.displayArea(areaDto);
     }
 
