@@ -17,6 +17,7 @@ public class BookMenuView {
     PublisherManager publisherManager;
     Scanner scanner = new Scanner(System.in);
     public void showMenu(PublisherManager publisherManger) {
+
         this.publisherManager = publisherManger;
         String menu = """
         ======================
@@ -24,10 +25,7 @@ public class BookMenuView {
         2. 책 출판 등록 하기  
         3. ISBN코드로 도서검색하기 
         4. 도서 상세정보 수정 
-        5. 도서 상세정보 삭제 
-        6. 출판등록된 책 조회 
-        7. 책 위치 조회  
-        8.
+        5. 도서 상세정보 삭제
         0. 종료
         ======================
         """;
@@ -40,11 +38,12 @@ public class BookMenuView {
             switch (n) {
                 case 1 : bookController.findAll(publisherManager.getPublisherId()); // 출판 등록된 모든 도서 확인하기
                     break;
-                case 2 : bookController.insertBook(input()); //도서정보 입력하기
+                case 2 :
+                    bookController.insertBook(input(publisherManager.getPublisherId())); //도서정보 입력하기
                     break;
                 case 3 : bookController.findBookByISBN(inputISBN());// ISBN으로 책 찾기
                     break;
-                case 4 : bookController.udpateMenu(inputUpdate()); //도서 상세 정보 수정
+                case 4 : bookController.updateInforamtion(inputUpdate()); //도서 상세 정보 수정
                     break;
                 case 5 : bookController.deleteBook(inputISBN()); // 도서 삭제
                     break;
@@ -52,7 +51,6 @@ public class BookMenuView {
                 default :
                     System.out.println("숫자를 다시 입력해주세요!");
                     break;
-
             }
         }
     }
@@ -65,10 +63,10 @@ public class BookMenuView {
         System.out.print("가격 : ");
         int price = scanner.nextInt();
         System.out.print("책 페이지 : ");
-        int page = scanner.nextInt();
+        int pages = scanner.nextInt();
         System.out.print("책 사이즈 : ");
         String size = scanner.next();
-        return new Book(ISBN,price,page,size);
+        return new Book(ISBN,price,pages,size);
     }
 
     public String inputISBN() {
@@ -77,30 +75,39 @@ public class BookMenuView {
     }
 
     //책 정보 입력
-    public Book input() {
+    public Book input(int publisherId) {
+        int id = publisherId;
         System.out.println("================================");
         System.out.println("책의 정보 입력");
         System.out.print("책 이름 : ");
         String title = scanner.next();
-        System.out.print("ISBN 코드 : ");
-        String ISBN = scanner.next();
+        String ISBN;
+        while (true) {
+            System.out.print("ISBN 코드 : ");
+            ISBN = scanner.next();
+            if (duplicateISBN(ISBN)){//중복된게 존재
+                System.out.println("ISBN코드를 다시 입력해주세요.");
+                continue;
+            }
+            else break;
+        }
+        System.out.print("책 장르 : ");
+        String genreName = scanner.next();
+        int genreId = getGenreId(genreName);
         System.out.print("책 가격 : ");
         int price = scanner.nextInt();
         LocalDateTime pubDate = LocalDateTime.now();// 수정
         System.out.print("책 저자 : ");
         String author = scanner.next();
         System.out.print("책 페이지 수 : ");
-        int page = scanner.nextInt();
+        int pages = scanner.nextInt();
         System.out.print("책 크기 : ");
         String size = scanner.next();
 
-        System.out.print("책 장르 : ");
-        String genreName = scanner.next();
-        int genreId = getGenreId(genreName);
         System.out.println("================================");
 
 
-        return new Book(0, title, ISBN, publisherManager.getPublisherId(), pubDate, price, author, page, size, genreId);
+        return new Book(0, title, ISBN, publisherId,genreId,price,pubDate,author,pages,size);
     }
 
     //이름 입력하고 -> 이름에 해당하는 genreId값 반환하는 메소드
@@ -111,6 +118,11 @@ public class BookMenuView {
     //출판사 이름에 해당하는 publisherId값 호출
     public int getPublisherId(String publisherName){
         return publisherController.getPublisherId(publisherName);
+    }
+
+    public boolean duplicateISBN(String ISBN) {
+        boolean b = bookController.duplicateISBN(ISBN);
+        return b;
     }
 
 }

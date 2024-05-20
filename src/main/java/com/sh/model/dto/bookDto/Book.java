@@ -3,7 +3,6 @@ package com.sh.model.dto.bookDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 
 import java.time.LocalDateTime;
 
@@ -16,18 +15,19 @@ public class Book {
     private String title;
     private String ISBN;
     private Integer publisherId;
-    private LocalDateTime pubDate;
-    private Integer price;
-    private String author;
-    private Integer page;
-    private String size;
     private Integer genreId;
+    private Integer price;
+    private LocalDateTime pubDate;
+    private String author;
+    private Integer pages;
+    private String size;
+
 //    private Genre genre;
 
-    public Book(String ISBN,int price, int page, String size) {
+    public Book(String ISBN, int price, int pages, String size) {
         this.ISBN = ISBN;
         this.price = price;
-        this.page = page;
+        this.pages = pages;
         this.size = size;
     }
 

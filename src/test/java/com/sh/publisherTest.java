@@ -2,6 +2,7 @@ package com.sh;
 
 import com.sh.model.dao.PublisherDAO;
 import com.sh.model.dto.publishserDto.Publisher;
+import com.sh.model.dto.publishserDto.PublisherManager;
 import org.apache.ibatis.session.SqlSession;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
@@ -32,7 +33,7 @@ public class publisherTest {
     void test1() {
         //given
         String name = "오형동출판사1";
-        String email = "5@naver.com";
+        String email = "12@naver.com";
         String phoneNumber = "01011111111";
         String businessNumber = "3333";
 
@@ -41,6 +42,35 @@ public class publisherTest {
         int result = publisherDAO.insertPublisher(publisher);
         //then
         Assertions.assertThat(result).isEqualTo(1);
+
+    }
+
+    @Test
+    @DisplayName("출판사 정보 수정하기")
+    void test2() {
+        //given
+        PublisherManager publisherManager = new PublisherManager(1, 1);
+        int publisherId = publisherManager.getPublisherId();
+        String name = "형동출판사11";
+        String email = "123@naver.com";
+        String phoneNumber = "0101";
+        String businessNumber = "2222";
+        //when
+        int result = publisherDAO.updatePublisher(new Publisher(publisherId, name, email, phoneNumber, businessNumber));
+        //then
+        Assertions.assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("출판사 정보 확인하기 ")
+    void test3() {
+        //given
+        int publisherId = 1;
+        //when
+        Publisher publisher = publisherDAO.findPublisherInformation(publisherId);
+        System.out.println(publisher);
+        //then
+        Assertions.assertThat(publisher).isNotNull();
 
     }
 }

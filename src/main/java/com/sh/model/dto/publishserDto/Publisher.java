@@ -20,14 +20,8 @@ public class Publisher {
     private String phoneNumber;
     private String businessNumber;
 
-    public Publisher(int publisherId, String name, String email, String phoneNumber, String businessNumber) {
-        this.publisherId = publisherId;
-        this.name = name;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.businessNumber = businessNumber;
-    }
+
 
 //    출판사가 가지고 있는 책의 정보를 확인해야함.
-    private List<Book> bookList = new ArrayList<>();
+//    private List<Book> bookList = new ArrayList<>();
 }

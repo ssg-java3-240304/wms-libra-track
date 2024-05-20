@@ -12,6 +12,7 @@ import org.junit.jupiter.api.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.Scanner;
 
 import static com.sh.common.MyBatisTemplate.getSqlSession;
@@ -66,7 +67,7 @@ public class inputTest {
         int genreId = 3;
 //        String genreName = "소설";
 //        Genre genre = Genre.valueLabel(genreName);
-        Book book= new Book(0, title, ISBN, publisherId, pubDate, price, author, page, size, genreId);
+        Book book = new Book(0, title, ISBN, publisherId, genreId, price, pubDate, author, page, size);
 
         int result = bookDAO.insertBook(book);
 //        int result = bookDAO.updateInforamtion(book);
@@ -112,7 +113,7 @@ public class inputTest {
         String size = "500";
         //when
         Book book = new Book(ISBN, price, page, size);
-        int result = bookDAO.updateMenu(book);
+        int result = bookDAO.updateInforamtion(book);
         System.out.println(book);
         //then
         Assertions.assertThat(result).isEqualTo(1);
@@ -153,6 +154,19 @@ public class inputTest {
         int publisherId = publisherDAO.getPublisherId(publisherName);
         //then
         Assertions.assertThat(publisherId).isEqualTo(3);
+
+    }
+
+    @Test
+    @DisplayName("동일한 ISBN책이 있는지 확인하기")
+    void test8() {
+        //given
+        String isbn = "isbn2222";
+        //when
+        Optional<Book> book = Optional.ofNullable(bookDAO.findBookByISBN(isbn));
+
+        //then
+        Assertions.assertThat(book).isNotNull();
 
     }
 }

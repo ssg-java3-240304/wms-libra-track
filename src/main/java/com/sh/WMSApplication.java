@@ -9,8 +9,7 @@ public class WMSApplication {
     public static void main(String[] args) {
         MemberView memberView = new MemberView();
         memberView.start();
-//        PublisherView publisherView = new PublisherView();
-//        publisherView.startMenu();
+
 
     }
 }

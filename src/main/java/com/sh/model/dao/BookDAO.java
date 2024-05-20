@@ -11,7 +11,7 @@ public interface BookDAO {
 
     Book findBookByISBN(String isbn);
 
-    int updateMenu(Book book);
+    int updateInforamtion(Book book);
 
     int deleteBook(String ISBN);
 

@@ -5,7 +5,10 @@ import com.sh.common.error.ErrorCode;
 import com.sh.common.error.ErrorView;
 import com.sh.model.dto.bookDto.Book;
 import com.sh.model.service.bookService.BookService;
+import com.sh.view.bookView.BookMenuView;
 import com.sh.view.bookView.bookResultView.DisplayResultView;
+
+import java.util.Optional;
 
 public class BookController {
     BookService bookService = new BookService();
@@ -23,6 +26,8 @@ public class BookController {
         DisplayResultView.displayResult("등록", result);
     }
 
+
+
     public Book findBookByISBN(String ISBN) {
 
         try {
@@ -36,8 +41,8 @@ public class BookController {
         }
     }
 
-    public void udpateMenu(Book book) {
-        int result = bookService.updateMenu(book);
+    public void updateInforamtion(Book book) {
+        int result = bookService.updateInforamtion(book);
         Book newBook = bookService.findBookByISBN(book.getISBN());
         DisplayResultView.displayBook(newBook);
     }
@@ -52,4 +57,16 @@ public class BookController {
         }
     }
 
+    public Boolean duplicateISBN(String isbn) {
+        Book book = bookService.findBookByISBN(isbn);
+        boolean duplicate = true;
+        if (book != null) {
+            ErrorView.displayError(ErrorCode.SAME_ISBN);
+            return duplicate; // true면 값이 존재한다.
+        }
+        else{
+            duplicate = false;
+            return duplicate;
+        }
+    }
 }

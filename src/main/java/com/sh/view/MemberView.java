@@ -15,9 +15,8 @@ import java.util.Scanner;
  * Member와 publisherManager는 pulibsher_id로 연관되어있다.
  */
 public class MemberView {
-    PublisherManager pulisherManager = new PublisherManager(1,1);
 
-    PublisherManager publisherManager = new PublisherManager();
+    PublisherManager publisherManager = new PublisherManager(1, 1);
     PublisherView publisherView = new PublisherView();
     public void start() {
         publisherView.startMenu(publisherManager);

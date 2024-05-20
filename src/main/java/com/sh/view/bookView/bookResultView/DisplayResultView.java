@@ -29,7 +29,7 @@ public class DisplayResultView {
             System.out.println("PubDate : " + book.getPubDate());
             System.out.println("Price : " + book.getPrice());
             System.out.println("Author : " + book.getAuthor());
-            System.out.println("Pages : " + book.getPage());
+            System.out.println("Pages : " + book.getPages());
             System.out.println("Size : " + book.getSize());
             System.out.println("GenreId : " + book.getGenreId());
             System.out.println("-------------------------");
@@ -51,7 +51,7 @@ public class DisplayResultView {
                         book.getPrice(),
                         book.getPubDate(),
                         book.getAuthor(),
-                        book.getPage(),
+                        book.getPages(),
                         book.getSize()
                 );
             }
