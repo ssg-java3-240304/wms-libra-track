@@ -72,6 +72,7 @@ CREATE TABLE `Area` (
 	`inventory_id`	INTEGER	NULL,
 	`publisher_id`	INTEGER	NULL,
 	`reserved`	INTEGER	NULL,
+    `quantity` INTEGER	NULL,
     PRIMARY KEY (`area_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
