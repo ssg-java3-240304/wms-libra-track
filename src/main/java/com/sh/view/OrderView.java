@@ -70,11 +70,11 @@ public class OrderView {
                     String location = scanner.nextLine();
                     System.out.println("입고 구역명을 입력해주세요.");
                     String areaName = scanner.nextLine();
-                    orderController.reserveOrder(idx, location, areaName);
+                    orderController.reserveOrder(idx, location, areaName,true);
                     break;
                 case "3":
                     System.out.printf("입고 정보 ID를 입력해주세요. (입고 정보 ID : %s)\n", ids);
-                    orderController.completeOrder(ids.get(Integer.parseInt(scanner.nextLine()) - 1));
+                    orderController.completeOrder(ids.get(Integer.parseInt(scanner.nextLine()) - 1), true);
                     break;
                 case "0":
                     return;

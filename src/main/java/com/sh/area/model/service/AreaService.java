@@ -5,6 +5,7 @@ import com.sh.area.model.dto.AreaDto;
 import com.sh.inventory.model.dto.InventoryDto;
 import org.apache.ibatis.session.SqlSession;
 
+import java.util.HashMap;
 import java.util.List;
 
 import static com.sh.common.MyBatisTemplate.getSqlSession;
@@ -22,6 +23,16 @@ public class AreaService {
         SqlSession sqlSession = getSqlSession();
         AreaMapper areaMapper = sqlSession.getMapper(AreaMapper.class);
         AreaDto areaDto = areaMapper.findAreaByAreaId(areaId);
+        sqlSession.close();
+        return areaDto;
+    }
+    public AreaDto findByLocationAndAreaName(String location, String areaName) {
+        SqlSession sqlSession = getSqlSession();
+        AreaMapper areaMapper = sqlSession.getMapper(AreaMapper.class);
+        HashMap<String, String> map = new HashMap<String, String>();
+        map.put("location", location);
+        map.put("areaName", areaName);
+        AreaDto areaDto = areaMapper.findByLocationAndAreaName(map);
         sqlSession.close();
         return areaDto;
     }
@@ -90,20 +101,20 @@ public class AreaService {
         sqlSession.close();
         return inventoryList;
     }
-//
-//    public List<InventoryDto> findMenuOrderable() {
-//        SqlSession sqlSession = getSqlSession();
-//        InventoryMapper inventoryMapper = sqlSession.getMapper(InventoryMapper.class);
-//        List<InventoryDto> list = inventoryMapper.findMenuOrderable();
-//        sqlSession.close();
-//        return list;
-//    }
+    public int updateReserved(AreaDto areaDto) {
+        SqlSession sqlSession = getSqlSession();
+        AreaMapper areaMapper = sqlSession.getMapper(AreaMapper.class);
+        try {
+            // dao 메세지 전달
+            int result = areaMapper.updateReserved(areaDto);
+            sqlSession.commit();
+            return result;
+        } catch (Exception e) {
+            sqlSession.rollback();
+            throw new RuntimeException(e);
+        } finally {
+            sqlSession.close();
+        }
+    }
 
-//    public List<MenuDto> findMenuOrderableByCategoryCode(int categoryCode) {
-//        SqlSession sqlSession = getSqlSession();
-//        MenuMapper menuMapper = sqlSession.getMapper(MenuMapper.class);
-//        List<MenuDto> list = menuMapper.findMenuOrderableByCategoryCode(categoryCode);
-//        sqlSession.close();
-//        return list;
-//    }
 }

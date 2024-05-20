@@ -12,26 +12,12 @@
             #{publisherId}
         )
     </insert>
-
-<!--    <select id="findPublisherManager" resultType="PublisherManagerDto">-->
-<!--        select-->
-<!--            *-->
-<!--        from-->
-<!--            member m join publisher_manager pm-->
-<!--                on m.member_id = pm.member_id-->
-<!--        where-->
-<!--            publisher_manager_id = #{publisherManagerId}-->
-<!--    </select>-->
-
-<!--    <select id="loginCheck" resultType="">-->
-
-<!--    </select>-->
-
-<!--    <select id="findPublisher" resultType="Publisher">-->
-<!--        select distinct name-->
-<!--        from publisher;-->
-<!--    </select>-->
-<!--    <delete id="">-->
-
-<!--    </delete>-->
+    <select id="findPublisherManagerInfo" parameterType="int" resultType="memberDto">
+        select
+            *
+        from
+            member m left join publisher_manager pm
+        where
+            pm.member_id = #{memberId};
+    </select>
 </mapper>

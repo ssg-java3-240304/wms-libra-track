@@ -19,6 +19,16 @@
         where
             area_id = #{areaId}
     </select>
+    <select id="findByLocationAndAreaName" parameterType="hashMap" resultType="areaDto">
+        select
+            *
+        from
+            inventory i join area a
+            on i.inventory_id = a.inventory_id
+        where
+            i.location = #{location}
+            and a.area_name = #{areaName}
+    </select>
     <select id="findAreaByInventoryId" resultType="areaDto">
         select
             *
@@ -67,6 +77,14 @@
         where
             area_id = #{areaId}
     </delete>
+    <update id="updateReserved">
+        update
+            area
+        set
+            reserved = #{reserved}
+        where
+            area_id = #{areaId}
+    </update>
 <!--    <select id="findMenuOrderable" resultType="areaDto">-->
 <!--        select-->
 <!--            *-->
