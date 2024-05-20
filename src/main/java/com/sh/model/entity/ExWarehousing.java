@@ -22,5 +22,7 @@ public class ExWarehousing {
     private Timestamp date;
     private List<Order> orderList;
     private Status status;
+    private int publisherManagerId;
+    private int inventoryManagerId;
 }
 //홍지민 작업 끝
