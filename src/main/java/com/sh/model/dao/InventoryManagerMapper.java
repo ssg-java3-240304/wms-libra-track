@@ -4,7 +4,7 @@ import com.sh.model.entity.InventoryManagerDto;
 
 public interface InventoryManagerMapper {
 
-    int selectInventoryManager(InventoryManagerDto inventoryManagerDto);
+    int insertInventoryManager(InventoryManagerDto inventoryManagerDto);
 
 
 
