@@ -33,6 +33,8 @@ public class MemberView {
                 case "2":
                     loginCheck();
                     break;
+                default:
+                    System.out.println("잘못된 입력입니다. 다시 입력해주세요! ");
             }
         }
     }
@@ -47,7 +49,7 @@ public class MemberView {
 
         if(memberDto.getRole() == Role.PUBLISHER){
             PublisherManagerView publisherManagerView = new PublisherManagerView();
-            publisherManagerView.choicePublisherMenu();
+            publisherManagerView.choicePublisherMenu(memberDto.getMemberId());
         }else {
             InventoryManagerView inventoryManagerView = new InventoryManagerView();
 //            inventoryManagerView.choiceInventoryMenu();
