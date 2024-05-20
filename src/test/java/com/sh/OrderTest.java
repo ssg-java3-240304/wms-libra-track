@@ -57,4 +57,18 @@ public class OrderTest {
         System.out.println("Inventory Location = " + result.getLocation() +"Order Area = " + result.getAreaName());
         assertThat(result.getISBN()).isNotNull();
     }
+
+    @Test
+    @DisplayName("Order ExWarehousing Test")
+    public void findOrdersWithExWarehousingId() {
+
+        List<OrderDto> result = orderDao.findOrdersByExWarehousingId(1);
+
+        for(OrderDto orderDto : result) {
+            System.out.println("Order ID = " + orderDto.getOrderId() +
+                    " ISBN = " + orderDto.getISBN() + " quantity " + orderDto.getQuantity());
+        }
+
+        assertThat(result.size()).isNotZero();
+    }
 }

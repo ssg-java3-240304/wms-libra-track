@@ -42,5 +42,12 @@ public class OrderService {
     }
 
 
+    public List<OrderDto> findOrdersByExWarehousingId(int exWarehousingId) {
+        SqlSession sqlSession = getSqlSession();
+        OrderDao orderDAO = sqlSession.getMapper(OrderDao.class);
 
+        List<OrderDto> orderList = orderDAO.findOrdersByExWarehousingId(exWarehousingId);
+        sqlSession.close();
+        return orderList;
+    }
 }
