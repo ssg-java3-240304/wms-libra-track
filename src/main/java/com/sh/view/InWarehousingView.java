@@ -15,11 +15,9 @@ public class InWarehousingView {
 
     private static Scanner scanner = new Scanner(System.in);
 
-    public static String PUB_MANAGER = "publisherManager";
     public static Integer PUB_MANAGER_ID = 0;
-    public static String PUB_NAME = "publisherName";
     public static Integer PUB_ID = 0;
-    public static Integer INVEN_MANAGER_ID  = 0;
+    public static Integer INVEN_MANAGER_ID  = 1;
 
     private static OrderView orderView;
 
@@ -29,30 +27,35 @@ public class InWarehousingView {
 
     // 출판사 직원 메뉴
     public static void inWarehousingPublisherMenu() {
-        String inWarehousingMenu = """
-                📦📦📦 입고 관리 📦📦📦
-                ======================
-                1. 입고 정보 조회
-                2. 입고 정보 등록(요청)
-                0. 뒤로 가기
-                ======================
-                입력 : 
-                """;
-        while(true) {
-            System.out.println(inWarehousingMenu);
-            String choice = scanner.nextLine();
-            switch (choice) {
-                case "1":
-                    inWarehousingRead();
-                    break;
-                case "2":
-                    inWarehousingRegister();
-                    break;
-                case "0":
-                    return;
-                default:
-                    System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
+        try {
+            String inWarehousingMenu = """
+                    📦📦📦 입고 관리 📦📦📦
+                    ======================
+                    1. 입고 정보 조회
+                    2. 입고 정보 등록(요청)
+                    0. 뒤로 가기
+                    ======================
+                    입력 : 
+                    """;
+            while (true) {
+                System.out.println(inWarehousingMenu);
+                String choice = scanner.nextLine();
+                switch (choice) {
+                    case "1":
+                        inWarehousingRead();
+                        break;
+                    case "2":
+                        inWarehousingRegister();
+                        break;
+                    case "0":
+                        return;
+                    default:
+                        System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
+                }
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
         }
     }
 
@@ -193,25 +196,31 @@ public class InWarehousingView {
                 입력 : 
                 """;
         while(true) {
-            System.out.println(inWarehousingMenu);
-            String choice = scanner.nextLine();
-            switch (choice) {
-                case "1":
-                    // 잘못 선택된 status 입력시 재입력
-                    System.out.println("입고 상태를 입력해주세요. (PENDING, ACCEPTED, REJECTED, COMPLETED)");
-                    Status status;
-                    try {
-                        status = Status.valueOf(scanner.nextLine());
-                    } catch (Exception exception) {
-                        System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
+            try {
+                System.out.println(inWarehousingMenu);
+                String choice = scanner.nextLine();
+                switch (choice) {
+                    case "1":
+                        // 잘못 선택된 status 입력시 재입력
+                        System.out.println("입고 상태를 입력해주세요. (PENDING, ACCEPTED, REJECTED, COMPLETED)");
+                        Status status;
+                        try {
+                            status = Status.valueOf(scanner.nextLine());
+                        } catch (Exception exception) {
+                            System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
+                            break;
+                        }
+                        inWarehousingController.findInWarehousingByStatus(status);
                         break;
-                    }
-                    inWarehousingController.findInWarehousingByStatus(status);
-                    break;
-                case "0":
-                    return;
-                default:
-                    System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
+                    case "0":
+                        return;
+                    default:
+                        System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
+
             }
         }
     }
@@ -231,11 +240,12 @@ public class InWarehousingView {
             String choice = scanner.nextLine();
             switch (choice) {
                 case "1":
-                    System.out.printf("입고 정보 ID를 입력해주세요. (입고 정보 ID : %s)\n", ids);
+                    System.out.printf("입고 정보 INDEX를 입력해주세요. (입고 정보 INDEX : %s)\n", ids);
                     orderController.findOrderByInWarehousingId(ids.get(Integer.parseInt(scanner.nextLine()) - 1));
                     break;
                 case "2":
-                    System.out.printf("입고 정보 ID를 입력해주세요. (입고 정보 ID : %s)\n", ids);
+                    System.out.printf("입고 정보 INDEX를 입력해주세요. (입고 정보 INDEX : %s)\n", ids);
+                    int index = Integer.parseInt(scanner.nextLine()) - 1;
                     System.out.println("입고 상태를 입력해주세요. (ACCEPTED, REJECTED, COMPLETED)");
                     Status status;
                     try {
@@ -244,7 +254,7 @@ public class InWarehousingView {
                         System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
                         break;
                     }
-                    inWarehousingController.updateInWarehousingStatus(ids.get(Integer.parseInt(scanner.nextLine()) - 1), INVEN_MANAGER_ID, status);
+                    inWarehousingController.updateInWarehousingStatus(ids.get(index), INVEN_MANAGER_ID, status);
                     break;
                 case "0":
                     return;

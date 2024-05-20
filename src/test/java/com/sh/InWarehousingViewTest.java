@@ -31,7 +31,6 @@ public class InWarehousingViewTest {
 
         InWarehousingView.PUB_MANAGER_ID = 1;
         InWarehousingView.PUB_ID = 1;
-        InWarehousingView.PUB_MANAGER = "희민";
 
         InWarehousingView.inWarehousingPublisherMenu();
 
