@@ -35,7 +35,6 @@ public class MemberView {
             switch (choice) {
                 case "1":
                     choiceMenu();
-//                    memberController.addMember(addMember());
                     break;
                 case "2":
                     loginCheck();
@@ -67,14 +66,14 @@ public class MemberView {
             String choice = sc.next();
             switch (choice) {
                 case "1" :
-                    System.out.println("🆘🆘🆘출판사를 선택하는 메소드 가져와야함!!!🆘🆘🆘");
-                    memberController.addMember(addMember());
+                    System.out.println("🆘🆘🆘출판사를 찾하는 메소드 만들어야함!!!🆘🆘🆘");
+                    memberController.insertPublisherMember(insertPublisherMember());
                     break;
             }
         }
     }
 
-    private MemberDto addMember() {
+    private MemberDto insertPublisherMember() {
         System.out.println("> ✏✏✏ 회원 등록할 정보 작성해주세요. ✏✏✏");
         System.out.print("> 회원 이름 입력 : ");
         String name = sc.next();
