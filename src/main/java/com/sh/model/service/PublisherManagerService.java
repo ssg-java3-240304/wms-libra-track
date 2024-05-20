@@ -15,23 +15,6 @@ import static com.sh.common.MyBatisTemplate.getSqlSession;
 
 //홍지민 작업 시작
 public class PublisherManagerService {
-    // 출판사 매니저에 추가하기
-    public int insertPublisherManager(SqlSession sqlSession, int memberId, int publisherId) {
-        PublisherManagerMapper publisherManagerMapper = sqlSession.getMapper(PublisherManagerMapper.class);
-        PublisherManagerDto publisherManagerDto = new PublisherManagerDto(memberId, publisherId);
-
-        publisherManagerMapper.insertPublisherManager(publisherManagerDto);
-    }
-
-
-}
-
-        PublisherManagerDto publisherManagerDto = new PublisherManagerDto( memberId, publisherId);
-        int result = publisherManagerMapper.insertPublisherManager(publisherManagerDto);
-
-        return result;
-    }
-
     // 출판사 매니저 정보 조회
     public PublisherManagerDto findPublisherManager(String id) {
         try (SqlSession sqlSession = getSqlSession()) {
