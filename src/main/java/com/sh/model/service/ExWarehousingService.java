@@ -1,6 +1,8 @@
 package com.sh.model.service;
 
 import com.sh.model.dao.ExWarehousingDao;
+import com.sh.model.dao.InWarehousingDao;
+import com.sh.model.dto.OrderDto;
 import com.sh.model.entity.ExWarehousing;
 import com.sh.model.entity.Order;
 import com.sh.model.entity.Status;
@@ -45,6 +47,32 @@ public class ExWarehousingService {
         List<ExWarehousing> exWarehousingList = exWarehousingDAO.findExWarehousingByPublisher(publisherId);
         sqlSession.close();
 
+        return exWarehousingList;
+    }
+
+    public List<ExWarehousing> findExWarehousingByPublisherManagerId(int publisherManagerId) {
+        SqlSession sqlSession = getSqlSession();
+        ExWarehousingDao exWarehousingDao = sqlSession.getMapper(ExWarehousingDao.class);
+
+        List<ExWarehousing> exWarehousingList = exWarehousingDao.findExWarehousingByPublisherManager(publisherManagerId);
+        sqlSession.close();
+        return exWarehousingList;
+    }
+
+    public List<ExWarehousing> findExWarehousingByPublisherIdAndStatus(int publisherId, Status status) {
+        SqlSession sqlSession = getSqlSession();
+        ExWarehousingDao exWarehousingDao = sqlSession.getMapper(ExWarehousingDao.class);
+
+        List<ExWarehousing> exWarehousingList = exWarehousingDao.findExWarehousingByPublisherIdAndStatus(publisherId, status);
+        sqlSession.close();
+        return exWarehousingList;
+    }
+
+    public List<ExWarehousing> findExWarehousingByPublisherManagerIdAndStatus(int publisherManagerId, Status status) {
+        SqlSession sqlSession = getSqlSession();
+        ExWarehousingDao exWarehousingDao = sqlSession.getMapper(ExWarehousingDao.class);
+
+        List<ExWarehousing> exWarehousingList = exWarehousingDao.findExWarehousingByPublisherManagerIdAndStatus(publisherManagerId, status);
         return exWarehousingList;
     }
 

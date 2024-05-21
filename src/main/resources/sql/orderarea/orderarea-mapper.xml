@@ -3,11 +3,20 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sh.model.dao.OrderAreaDao">
-    <insert id="insertOrderArea">
+    <insert id="insertOrderArea" useGeneratedKeys="true" keyProperty="orderAreaId">
         insert into
             order_area
+            (book_area_id, order_id)
         values (
-        null, #{orderId}, #{areaId}
+         #{bookAreaId}, #{orderId}
         )
     </insert>
+    <select id="findOrderAreaByOrderId" resultType="com.sh.model.entity.OrderArea">
+        select
+            *
+        from
+            order_area
+        where
+            order_id = #{orderId}
+    </select>
 </mapper>

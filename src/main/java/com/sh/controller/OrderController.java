@@ -55,7 +55,10 @@ public class OrderController {
         int bookAreaId = bookAreaService.reserveBookArea(area.getAreaId(),order.getBookId(), quantity, areaName);
 
         //int bookAreaId = 1;
-        orderAreaService.insertOrderArea(orderId, bookAreaId);
+        if (orderAreaService.findOrderAreaByOrderId(orderId) != null) {
+            throw new RuntimeException("이미 배정된 구역이 있습니다.");
+        }
+        orderAreaService.insertOrderArea(bookAreaId, orderId);
 
     }
 
@@ -80,8 +83,8 @@ public class OrderController {
 
         AreaDto area = bookAreaService.findAreaByOrderId(orderId);
 
-        area.setReserved(area.getReserved() + quantity);
-        area.setQuantity(area.getQuantity() - quantity);
+        area.setReserved(area.getReserved() - quantity);
+        area.setQuantity(area.getQuantity() + quantity);
 
         areaService.updateArea(area);
 
@@ -91,4 +94,8 @@ public class OrderController {
 
     }
 
+    // 출고 내역의 상세 정보 조회
+    public List<OrderDto> findOrderByExWarehousingId(int exWarehousingId) {
+        return orderService.findOrdersByExWarehousingId(exWarehousingId);
+    }
 }

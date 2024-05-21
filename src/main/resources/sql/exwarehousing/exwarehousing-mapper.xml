@@ -40,7 +40,7 @@
         update
             ex_warehousing
         set
-            status = #{status}
+            status = #{status},
             inventory_manager_id = #{inventoryManagerId}
         where
             ex_warehousing_id = #{exWarehousingId}
@@ -55,5 +55,38 @@
             publisher_manager on ex_warehousing.publisher_manager_id = publisher_manager.publisher_manager_id
         where
             publisher_manager.publisher_id = #{publisherId}
+    </select>
+
+    <select id="findExWarehousingByPublisherManager" resultType="com.sh.model.entity.ExWarehousing">
+        select
+            *
+        from
+            ex_warehousing
+        where
+            publisher_manager_id = #{publisherManagerId}
+    </select>
+
+    <select id="findExWarehousingByPublisherIdAndStatus" resultType="com.sh.model.entity.ExWarehousing">
+        select
+            *
+        from
+            ex_warehousing
+        join
+            publisher_manager on ex_warehousing.publisher_manager_id = publisher_manager.publisher_manager_id
+        where
+            publisher_manager.publisher_id = #{publisherId}
+        and
+            status = #{status}
+    </select>
+
+    <select id="findExWarehousingByPublisherManagerIdAndStatus" resultType="com.sh.model.entity.ExWarehousing">
+        select
+            *
+        from
+            ex_warehousing
+        where
+            publisher_manager_id = #{publisherManagerId}
+        and
+            status = #{status}
     </select>
 </mapper>

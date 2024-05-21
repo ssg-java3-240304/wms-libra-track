@@ -3,11 +3,12 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sh.model.dao.BookAreaDao">
-    <insert id="insertBookArea">
+    <insert id="insertBookArea" useGeneratedKeys="true" keyProperty="bookAreaId">
         insert into
             book_area
+            (area_id, book_id, quantity, reserved)
         values (
-            #{areaId}, #{bookId}, #{quantity}, #{reserved})
+            #{areaId}, #{bookId}, #{quantity}, #{reserved}
         )
     </insert>
     <update id="updateBookArea">
@@ -34,9 +35,13 @@
         select
             a.area_id, a.area_name, a.capacity, a.inventory_id, a.publisher_id, a.quantity, a.reserved
         from
-            book_area ba join area a
+            order_area oa
+        join book_area ba
+            on oa.book_area_id = ba.book_area_id
+        join area a
+            on a.area_id = ba.area_id
         where
-            ba.order = #{orderId}
+            oa.order_id = #{orderId}
 
     </select>
 
