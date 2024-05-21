@@ -172,7 +172,7 @@ public class InWarehousingView {
             String choice = scanner.nextLine();
             switch (choice) {
                 case "1":
-                    System.out.printf("입고 정보 ID를 입력해주세요. (입고 정보 ID : %s)\n", ids);
+                    System.out.printf("입고 정보 INDEX를 입력해주세요. (입고 정보 INDEX : %s)\n", "1 - " + ids.size());
                     orderController.findOrderByInWarehousingId(ids.get(Integer.parseInt(scanner.nextLine()) - 1));
                     break;
                 case "0":
@@ -247,11 +247,11 @@ public class InWarehousingView {
             String choice = scanner.nextLine();
             switch (choice) {
                 case "1":
-                    System.out.printf("입고 정보 INDEX를 입력해주세요. (입고 정보 INDEX : %s)\n", ids);
+                    System.out.printf("입고 정보 INDEX를 입력해주세요. (입고 정보 INDEX : %s)\n", "1 - " + ids.size());
                     orderController.findOrderByInWarehousingId(ids.get(Integer.parseInt(scanner.nextLine()) - 1));
                     break;
                 case "2":
-                    System.out.printf("입고 정보 INDEX를 입력해주세요. (입고 정보 INDEX : %s)\n", ids);
+                    System.out.printf("입고 정보 INDEX를 입력해주세요. (입고 정보 INDEX : %s)\n", "1 - " + ids.size());
                     int index = Integer.parseInt(scanner.nextLine()) - 1;
                     System.out.println("입고 상태를 입력해주세요. (ACCEPTED, REJECTED, COMPLETED)");
                     Status status;

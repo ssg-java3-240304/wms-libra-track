@@ -50,4 +50,14 @@ public class OrderService {
         sqlSession.close();
         return orderList;
     }
+
+    public int findPublisherIdByOrderId(int orderId) {
+        SqlSession sqlSession = getSqlSession();
+        OrderDao orderDAO = sqlSession.getMapper(OrderDao.class);
+
+        int publisherId = orderDAO.findPublisherIdByOrderId(orderId);
+        sqlSession.close();
+
+        return publisherId;
+    }
 }

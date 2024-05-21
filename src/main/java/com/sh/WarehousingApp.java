@@ -6,8 +6,11 @@ import com.sh.view.InWarehousingView;
 
 public class WarehousingApp {
 
+    public static boolean EX = true;
+
     public static void main(String[] args) {
-        InWarehousingView.inWarehousingPublisherMainMenu();
+        ExWarehousingView.exWarehousingInventoryManagerMainMenu();
+
 
     }
 }
