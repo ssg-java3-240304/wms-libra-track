@@ -52,7 +52,7 @@
         select
             *
         from
-            in_warehousing order by date
+            in_warehousing
         join
             publisher_manager on in_warehousing.publisher_manager_id = publisher_manager.publisher_manager_id
         where

@@ -2,6 +2,7 @@ package com.sh.view;
 
 import com.sh.controller.ExWarehousingController;
 import com.sh.controller.OrderController;
+import com.sh.exception.StockException;
 import com.sh.model.entity.ExWarehousing;
 import com.sh.model.entity.Status;
 import lombok.Getter;
@@ -16,10 +17,8 @@ public class ExWarehousingView {
 
     private static Scanner scanner = new Scanner(System.in);
 
-//    public static String PUB_MANAGER = "publisherManager";
-    public static Integer PUB_MANAGER_ID = 1;
-//    public static String PUB_NAME = "publisherName";
-    public static Integer PUB_ID = 1;
+    public static Integer PUB_MANAGER_ID = 0;
+    public static Integer PUB_ID = 0;
     public static Integer INVEN_MANAGER_ID  = 1;
 
     private static OrderView orderView;
@@ -29,7 +28,7 @@ public class ExWarehousingView {
     public static OrderController orderController = new OrderController();
 
     // 출판사 직원 메뉴
-    public static void exWarehousingPublisherMenu() {
+    public static void exWarehousingPublisherMainMenu() {
         String exWarehousingMenu = """
                 📦📦📦 출고 관리 📦📦📦
                 ======================
@@ -39,22 +38,28 @@ public class ExWarehousingView {
                 ======================
                 입력 : 
                 """;
-        while(true) {
-            System.out.println(exWarehousingMenu);
-            String choice = scanner.nextLine();
-            switch (choice) {
-                case "1":
-                    exWarehousingRead();
-                    break;
-                case "2":
-                    exWarehousingRegister();
-                    break;
-                case "0":
-                    return;
-                default:
-                    System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
+        while (true) {
+            try {
+                System.out.println(exWarehousingMenu);
+                String choice = scanner.nextLine();
+                switch (choice) {
+                    case "1":
+                        exWarehousingRead();
+                        break;
+                    case "2":
+                        exWarehousingRegister();
+                        break;
+                    case "0":
+                        return;
+                    default:
+                        System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
             }
         }
+
     }
 
     public static void exWarehousingRegister() {
@@ -181,7 +186,7 @@ public class ExWarehousingView {
             String choice = scanner.nextLine();
             switch (choice) {
                 case "1":
-                    System.out.printf("출고 정보 ID를 입력해주세요. (출고 정보 ID : %s)\n", ids);
+                    System.out.printf("출고 정보 ID를 입력해주세요. (출고 정보 ID : %s)\n", "1 - " + ids.size());
                     orderController.findOrderByExWarehousingId(ids.get(Integer.parseInt(scanner.nextLine()) - 1));
                     break;
                 case "0":
@@ -207,28 +212,35 @@ public class ExWarehousingView {
                 ======================
                 입력 : 
                 """;
-        while(true) {
-            System.out.println(exWarehousingMenu);
-            String choice = scanner.nextLine();
-            switch (choice) {
-                case "1":
-                    // 잘못 선택된 status 입력시 재입력
-                    System.out.println("출고 상태를 입력해주세요. (PENDING, ACCEPTED, REJECTED, COMPLETED)");
-                    Status status;
-                    try {
-                        status = Status.valueOf(scanner.nextLine());
-                    } catch (Exception exception) {
-                        System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
+        while (true) {
+            try {
+                System.out.println(exWarehousingMenu);
+                String choice = scanner.nextLine();
+                switch (choice) {
+                    case "1":
+                        // 잘못 선택된 status 입력시 재입력
+                        System.out.println("출고 상태를 입력해주세요. (PENDING, ACCEPTED, REJECTED, COMPLETED)");
+                        Status status;
+                        try {
+                            status = Status.valueOf(scanner.nextLine());
+                        } catch (Exception exception) {
+                            System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
+                            break;
+                        }
+                        exWarehousingController.findExWarehousingByStatus(status);
                         break;
-                    }
-                    exWarehousingController.findExWarehousingByStatus(status);
-                    break;
-                case "0":
-                    return;
-                default:
-                    System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
+                    case "0":
+                        return;
+                    default:
+                        System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
+                }
+            } catch (StockException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
             }
         }
+
     }
 
     public static void exWarehousingInventoryManagerReadMenu() {
@@ -242,30 +254,36 @@ public class ExWarehousingView {
                 입력 : 
                 """;
         while(true) {
-            System.out.println(exWarehousingMenu);
-            String choice = scanner.nextLine();
-            switch (choice) {
-                case "1":
-                    System.out.printf("출고 정보 ID를 입력해주세요. (출고 정보 ID : %s)\n", ids);
-                    orderController.findOrderByExWarehousingId(ids.get(Integer.parseInt(scanner.nextLine()) - 1));
-                    break;
-                case "2":
-                    System.out.printf("출고 정보 ID를 입력해주세요. (출고 정보 ID : %s)\n", ids);
-                    int index = ids.get(Integer.parseInt(scanner.nextLine()) - 1);
-                    System.out.println("출고 상태를 입력해주세요. (ACCEPTED, REJECTED, COMPLETED)");
-                    Status status;
-                    try {
-                        status = Status.valueOf(scanner.nextLine());
-                    } catch (Exception exception) {
-                        System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
+            try {
+                System.out.println(exWarehousingMenu);
+                String choice = scanner.nextLine();
+                switch (choice) {
+                    case "1":
+                        System.out.printf("출고 정보 ID를 입력해주세요. (출고 정보 ID : %s)\n", "1 - " + ids.size());
+                        orderController.findOrderByExWarehousingId(ids.get(Integer.parseInt(scanner.nextLine()) - 1));
                         break;
-                    }
-                    exWarehousingController.updateExWarehousingStatus(index, INVEN_MANAGER_ID, status);
-                    break;
-                case "0":
-                    return;
-                default:
-                    System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
+                    case "2":
+                        System.out.printf("출고 정보 ID를 입력해주세요. (출고 정보 ID : %s)\n", "1 - " + ids.size());
+                        int index = ids.get(Integer.parseInt(scanner.nextLine()) - 1);
+                        System.out.println("출고 상태를 입력해주세요. (ACCEPTED, REJECTED, COMPLETED)");
+                        Status status;
+                        try {
+                            status = Status.valueOf(scanner.nextLine());
+                        } catch (Exception exception) {
+                            System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
+                            break;
+                        }
+                        exWarehousingController.updateExWarehousingStatus(index, INVEN_MANAGER_ID, status);
+                        break;
+                    case "0":
+                        return;
+                    default:
+                        System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
+                }
+            } catch (StockException e) {
+                System.out.println(e.getMessage());
+            } catch (Exception e) {
+                System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
             }
         }
 

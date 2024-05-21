@@ -17,5 +17,6 @@ public class OrderDto {
     private String ISBN;
     private String title;
     private String author;
+    private int publisherId;
 
 }
