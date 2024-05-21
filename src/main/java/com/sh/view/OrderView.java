@@ -13,7 +13,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static com.sh.WarehousingApp.EX;
+import static com.sh.WMSApplication.PUB_MANAGER_ID;
+import static com.sh.WMSApplication.getScanner;
+import static com.sh.view.MemberView.EX;
 
 @AllArgsConstructor
 public class OrderView {
@@ -22,7 +24,7 @@ public class OrderView {
 
     public static List<Integer> ids = new ArrayList<>();
 
-    private static final Scanner scanner = InWarehousingView.getScanner();
+    private static final Scanner scanner = getScanner();
 
 
     public static void orderDetailPublisherMenu() {
@@ -183,7 +185,7 @@ public class OrderView {
                 idx += 1;
             }
             System.out.println("-----------------------------------------------");
-            if(InWarehousingView.PUB_MANAGER_ID != 0) { // 창고 관리자
+            if(PUB_MANAGER_ID != 0) { // 창고 관리자
                 if(EX) { // 출고
                     exOrderDetailInventoryMenu();
                 } else { // 입고

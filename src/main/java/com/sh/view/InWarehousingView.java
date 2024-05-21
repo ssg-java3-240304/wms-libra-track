@@ -2,6 +2,7 @@ package com.sh.view;
 
 import com.sh.controller.InWarehousingController;
 import com.sh.controller.OrderController;
+import com.sh.exception.RequestException;
 import com.sh.exception.StockException;
 import com.sh.model.entity.InWarehousing;
 import com.sh.model.entity.Status;
@@ -9,16 +10,14 @@ import lombok.*;
 
 import java.util.*;
 
+import static com.sh.WMSApplication.*;
+
 @Getter
 @Setter
 public class InWarehousingView {
     private  static List<Integer> ids = new ArrayList<>();
 
-    private static Scanner scanner = new Scanner(System.in);
-
-    public static Integer PUB_MANAGER_ID = 1;
-    public static Integer PUB_ID = 1;
-    public static Integer INVEN_MANAGER_ID  = 0;
+    private static Scanner scanner = getScanner();
 
     private static OrderView orderView;
 
@@ -40,7 +39,7 @@ public class InWarehousingView {
                     """;
             while (true) {
                 System.out.println(inWarehousingMenu);
-                String choice = scanner.nextLine();
+                String choice = scanner.next();
                 switch (choice) {
                     case "1":
                         inWarehousingRead();
@@ -54,6 +53,8 @@ public class InWarehousingView {
                         System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
                 }
             }
+        } catch (RequestException e) {
+            System.out.println(e.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
@@ -66,12 +67,12 @@ public class InWarehousingView {
 
         while(true) {
             System.out.println("도서 ISBN 번호를 입력해주세요. (exit 입력시 종료)");
-            String isbn = scanner.nextLine();
+            String isbn = scanner.next();
             if(Objects.equals(isbn, "exit")) {
                 break;
             }
             System.out.println("도서 입고 수량을 입력해주세요.");
-            int quantity = Integer.parseInt(scanner.nextLine());
+            int quantity = Integer.parseInt(scanner.next());
             orders.put(isbn, quantity);
         }
 
@@ -182,10 +183,6 @@ public class InWarehousingView {
             }
 
         }
-    }
-
-    public static Scanner getScanner() {
-        return scanner;
     }
 
     // 입고 관리자 메뉴

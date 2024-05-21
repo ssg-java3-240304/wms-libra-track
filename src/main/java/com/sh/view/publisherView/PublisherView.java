@@ -59,7 +59,7 @@ public class PublisherView
             System.out.println("메뉴를 선택해주세요 : ");
             int n = scanner.nextInt();
             switch (n) {
-                case 1 : bookMenuView.showMenu(publisherManager);
+                case 1 : bookMenuView.showMenu();
                     break;
                 case 2 : publisherMenu(publisherManager);
                     break;
@@ -87,8 +87,6 @@ public class PublisherView
             System.out.print("메뉴 : ");
             int n = scanner.nextInt();
             switch(n) {
-//                case 1 : publisherController.insertPublisher(input());//출판사 등록
-//                    break;
                 case 1 : publisherController.updatePublisher(inputUpdate(id));//출판사 정보 수정
                     break;
                 case 2 :
