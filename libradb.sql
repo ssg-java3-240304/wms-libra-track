@@ -284,4 +284,49 @@
 # 	`order_id`
 # );
 #
+use libradb;
 
+INSERT INTO member values (2, '박민혁', 'admin2', 'admin2', 'inventory', '0987654321', 'test@gmail.com');
+
+# INSERT INTO publisher (name, email, phone_number, business_number) values ('휨2출판사', 'admin2@heem.com','01012345672', '1234567892');
+INSERT INTO inventory_manager(inventory_manager_id, entry_date, emp_number, inventory_id, member_id) VALUES (2, '2024-05-21', 2, 2, 2);
+
+# INSERT INTO publisher (name, email, phone_number, business_number) values ('신세계2출판사', 'admin2@ssg.com','01012245672', '12334567893');
+
+
+# INSERT INTO inventory_manager (member_id, inventory_id) values (2, 2);
+
+INSERT INTO `genre` (name) values ('소설');
+
+# INSERT INTO `book` (title, ISBN, publisher_id, genre_id, price, pub_date, author, pages, size) values ('희민이의 책', '12345678910', 1, 1, 10000, '2021-06-01', '희민', 100, 'A4');
+
+# insert into in_warehousing (date, status, publisher_manager_id) values
+#     ('2021-06-01', 'PENDING', 1);
+#
+# insert into in_warehousing (date, status, publisher_manager_id) values
+#     ('2021-06-01', 'PENDING', 1);
+
+insert into ex_warehousing(address, receiver, receiver_phone, receiver_email, date, status, publisher_manager_id,
+                           inventory_manager_id)
+VALUES ('서울', '박민혁', '01011112222', 'test@test', '2024-05-21', 'PENDING', null, '2');
+
+insert into ex_warehousing(address, receiver, receiver_phone, receiver_email, date, status, publisher_manager_id,
+                           inventory_manager_id)
+VALUES ('서울2', '박민혁2', '01011112222', 'test2@test', '2024-05-21', 'PENDING', null, '2');
+
+insert into ex_warehousing(address, receiver, receiver_phone, receiver_email, date, status, publisher_manager_id,
+                           inventory_manager_id)
+VALUES ('서울3', '박민혁3', '01011112223', 'test3@test', '2024-05-21', 'PENDING', null, '2');
+
+
+INSERT INTO `order` (quantity, book_id, ex_warehousing_id) values (10, 1, 1);
+
+INSERT INTO `order` (quantity, book_id, ex_warehousing_id) values (10, 1, 1);
+
+select
+    quantity, ISBN, title, author
+from `order` o
+         left join
+     book on o.book_id = book.book_id
+where
+    ex_warehousing_id = 1;

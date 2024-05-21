@@ -3,12 +3,12 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sh.model.dao.ExWarehousingDao">
-    <insert id="insertExWarehousing">
+    <insert id="insertExWarehousing" useGeneratedKeys="true" keyProperty="exWarehousingId">
         insert into
             ex_warehousing
-        (date, status, publisher_manager_id)
+        (date, status, publisher_manager_id, address, receiver, receiver_phone, receiver_email)
         values (
-        #{date}, #{status}, #{publisherManagerId}
+        #{date}, #{status}, #{publisherManagerId}, #{address}, #{receiver}, #{receiverPhone}, #{receiverEmail}
         )
     </insert>
     <insert id="insertOrders">
