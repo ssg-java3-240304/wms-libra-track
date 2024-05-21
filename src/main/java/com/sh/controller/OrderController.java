@@ -2,6 +2,7 @@ package com.sh.controller;
 
 import com.sh.area.model.dto.AreaDto;
 import com.sh.area.model.service.AreaService;
+import com.sh.exception.StockException;
 import com.sh.model.dto.OrderAreaDetailDto;
 import com.sh.model.dto.OrderDto;
 import com.sh.model.entity.BookArea;
@@ -46,13 +47,17 @@ public class OrderController {
             quantity *= -1;
         }
 
+        // 입고 시 구역 수용량 확인
+        if (inWarehousing && quantity + area.getReserved() + area.getQuantity() > area.getCapacity()) {
+            throw new StockException("수용량을 초과하였습니다.");
+        }
+
         //입/출고 요청된 수량만큼 업데이트
+        int bookAreaId = bookAreaService.reserveBookArea(area.getAreaId(),order.getBookId(), quantity, areaName);
 
         area.setReserved(area.getReserved() + quantity);
 
         areaService.updateArea(area);
-
-        int bookAreaId = bookAreaService.reserveBookArea(area.getAreaId(),order.getBookId(), quantity, areaName);
 
         //int bookAreaId = 1;
         if (orderAreaService.findOrderAreaByOrderId(orderId) != null) {
@@ -96,6 +101,8 @@ public class OrderController {
 
     // 출고 내역의 상세 정보 조회
     public List<OrderDto> findOrderByExWarehousingId(int exWarehousingId) {
-        return orderService.findOrdersByExWarehousingId(exWarehousingId);
+        List<OrderDto> orderDtoList = orderService.findOrdersByExWarehousingId(exWarehousingId);
+        OrderView.displayOrderDto(orderDtoList);
+        return orderDtoList;
     }
 }

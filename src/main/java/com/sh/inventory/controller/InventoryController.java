@@ -5,6 +5,7 @@ package com.sh.inventory.controller;
 //import com.sh.inventory.model.dto.CategoryDto;
 import com.sh.inventory.model.dto.InventoryDto;
 import com.sh.inventory.model.service.InventoryService;
+import com.sh.inventory.view.InventoryErrorView;
 import com.sh.inventory.view.InventoryResultView;
 
 import java.util.List;
@@ -24,30 +25,50 @@ public class InventoryController {
     private InventoryService inventoryService = new InventoryService();
 
     public void findAllInventory() {
-        // n개의 InventoryDto 반환 : List<InventoryDto>
-        List<InventoryDto> list = inventoryService.findAllInventory();
-        InventoryResultView.displayInventoryList(list);
+        try {
+            // n개의 InventoryDto 반환 : List<InventoryDto>
+            List<InventoryDto> list = inventoryService.findAllInventory();
+            InventoryResultView.displayInventoryList(list);
+        } catch (Exception e) {
+            InventoryErrorView.displayError("처리 중 오류가 발생하였습니다. 다시 시도해주세요.");
+        }
     }
 
     public void findInventoryByInventoryId(int inventoryId) {
-        // 0~1개의 InventoryDto 반환 : InventoryDto
-        InventoryDto inventoryDto = inventoryService.findInventoryByInventoryId(inventoryId);
-        InventoryResultView.displayInventory(inventoryDto);
+        try {
+            // 0~1개의 InventoryDto 반환 : InventoryDto
+            InventoryDto inventoryDto = inventoryService.findInventoryByInventoryId(inventoryId);
+            InventoryResultView.displayInventory(inventoryDto);
+        } catch (Exception e) {
+            InventoryErrorView.displayError("처리 중 오류가 발생하였습니다. 다시 시도해주세요.");
+        }
     }
 
     public void insertInventory(InventoryDto inventoryDto) {
-        int result = inventoryService.insertInventory(inventoryDto);
-        InventoryResultView.displayResult("창고 등록", result);
+        try {
+            int result = inventoryService.insertInventory(inventoryDto);
+            InventoryResultView.displayResult("창고 등록", result);
+        } catch (Exception e) {
+            InventoryErrorView.displayError("처리 중 오류가 발생하였습니다. 다시 시도해주세요.");
+        }
     }
 
     public void updateInventory(InventoryDto inventoryDto) {
-        int result = inventoryService.updateInventory(inventoryDto);
-        InventoryResultView.displayResult("창고 수정", result);
+        try {
+            int result = inventoryService.updateInventory(inventoryDto);
+            InventoryResultView.displayResult("창고 수정", result);
+        } catch (Exception e) {
+            InventoryErrorView.displayError("처리 중 오류가 발생하였습니다. 다시 시도해주세요.");
+        }
     }
 
     public void deleteInventory(int inventoryId) {
-        int result = inventoryService.deleteInventory(inventoryId);
-        InventoryResultView.displayResult("창고 삭제", result);
+        try {
+            int result = inventoryService.deleteInventory(inventoryId);
+            InventoryResultView.displayResult("창고 삭제", result);
+        } catch (Exception e) {
+            InventoryErrorView.displayError("처리 중 오류가 발생하였습니다. 다시 시도해주세요.");
+        }
     }
 
 }
