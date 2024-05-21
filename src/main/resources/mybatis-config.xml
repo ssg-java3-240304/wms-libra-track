@@ -17,7 +17,7 @@
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://techbrew4.iptime.org/libradb"/>
+                <property name="url" value="jdbc:mysql://techbrew4.iptime.org:3306/libradb"/>
                 <property name="username" value="libra"/>
                 <property name="password" value="libra"/>
             </dataSource>
@@ -30,7 +30,11 @@
         <mapper resource="sql/member/member.xml"/>
         <mapper resource="sql/member/publisherManager.xml"/>
         <mapper resource="sql/member/inventoryManager.xml"/>
+        <mapper resource="sql/member/adminUser.xml"/>
         <mapper resource="sql/area/area-mapper.xml"/>
         <mapper resource="sql/inventory/inventory-mapper.xml"/>
+        <mapper resource="sql/bookarea/bookarea-mapper.xml"/>
+        <mapper resource="sql/orderarea/orderarea-mapper.xml"/>
+
     </mappers>
 </configuration>

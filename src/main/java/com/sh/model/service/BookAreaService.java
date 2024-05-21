@@ -1,6 +1,8 @@
 package com.sh.model.service;
 
 import com.sh.model.dto.AreaDto;
+import com.sh.exception.StockException;
+
 import com.sh.model.dao.BookAreaDao;
 import com.sh.model.entity.BookArea;
 import org.apache.ibatis.session.SqlSession;
@@ -20,17 +22,27 @@ public class BookAreaService {
         int book_area_id = 0;
         try {
             if (bookArea == null) {
+                if (quantity < 0) {
+                    throw new StockException("재고가 부족합니다.");
+                }
                 bookArea = new BookArea();
                 bookArea.setAreaId(areaId);
                 bookArea.setBookId(bookId);
                 bookArea.setQuantity(0);
                 bookArea.setReserved(quantity);
-                book_area_id = bookAreaDao.insertBookArea(bookArea);
+                bookAreaDao.insertBookArea(bookArea);
+                book_area_id = bookArea.getBookAreaId();
             } else {
+                // 출고 시 선택한 구역에 재고 수량 확인
+                if (quantity < 0 && bookArea.getQuantity() +
+                        (Math.min(bookArea.getReserved(), 0))  < -quantity) {
+                    throw new StockException("재고가 부족합니다.");
+                }
                 book_area_id = bookArea.getBookAreaId();
                 bookArea.setReserved(bookArea.getReserved() + quantity);
                 bookAreaDao.updateBookArea(bookArea);
             }
+            sqlSession.commit();
         } catch (Exception e) {
                 sqlSession.rollback();
                 throw new RuntimeException(e);
@@ -38,7 +50,6 @@ public class BookAreaService {
             sqlSession.close();
         }
         return book_area_id;
-
 
     }
 

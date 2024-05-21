@@ -1,11 +1,14 @@
 package com.sh.model.service;
 
 import com.sh.model.dao.ExWarehousingDao;
+import com.sh.model.dao.InWarehousingDao;
+import com.sh.model.dto.OrderDto;
 import com.sh.model.entity.ExWarehousing;
 import com.sh.model.entity.Order;
 import com.sh.model.entity.Status;
 import org.apache.ibatis.session.SqlSession;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -48,11 +51,43 @@ public class ExWarehousingService {
         return exWarehousingList;
     }
 
-    public void insertExWarehousing(HashMap<String, Integer> orders, int publisherManagerId) {
+    public List<ExWarehousing> findExWarehousingByPublisherManagerId(int publisherManagerId) {
+        SqlSession sqlSession = getSqlSession();
+        ExWarehousingDao exWarehousingDao = sqlSession.getMapper(ExWarehousingDao.class);
+
+        List<ExWarehousing> exWarehousingList = exWarehousingDao.findExWarehousingByPublisherManager(publisherManagerId);
+        sqlSession.close();
+        return exWarehousingList;
+    }
+
+    public List<ExWarehousing> findExWarehousingByPublisherIdAndStatus(int publisherId, Status status) {
+        SqlSession sqlSession = getSqlSession();
+        ExWarehousingDao exWarehousingDao = sqlSession.getMapper(ExWarehousingDao.class);
+
+        List<ExWarehousing> exWarehousingList = exWarehousingDao.findExWarehousingByPublisherIdAndStatus(publisherId, status);
+        sqlSession.close();
+        return exWarehousingList;
+    }
+
+    public List<ExWarehousing> findExWarehousingByPublisherManagerIdAndStatus(int publisherManagerId, Status status) {
+        SqlSession sqlSession = getSqlSession();
+        ExWarehousingDao exWarehousingDao = sqlSession.getMapper(ExWarehousingDao.class);
+
+        List<ExWarehousing> exWarehousingList = exWarehousingDao.findExWarehousingByPublisherManagerIdAndStatus(publisherManagerId, status);
+        sqlSession.close();
+        return exWarehousingList;
+    }
+
+    public void insertExWarehousing(HashMap<String, Integer> orders, int publisherManagerId, String address, String receiver, String receiverPhone, String receiverEmail) {
         ExWarehousing exWarehousing = new ExWarehousing();
 
         exWarehousing.setPublisherManagerId(publisherManagerId);
+        exWarehousing.setDate(new Timestamp(System.currentTimeMillis()));
         exWarehousing.setStatus(Status.PENDING);
+        exWarehousing.setAddress(address);
+        exWarehousing.setReceiver(receiver);
+        exWarehousing.setReceiverPhone(receiverPhone);
+        exWarehousing.setReceiverEmail(receiverEmail);
 
         // iterate over orders
         List<Order> orderList = new ArrayList<>();

@@ -23,4 +23,13 @@ public class MemberDto {
         this.password = password;
         this.userName = userName;
     }
+
+    public MemberDto(int memberId, String name, String userName, String password, String phoneNumber, String email) {
+        this.memberId = memberId;
+        this.name = name;
+        this.userName = userName;
+        this.password = password;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+    }
 }
