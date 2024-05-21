@@ -17,4 +17,6 @@ public interface OrderDao {
     int findPublisherIdByOrderId(int orderId);
 
     OrderAreaDetailDto findOrderAreaDetailByOrderId(int orderId);
+
+    List<OrderDto> findOrdersByExWarehousingId(int exWarehousingId);
 }

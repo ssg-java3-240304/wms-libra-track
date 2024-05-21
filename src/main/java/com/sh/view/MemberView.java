@@ -14,13 +14,15 @@ public class MemberView {
 
     public void mainMenu() {
         String menu = """
-                🏭 WMS 도서재고관리 시스템
-                =========================
+                🏭 WMS 도서재고관리 시스템에 접속되었습니다!🏭
+               
+                📑📑📑 메뉴 선택 📑📑📑
                 1. 회원 가입
                 2. 로그인
                 0. 종료
-                =========================
-                입력 : 
+                ========================
+                
+                
                 """;
 // view 에다가 static 처럼 저장을 해둬라 (로그인)!!
         while (true) {
@@ -45,12 +47,13 @@ public class MemberView {
         String id = sc.next();
         System.out.print("▶ Password 입력 : ");
         String password = sc.next();
+        System.out.println();
         MemberDto memberDto =  memberController.loginCheck(id, password);
 
-        if(memberDto.getRole() == Role.PUBLISHER){
+        if(memberDto.getRole() == Role.ADMIN){
             PublisherManagerView publisherManagerView = new PublisherManagerView();
             publisherManagerView.choicePublisherMenu(memberDto.getMemberId());
-        }else {
+        } else {
             InventoryManagerView inventoryManagerView = new InventoryManagerView();
 //            inventoryManagerView.choiceInventoryMenu();
         }
@@ -81,18 +84,18 @@ public class MemberView {
     }
 
     private MemberDto insertPublisherMember() {// Publisher 회원가입
-        System.out.print("> ✏✏✏ 회원 등록할 정보 작성해주세요. ✏✏✏");
-        System.out.print("> 회원 이름 입력");
+        System.out.println("> 📝📝📝 회원 등록할 정보 작성해주세요. 📝📝📝");
+        System.out.print("▶ 회원 이름 입력 : ");
         String name = sc.next();
         sc.nextLine();
-        System.out.print("> username 입력");
+        System.out.print("▶ ID 입력 : ");
         String userName = sc.next();
         sc.nextLine();
-        System.out.print("> 비밀 번호 입력");
+        System.out.print("▶ Password 입력 : ");
         String password = sc.nextLine();
-        System.out.print("> 전화 번호 입력");
+        System.out.print("▶ 전화번호 입력 : ");
         String phoneNumber = sc.nextLine();
-        System.out.print("> 이메일 입력하시오");
+        System.out.print("▶ 이메일 입력 : ");
         String email = sc.nextLine();
         return new MemberDto(0, name, userName, password, Role.PUBLISHER, phoneNumber, email);
     }
@@ -101,15 +104,15 @@ public class MemberView {
     //InventoryManager 회원가입
     private MemberDto insertInventoryMember() {
         System.out.println("> ✏✏✏ 회원 등록할 정보 작성해주세요. ✏✏✏");
-        System.out.println("> 회원 이름 입력");
+        System.out.println("▶ 회원 이름 입력");
         String name = sc.next();
         sc.nextLine();
-        System.out.println("> username 입력");
+        System.out.println("▶ username 입력");
         String userName = sc.next();
         sc.nextLine();
-        System.out.println("> 비밀 번호 입력");
+        System.out.println("▶ 비밀 번호 입력");
         String password = sc.nextLine();
-        System.out.println("> 전화 번호 입력");
+        System.out.println("▶ 전화 번호 입력");
         String phoneNumber = sc.nextLine();
         System.out.println("> 이메일 입력하시오");
         String email = sc.nextLine();

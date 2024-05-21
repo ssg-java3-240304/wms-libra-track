@@ -16,8 +16,7 @@
             member
         where
             username = #{userName} and password = #{password}
-
     </select>
-    findPublisherManagerInfo
+
 
 </mapper>
