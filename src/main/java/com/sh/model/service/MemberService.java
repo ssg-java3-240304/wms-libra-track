@@ -12,8 +12,8 @@ import static com.sh.common.MyBatisTemplate.getSqlSession;
 
 public class MemberService {
 
-    //홍지민 작업 시작
-    // AdminUser 회원가입
+//    홍지민 작업 시작
+//     AdminUser 회원가입
     public int insertAdminUser(MemberDto memberDto) {
         SqlSession sqlSession = getSqlSession();
         MemberMapper memberMapper = sqlSession.getMapper(MemberMapper.class);
@@ -34,7 +34,7 @@ public class MemberService {
         SqlSession sqlSession = getSqlSession();
         MemberMapper memberMapper = sqlSession.getMapper(MemberMapper.class);
         try {
-            int result = memberMapper.insertMember(memberDto);
+            int result = memberMapper.insertPublisherMember(memberDto);
             sqlSession.commit();
             return result;
         } catch (Exception e) {
@@ -44,15 +44,16 @@ public class MemberService {
             sqlSession.close();
         }
     }
+
     //홍지민 작업 끝
 
     public int insertInventoryMember(MemberDto memberDto) {
         try (SqlSession sqlSession = getSqlSession()) {
             MemberMapper memberMapper = sqlSession.getMapper(MemberMapper.class);
-            int result = memberMapper.insertMember(memberDto);
+            int result = memberMapper.insertInventoryMember(memberDto);
 
             InventoryManagerMapper inventoryManagerMapper = sqlSession.getMapper(InventoryManagerMapper.class);
-            InventoryManagerDto inventoryManagerDto = new InventoryManagerDto(new Timestamp(System.currentTimeMillis()), 0, 10, memberDto.getMemberId());
+            InventoryManagerDto inventoryManagerDto = new InventoryManagerDto(new Timestamp(System.currentTimeMillis()), 0, 1, memberDto.getMemberId());
             int result2 = inventoryManagerMapper.insertInventoryManager(inventoryManagerDto);
             sqlSession.commit();
             return result;

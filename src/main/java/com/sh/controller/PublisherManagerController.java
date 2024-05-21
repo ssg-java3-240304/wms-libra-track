@@ -15,13 +15,10 @@ public class PublisherManagerController {
     }
 
     public void updatePublisherManager(MemberDto memberDto) {
-        int result  = publisherManagerService.updatePublisherManager(memberDto);
+        int result = publisherManagerService.updatePublisherManager(memberDto);
         MemberResultView.displayResult("출판사 매니저 정보 수정", result);
 
 
-
-    public PublisherManagerDto findPublisherManager() {
-        return publisherManagerService.findPublisherManager();
 
     }
 }

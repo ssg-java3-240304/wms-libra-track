@@ -25,10 +25,6 @@ public class MemberController {
     }
 
 
-    public MemberDto loginCheck(String id, String password) {
-            return memberService.loginCheck(id, password);
-    }
-
     public void deleteInfo(MemberDto memberDto) {
         int result = memberService.deleteInfo(memberDto);
     }

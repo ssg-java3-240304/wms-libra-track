@@ -1,7 +1,7 @@
 package com.sh.view;
 
 import com.sh.controller.MemberController;
-import com.sh.inventory.view.InventoryView;
+//import com.sh.inventory.view.InventoryView;
 import com.sh.model.entity.MemberDto;
 import com.sh.model.entity.Role;
 
@@ -92,7 +92,7 @@ public class MemberView {
             publisherManagerView.choicePublisherMenu(memberDto);
         } else if (memberDto.getRole() == Role.INVENTORY) {
             InventoryManagerView inventoryManagerView = new InventoryManagerView();
-//            inventoryManagerView.choiceInventoryManagerMenu();
+            inventoryManagerView.choiceInventoryManagerMenu(memberDto);
         } else if(memberDto.getRole() == Role.ADMIN) {
             AdminUserView adminUserView = new AdminUserView();
             adminUserView.choiceAdminMenu(memberDto);
@@ -155,11 +155,11 @@ public class MemberView {
         String userName = sc.next();
         sc.nextLine();
         System.out.println("▶ 비밀 번호 입력");
-        String password = sc.nextLine();
+        String password = sc.next();
         System.out.println("▶ 전화 번호 입력");
-        String phoneNumber = sc.nextLine();
+        String phoneNumber = sc.next();
         System.out.println("> 이메일 입력하시오");
-        String email = sc.nextLine();
+        String email = sc.next();
         return new MemberDto(0, name, userName, password, Role.INVENTORY, phoneNumber, email);
 
     }

@@ -5,8 +5,7 @@ import com.sh.model.entity.PublisherManagerDto;
 
 public interface PublisherManagerMapper {
 
-    int insertPublisherManager(PublisherManagerDto publisherManagerDto);
-    PublisherManagerDto findPublisherManager();
+    PublisherManagerDto findPublisherManager(MemberDto memberDto);
 
     int updatePublisherManagerInfo(MemberDto memberDto);
 }

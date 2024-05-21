@@ -1,7 +1,7 @@
 package com.sh.view;
 
 import com.sh.controller.AdminUserContoller;
-import com.sh.inventory.view.InventoryView;
+//import com.sh.inventory.view.InventoryView;
 import com.sh.model.entity.MemberDto;
 
 import java.util.Scanner;

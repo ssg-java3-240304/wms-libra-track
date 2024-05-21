@@ -2,7 +2,6 @@ package com.sh.view;
 
 import com.sh.controller.InventoryManagerController;
 import com.sh.controller.MemberController;
-import com.sh.controller.PublisherManagerController;
 import com.sh.model.entity.InventoryManagerDto;
 import com.sh.model.entity.MemberDto;
 

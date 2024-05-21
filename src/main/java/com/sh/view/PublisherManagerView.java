@@ -16,6 +16,7 @@ public class PublisherManagerView {
 
 
 
+
     public void choicePublisherMenu(MemberDto memberDto) {
 
         String choicePublisherMenu = """
@@ -27,7 +28,7 @@ public class PublisherManagerView {
                 4. 출고 관리
                 5. 나가기
                 =============================
-                입력 : 
+                입력 :
                 """;
         while (true) {
             System.out.print(choicePublisherMenu);
@@ -38,8 +39,8 @@ public class PublisherManagerView {
                     publisherManagement(memberDto);
                     break;
 //            case 2 : BookView.(); break;
-            case 3 : InWarehousingView.inWarehousingPublisherMenu(); break;
-            case 4 : ExWarehousingView.exWarehousingPublisherMenu(); break;
+            case 3 : InWarehousingView.inWarehousingPublisherMainMenu(); break;
+            case 4 : ExWarehousingView.exWarehousingPublisherMainMenu(); break;
                 case 5 :
                     return;
                 default:
