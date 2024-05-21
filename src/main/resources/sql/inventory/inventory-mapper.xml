@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sh.inventory.model.dao.InventoryMapper">
+<mapper namespace="com.sh.model.dao.InventoryMapper">
     <select id="findAllInventory" resultType="inventoryDto">
         select
             *

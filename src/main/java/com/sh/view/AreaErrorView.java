@@ -1,4 +1,4 @@
-package com.sh.area.view;
+package com.sh.view;
 
 public class AreaErrorView {
     public static void displayError(String errorCode) {

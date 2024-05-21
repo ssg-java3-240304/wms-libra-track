@@ -1,16 +1,14 @@
 package com.sh.controller;
 
-import com.sh.area.model.dto.AreaDto;
-import com.sh.area.model.service.AreaService;
+import com.sh.model.dto.AreaDto;
+import com.sh.model.service.AreaService;
 import com.sh.model.dto.OrderAreaDetailDto;
 import com.sh.model.dto.OrderDto;
-import com.sh.model.entity.BookArea;
 import com.sh.model.service.BookAreaService;
 import com.sh.model.service.OrderAreaService;
 import com.sh.model.service.OrderService;
 import com.sh.view.OrderView;
 
-import java.awt.geom.Area;
 import java.util.List;
 
 public class OrderController {

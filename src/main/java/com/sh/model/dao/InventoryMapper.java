@@ -1,6 +1,6 @@
-package com.sh.inventory.model.dao;
+package com.sh.model.dao;
 
-import com.sh.inventory.model.dto.InventoryDto;
+import com.sh.model.dto.InventoryDto;
 
 import java.util.List;
 

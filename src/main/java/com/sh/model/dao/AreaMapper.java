@@ -1,7 +1,7 @@
-package com.sh.area.model.dao;
+package com.sh.model.dao;
 
-import com.sh.area.model.dto.AreaDto;
-import com.sh.inventory.model.dto.InventoryDto;
+import com.sh.model.dto.AreaDto;
+import com.sh.model.dto.InventoryDto;
 
 import java.util.HashMap;
 import java.util.List;

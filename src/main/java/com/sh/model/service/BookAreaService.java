@@ -1,11 +1,9 @@
 package com.sh.model.service;
 
-import com.sh.area.model.dto.AreaDto;
+import com.sh.model.dto.AreaDto;
 import com.sh.model.dao.BookAreaDao;
 import com.sh.model.entity.BookArea;
 import org.apache.ibatis.session.SqlSession;
-
-import java.awt.geom.Area;
 
 import static com.sh.common.MyBatisTemplate.getSqlSession;
 

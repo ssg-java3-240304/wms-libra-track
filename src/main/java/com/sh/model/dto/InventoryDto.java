@@ -1,4 +1,4 @@
-package com.sh.inventory.model.dto;
+package com.sh.model.dto;
 
 import lombok.*;
 

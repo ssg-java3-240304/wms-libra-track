@@ -1,8 +1,8 @@
-package com.sh.area.model.service;
+package com.sh.model.service;
 
-import com.sh.area.model.dao.AreaMapper;
-import com.sh.area.model.dto.AreaDto;
-import com.sh.inventory.model.dto.InventoryDto;
+import com.sh.model.dao.AreaMapper;
+import com.sh.model.dto.AreaDto;
+import com.sh.model.dto.InventoryDto;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.HashMap;
