@@ -1,4 +1,4 @@
-﻿DROP TABLE IF EXISTS Publisher;
+DROP TABLE IF EXISTS Publisher;
 
 CREATE TABLE Publisher (
 	`publisher_id`	INTEGER	NOT NULL AUTO_INCREMENT,
