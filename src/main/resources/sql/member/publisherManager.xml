@@ -39,6 +39,8 @@
         )
     </insert>
 
+
+
     <update id="updatePublisherManagerInfo">
         update
             member

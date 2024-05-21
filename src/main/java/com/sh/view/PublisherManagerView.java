@@ -13,12 +13,6 @@ public class PublisherManagerView {
     Scanner sc = new Scanner(System.in);
     PublisherManagerController publisherManagerController = new PublisherManagerController();
 
-    public void choicePublisher() {
-        System.out.println("출판사를 선택해주세요 : ");
-        String choice = sc.next();
-
-    }
-
     public void choicePublisherMenu(MemberDto memberDto) {
         String choicePublisherMenu = """
                 📖📖📖출판사 매니저 메뉴📖📖📖
@@ -31,7 +25,7 @@ public class PublisherManagerView {
                 입력 : 
                 """;
         while (true) {
-            System.out.println(choicePublisherMenu);
+            System.out.print(choicePublisherMenu);
             int choice = sc.nextInt();
             switch (choice) {
                 case 1:
@@ -54,33 +48,27 @@ public class PublisherManagerView {
                 ===================
                  1. 회원 정보 조회
                  2. 회원 정보 수정
-                 3. 회원 정보 삭제
-                 4. 나가기
+                 3. 나가기
                 ===================
                 """);
         while (true) {
-            System.out.println(publihserManagement);
+            System.out.print(publihserManagement);
             int choice = sc.nextInt();
 
             switch (choice) {
                 case 1:
-//                    PublisherManagerDto publisherManagerDto1 = publisherManagerController.findPublisherManagerInfo(memberDto);
                     publisherManagerController.findPublisherManagerInfo(memberDto);
                     break;
                 case 2:
                     publisherManagerController.updatePublisherManager(updatePublisherManager(memberDto));
-
                     break;
                 case 3:
-//                    publisherManagerController.deletePublisherManager(); break;
-                case 4 :
                     return;
                 default:
                     System.out.println("잘못 입력된 값입니다. 다시 입력해수제요!");
             }
         }
     }
-
 
     private MemberDto updatePublisherManager(MemberDto memberDto) {
         System.out.println("️✏️️✏️️✏️회원 정보 수정✏️✏️️✏️");
@@ -101,6 +89,5 @@ public class PublisherManagerView {
 
         return new MemberDto(memberDto.getMemberId(), name, username, password, memberDto.getRole() ,phoneNumber, email);
     }
-
 }
 //홍지민 작업 끝
