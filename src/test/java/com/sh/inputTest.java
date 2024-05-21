@@ -137,7 +137,7 @@ public class inputTest {
 //    @DisplayName("출판 등록된 모든 책 조회 하기 ")
 //    void test6() {
 //        //given
-//        PublisherManager publisherManager = new PublisherManager(1, 1);
+//        PublisherManager publisherManager = new PublisherManager(1,1, 1);
 //        int id = publisherManager.getPublisherId();
 //        //when
 //        List<Book> list = bookDAO.findAll(id);
