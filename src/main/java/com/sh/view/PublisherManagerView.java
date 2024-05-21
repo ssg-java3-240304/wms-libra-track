@@ -19,13 +19,14 @@ public class PublisherManagerView {
 
     }
 
-    public void choicePublisherMenu(int memberId) {
+    public void choicePublisherMenu(MemberDto memberDto) {
         String choicePublisherMenu = """
                 📖📖📖출판사 매니저 메뉴📖📖📖
                 =============================
                 1. 회원 정보 관리
                 2. 도서 관리
                 3. 입/출고 관리
+                4. 나가기
                 =============================
                 입력 : 
                 """;
@@ -34,17 +35,19 @@ public class PublisherManagerView {
             int choice = sc.nextInt();
             switch (choice) {
                 case 1:
-                    publisherManagement(memberId);
+                    publisherManagement(memberDto);
+                    break;
 //            case 2 : BookView.(); break;
 //            case 3 : InventoryView(); break;
+                case 4 :
+                    return;
                 default:
                     System.out.print("잘못된 입력입니다. 다시 입력해주세요 : ");
-                    ;
             }
         }
     }
 
-    private void publisherManagement(int memberId) {
+    private void publisherManagement(MemberDto memberDto) {
         String publihserManagement = ("""
                 ===================
                 ℹ️ 회원 정보 관리 ℹ️
@@ -52,45 +55,51 @@ public class PublisherManagerView {
                  1. 회원 정보 조회
                  2. 회원 정보 수정
                  3. 회원 정보 삭제
+                 4. 나가기
                 ===================
                 """);
         while (true) {
             System.out.println(publihserManagement);
             int choice = sc.nextInt();
+
             switch (choice) {
                 case 1:
-                    publisherManagerController.findPublisherManagerInfo(memberId);
+//                    PublisherManagerDto publisherManagerDto1 = publisherManagerController.findPublisherManagerInfo(memberDto);
+                    publisherManagerController.findPublisherManagerInfo(memberDto);
                     break;
                 case 2:
-                    publisherManagerController.updatePublisherManager(memberId); break;
+                    publisherManagerController.updatePublisherManager(updatePublisherManager(memberDto));
+
+                    break;
                 case 3:
 //                    publisherManagerController.deletePublisherManager(); break;
+                case 4 :
+                    return;
+                default:
+                    System.out.println("잘못 입력된 값입니다. 다시 입력해수제요!");
             }
         }
     }
 
-    public static void displayPublisherManager(PublisherManagerDto publisherManagerDto) {
-        if (publisherManagerDto == null)System.out.println("조회되지 않는 회원 정보입니다.");
-        System.out.printf(
-                "1. 회원 ID : %d \n" +
-                "2. 이름 :  %s \n" +
-                "3. 아이디 : %s \n" +
-                "4. 비밀 번호 :  %s \n" +
-                "5. 구분 : %s \n" +
-                "6. 개인 핸드폰 : %s \n" +
-                "7. 이메일주소 : %s \n" +
-                "8. 출판사 매니저 ID : %s \n" +
-                "9. 출판사 ID : %s \n",
-                publisherManagerDto.getMemberDto().getMemberId(),
-                publisherManagerDto.getMemberDto().getName(),
-                publisherManagerDto.getMemberDto().getUserName(),
-                publisherManagerDto.getMemberDto().getPassword(),
-                publisherManagerDto.getMemberDto().getRole(),
-                publisherManagerDto.getMemberDto().getPhoneNumber(),
-                publisherManagerDto.getMemberDto().getEmail(),
-                publisherManagerDto.getPublisherManagerId(),
-                publisherManagerDto.getPublisherId()
-                );
+
+    private MemberDto updatePublisherManager(MemberDto memberDto) {
+        System.out.println("️✏️️✏️️✏️회원 정보 수정✏️✏️️✏️");
+        System.out.print("1. 이름 입력: ");
+        String name = sc.next();
+
+        System.out.print("2. 아이디 입력 : ");
+        String username = sc.next();
+
+        System.out.print("3. 비밀 번호 입력 : ");
+        String password = sc.next();
+
+        System.out.print("4. 연락처 입력: ");
+        String phoneNumber = sc.next();
+
+        System.out.print("5. 이메일 주소 입력 : ");
+        String email = sc.next();
+
+        return new MemberDto(memberDto.getMemberId(), name, username, password, memberDto.getRole() ,phoneNumber, email);
     }
 
 }

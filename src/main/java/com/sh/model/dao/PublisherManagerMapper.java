@@ -1,11 +1,12 @@
 package com.sh.model.dao;
 
+import com.sh.model.entity.MemberDto;
 import com.sh.model.entity.PublisherManagerDto;
 
 public interface PublisherManagerMapper {
     int insertPublisherManager(PublisherManagerDto publisherManagerDto);
 
-    PublisherManagerDto findPmInfo(int memberId);
+    PublisherManagerDto findPublisherManagerInfo(MemberDto memberDto);
 
-    PublisherManagerDto updatePmInfo(int memberId);
+    int updatePublisherManagerInfo(MemberDto memberDto);
 }

@@ -3,6 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sh.model.dao.PublisherManagerMapper">
+
     <resultMap id="findPublisherInfo" type ="publisherManagerDto">
         <id column="publisher_manager_id" property="publisherManagerId"/>
         <!-- result : 그외 컬럼 매핑용 -->
@@ -19,33 +20,35 @@
         </association>
     </resultMap>
 
-    <select id="findPmInfo" parameterType="int" resultMap="findPublisherInfo">
+    <select id="findPublisherManagerInfo" parameterType="memberDto" resultMap="findPublisherInfo">
         select
             *
         from
             member m left join publisher_manager pm
                 on m.member_id = pm.member_id
         where
-            pm.member_id = #{memberId};
-    </select>
-
-    <select id="updatePmInfo" parameterType="int" resultMap="findPublisherInfo">
-        select
-        *
-        from
-        member m left join publisher_manager pm
-        on m.member_id = pm.member_id
-        where
-        pm.member_id = #{memberId};
+            pm.member_id = #{memberId}
     </select>
 
     <insert id="insertPublisherManager" useGeneratedKeys="true" keyProperty="publisherManagerId">
         insert into
-        publisher_manager(member_id, publisher_id)
+            publisher_manager(member_id, publisher_id)
         values(
-        #{memberId},
-        #{publisherId}
+            #{memberId},
+            #{publisherId}
         )
     </insert>
 
+    <update id="updatePublisherManagerInfo">
+        update
+            member
+        set
+            name = #{name},
+            username = #{userName},
+            password = #{password},
+            phone_number = #{phoneNumber},
+            email = #{email}
+        where
+            member_id = #{memberId}
+    </update>
 </mapper>
