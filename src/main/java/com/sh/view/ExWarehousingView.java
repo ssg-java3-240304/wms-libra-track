@@ -72,7 +72,7 @@ public class ExWarehousingView {
             orders.put(isbn, quantity);
         }
 
-//        exWarehousingController.insertExWarehousing(orders, PUB_MANAGER_ID);
+        exWarehousingController.insertExWarehousing(orders, PUB_MANAGER_ID);
 
         System.out.println("출고 정보 등록이 완료되었습니다.");
 
