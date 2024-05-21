@@ -1,15 +1,14 @@
-package com.sh.area.controller;
+package com.sh.controller;
 
 //import com.sh.common.ErrorView;
 //import com.sh.common.error.ErrorCode;
 //import com.sh.inventory.model.dto.CategoryDto;
-import com.sh.area.model.dto.AreaDto;
-import com.sh.area.model.service.AreaService;
-import com.sh.area.view.AreaErrorView;
-import com.sh.area.view.AreaResultView;
-import com.sh.inventory.model.dto.InventoryDto;
+import com.sh.model.dto.AreaDto;
+import com.sh.model.service.AreaService;
+import com.sh.view.AreaErrorView;
+import com.sh.view.AreaResultView;
+import com.sh.model.dto.InventoryDto;
 
-import java.util.HashMap;
 import java.util.List;
 
 /**

@@ -1,7 +1,7 @@
-package com.sh.inventory.view;
+package com.sh.view;
 
 //import com.sh.inventory.model.dto.CategoryDto;
-import com.sh.inventory.model.dto.InventoryDto;
+import com.sh.model.dto.InventoryDto;
 
 import java.util.List;
 

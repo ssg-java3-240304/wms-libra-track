@@ -1,8 +1,8 @@
-package com.sh.area.view;
+package com.sh.view;
 
 //import com.sh.inventory.model.dto.CategoryDto;
-import com.sh.area.model.dto.AreaDto;
-import com.sh.inventory.model.dto.InventoryDto;
+import com.sh.model.dto.AreaDto;
+import com.sh.model.dto.InventoryDto;
 
 import java.util.List;
 

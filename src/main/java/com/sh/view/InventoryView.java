@@ -1,8 +1,8 @@
-package com.sh.inventory.view;
+package com.sh.view;
 
-import com.sh.inventory.controller.InventoryController;
+import com.sh.controller.InventoryController;
 //import com.sh.menu.model.dto.CategoryDto;
-import com.sh.inventory.model.dto.InventoryDto;
+import com.sh.model.dto.InventoryDto;
 
 import java.util.Scanner;
 

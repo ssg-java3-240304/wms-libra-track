@@ -1,6 +1,6 @@
 package com.sh.model.dao;
 
-import com.sh.area.model.dto.AreaDto;
+import com.sh.model.dto.AreaDto;
 import com.sh.model.entity.BookArea;
 import org.apache.ibatis.annotations.Param;
 
