@@ -8,6 +8,7 @@ import com.sh.view.bookView.bookResultView.DisplayResultView;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import static com.sh.common.MyBatisTemplate.getSqlSession;
@@ -100,6 +101,6 @@ public class BookService {
     public void findBookIdByPublisherIdAndISBN(int publisherId, String ISBN) {
         sqlSession = getSqlSession();
         bookDAO = sqlSession.getMapper(BookDAO.class);
-        int i =  bookDAO.findBookIdByPublisherIdAndISBN(publisherId, ISBN);
+        int i =  bookDAO.findBookIdByPublisherIdAndISBN(Map.of("publisherId", publisherId, "ISBN", ISBN));
     }
 }

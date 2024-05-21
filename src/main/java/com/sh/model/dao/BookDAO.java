@@ -2,8 +2,10 @@ package com.sh.model.dao;
 
 
 import com.sh.model.dto.bookDto.Book;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 public interface BookDAO {
 
@@ -18,5 +20,7 @@ public interface BookDAO {
    List<Book> findAll(int id);
 
 
-    int findBookIdByPublisherIdAndISBN(int publisherId, String isbn);
+
+        int findBookIdByPublisherIdAndISBN(Map<String, Object> param);
+
 }
