@@ -100,6 +100,6 @@ public class BookService {
     public void findBookIdByPublisherIdAndISBN(int publisherId, String ISBN) {
         sqlSession = getSqlSession();
         bookDAO = sqlSession.getMapper(BookDAO.class);
-        int id =  bookDAO.findBookIdByPublisherIdAndISBN(publisherId, ISBN);
+        int i =  bookDAO.findBookIdByPublisherIdAndISBN(publisherId, ISBN);
     }
 }
