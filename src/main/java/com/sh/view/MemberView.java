@@ -1,17 +1,16 @@
 package com.sh.view;
 
 import com.sh.controller.MemberController;
-import com.sh.exception.MemberException;
 import com.sh.model.entity.MemberDto;
 import com.sh.model.entity.Role;
+import com.sh.view.admin.AdminUserView;
 
 import java.util.Scanner;
+import static com.sh.WMSApplication.*;
 
 public class MemberView {
     private Scanner sc = new Scanner(System.in);
     private MemberController memberController = new MemberController();
-
-    public static boolean EX = false;
 
     // 홍지민 작업 시작
     public void mainMenu() {
@@ -28,6 +27,7 @@ public class MemberView {
             while (true) {
                 PUB_ID = 0;
                 PUB_MANAGER_ID = 0;
+                INVEN_MANAGER_ID = 0;
                 try {
                     System.out.print(menu);
                     String choice = sc.next();

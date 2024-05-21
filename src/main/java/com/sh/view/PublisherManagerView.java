@@ -3,14 +3,10 @@ package com.sh.view;
 import com.sh.controller.PublisherManagerController;
 import com.sh.model.entity.MemberDto;
 import com.sh.model.entity.PublisherManagerDto;
-import com.sh.model.entity.Role;
-import com.sh.model.service.PublisherManagerService;
-import com.sh.view.bookView.BookMenuView;
 
 import java.util.Scanner;
 
 import static com.sh.WMSApplication.getScanner;
-import static com.sh.view.MemberView.EX;
 import static com.sh.WMSApplication.*;
 //홍지민 작업 시작
 public class PublisherManagerView {
@@ -18,6 +14,8 @@ public class PublisherManagerView {
     PublisherManagerController publisherManagerController = new PublisherManagerController();
 
     BookMenuView bookMenuView = new BookMenuView();
+
+    PublisherView publisherView = new PublisherView();
 
     public void choicePublisherMenu(MemberDto memberDto) {
         String choicePublisherMenu = """
@@ -27,6 +25,7 @@ public class PublisherManagerView {
                 2. 도서 관리
                 3. 입고 관리
                 4. 출고 관리
+                5. 출판(사) 관리
                 0. 나가기
                 =============================
                 입력 : 
@@ -55,27 +54,30 @@ public class PublisherManagerView {
                 case 1:
                     publisherManagement(memberDto);
                     break;
-            case 2 :
-                if (publisherManagerDto == null) {
-                    System.out.println("출판사 정보가 없습니다. 출판사 정보를 먼저 등록해주세요.");
+                case 2 :
+                    if (publisherManagerDto == null) {
+                        System.out.println("출판사 정보가 없습니다. 출판사 정보를 먼저 등록해주세요.");
+                        break;
+                    }
+                    bookMenuView.showMenu();
                     break;
-                }
-                bookMenuView.showMenu();
-                break;
-            case 3 :
-                if (publisherManagerDto == null) {
-                    System.out.println("출판사 정보가 없습니다. 출판사 정보를 먼저 등록해주세요.");
+                case 3 :
+                    if (publisherManagerDto == null) {
+                        System.out.println("출판사 정보가 없습니다. 출판사 정보를 먼저 등록해주세요.");
+                        break;
+                    }
+                    EX = false;
+                    InWarehousingView.inWarehousingPublisherMainMenu(); break;
+                case 4 :
+                    if (publisherManagerDto == null) {
+                        System.out.println("출판사 정보가 없습니다. 출판사 정보를 먼저 등록해주세요.");
+                        break;
+                    }
+                    EX = true;
+                    ExWarehousingView.exWarehousingPublisherMainMenu(); break;
+                case 5:
+                    publisherView.publisherMenuView();
                     break;
-                }
-                EX = false;
-                InWarehousingView.inWarehousingPublisherMainMenu(); break;
-            case 4 :
-                if (publisherManagerDto == null) {
-                    System.out.println("출판사 정보가 없습니다. 출판사 정보를 먼저 등록해주세요.");
-                    break;
-                }
-                EX = true;
-                ExWarehousingView.exWarehousingPublisherMainMenu(); break;
                 case 0 :
                     return;
                 default:

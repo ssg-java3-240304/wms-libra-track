@@ -1,16 +1,13 @@
 package com.sh.view;
 
 import com.sh.controller.InventoryManagerController;
-import com.sh.controller.PublisherManagerController;
 import com.sh.model.entity.InventoryManagerDto;
 import com.sh.model.entity.MemberDto;
-import com.sh.model.entity.PublisherManagerDto;
-import com.sh.view.bookView.BookMenuView;
 
 import java.util.Scanner;
 
 import static com.sh.WMSApplication.*;
-import static com.sh.view.MemberView.EX;
+
 
 public class InventoryManagerView {
 
@@ -30,52 +27,40 @@ public class InventoryManagerView {
                 =============================
                 입력 : 
                 """;
-        InventoryManagerDto inventoryManagerDto = inventoryManagerController.findPublisherManagerInfo(memberDto);
+        InventoryManagerDto inventoryManagerDto = inventoryManagerController.findInventoryManagerInfo(memberDto);
 
 
         if (inventoryManagerDto != null) {
-            PUB_MANAGER_ID = publisherManagerDto.getPublisherManagerId();
-            PUB_ID = publisherManagerDto.getPublisherId();
+            INVEN_MANAGER_ID = inventoryManagerDto.getInventoryManagerId();
         }
 
         while (true) {
 
-            if(publisherManagerDto == null) {
-                publisherManagerDto = publisherManagerController.findPublisherManagerInfo(memberDto);
+            if(inventoryManagerDto == null) {
+                inventoryManagerDto = inventoryManagerController.findInventoryManagerInfo(memberDto);
 
-                if (publisherManagerDto != null) {
-                    PUB_MANAGER_ID = publisherManagerDto.getPublisherManagerId();
-                    PUB_ID = publisherManagerDto.getPublisherId();
+                if (inventoryManagerDto != null) {
+                    INVEN_MANAGER_ID = inventoryManagerDto.getInventoryManagerId();
                 }
             }
             System.out.print(choicePublisherMenu);
             int choice = sc.nextInt();
 
             switch (choice) {
-                case 1:
-                    publisherManagement(memberDto);
-                    break;
-                case 2 :
-                    if (publisherManagerDto == null) {
-                        System.out.println("출판사 정보가 없습니다. 출판사 정보를 먼저 등록해주세요.");
-                        break;
-                    }
-                    bookMenuView.showMenu();
-                    break;
-                case 3 :
-                    if (publisherManagerDto == null) {
-                        System.out.println("출판사 정보가 없습니다. 출판사 정보를 먼저 등록해주세요.");
+                case 1 :
+                    if (inventoryManagerDto == null) {
+                        System.out.println("창고 정보가 없습니다. 창고 정보를 먼저 등록해주세요.");
                         break;
                     }
                     EX = false;
-                    InWarehousingView.inWarehousingPublisherMainMenu(); break;
-                case 4 :
-                    if (publisherManagerDto == null) {
-                        System.out.println("출판사 정보가 없습니다. 출판사 정보를 먼저 등록해주세요.");
+                    InWarehousingView.inWarehousingInventoryManagerMainMenu(); break;
+                case 2 :
+                    if (inventoryManagerDto == null) {
+                        System.out.println("창고 정보가 없습니다. 창고 정보를 먼저 등록해주세요.");
                         break;
                     }
                     EX = true;
-                    ExWarehousingView.exWarehousingPublisherMainMenu(); break;
+                    ExWarehousingView.exWarehousingInventoryManagerMainMenu(); break;
                 case 0 :
                     return;
                 default:

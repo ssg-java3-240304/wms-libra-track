@@ -1,11 +1,10 @@
-package com.sh.view.bookView;
+package com.sh.view;
 
 import com.sh.controller.book.BookController;
 
 import com.sh.controller.publisher.PublisherController;
 import com.sh.model.dto.bookDto.Book;
-import com.sh.model.dto.publishserDto.PublisherManager;
-import com.sh.view.bookView.bookResultView.DisplayResultView;
+import com.sh.view.result.DisplayResultView;
 
 import java.time.LocalDateTime;
 import java.util.Scanner;

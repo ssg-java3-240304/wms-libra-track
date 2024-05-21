@@ -99,21 +99,21 @@ public class InWarehousingView {
 
         while(true) {
             System.out.println(readMenu);
-            String choice = scanner.nextLine();
+            String choice = scanner.next();
             switch (choice) {
                 case "1":
                     inWarehousingController.findByPublisherId(PUB_ID);
                     break;
                 case "2":
                     System.out.println("입고 상태를 입력해주세요. (PENDING, ACCEPTED, REJECTED, COMPLETED)");
-                    inWarehousingController.findByPublisherIdAndStatus(PUB_ID, Status.valueOf(scanner.nextLine()));
+                    inWarehousingController.findByPublisherIdAndStatus(PUB_ID, Status.valueOf(scanner.next()));
                     break;
                 case "3":
                     inWarehousingController.findByPublisherManager(PUB_MANAGER_ID);
                     break;
                 case "4":
                     System.out.println("입고 상태를 입력해주세요. (PENDING, ACCEPTED, REJECTED, COMPLETED)");
-                    inWarehousingController.findByPublisherManagerAndStatus(PUB_MANAGER_ID, Status.valueOf(scanner.nextLine()));
+                    inWarehousingController.findByPublisherManagerAndStatus(PUB_MANAGER_ID, Status.valueOf(scanner.next()));
                     break;
                 case "0":
                     return;
@@ -170,11 +170,11 @@ public class InWarehousingView {
 
         while(true) {
             System.out.println(menu);
-            String choice = scanner.nextLine();
+            String choice = scanner.next();
             switch (choice) {
                 case "1":
                     System.out.printf("입고 정보 INDEX를 입력해주세요. (입고 정보 INDEX : %s)\n", "1 - " + ids.size());
-                    orderController.findOrderByInWarehousingId(ids.get(Integer.parseInt(scanner.nextLine()) - 1));
+                    orderController.findOrderByInWarehousingId(ids.get(Integer.parseInt(scanner.next()) - 1));
                     break;
                 case "0":
                     return;
@@ -198,14 +198,14 @@ public class InWarehousingView {
         while(true) {
             try {
                 System.out.println(inWarehousingMenu);
-                String choice = scanner.nextLine();
+                String choice = scanner.next();
                 switch (choice) {
                     case "1":
                         // 잘못 선택된 status 입력시 재입력
                         System.out.println("입고 상태를 입력해주세요. (PENDING, ACCEPTED, REJECTED, COMPLETED)");
                         Status status;
                         try {
-                            status = Status.valueOf(scanner.nextLine());
+                            status = Status.valueOf(scanner.next());
                         } catch (Exception exception) {
                             System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
                             break;
@@ -241,19 +241,19 @@ public class InWarehousingView {
                 """;
         while(true) {
             System.out.println(inWarehousingMenu);
-            String choice = scanner.nextLine();
+            String choice = scanner.next();
             switch (choice) {
                 case "1":
                     System.out.printf("입고 정보 INDEX를 입력해주세요. (입고 정보 INDEX : %s)\n", "1 - " + ids.size());
-                    orderController.findOrderByInWarehousingId(ids.get(Integer.parseInt(scanner.nextLine()) - 1));
+                    orderController.findOrderByInWarehousingId(ids.get(Integer.parseInt(scanner.next()) - 1));
                     break;
                 case "2":
                     System.out.printf("입고 정보 INDEX를 입력해주세요. (입고 정보 INDEX : %s)\n", "1 - " + ids.size());
-                    int index = Integer.parseInt(scanner.nextLine()) - 1;
+                    int index = Integer.parseInt(scanner.next()) - 1;
                     System.out.println("입고 상태를 입력해주세요. (ACCEPTED, REJECTED, COMPLETED)");
                     Status status;
                     try {
-                        status = Status.valueOf(scanner.nextLine());
+                        status = Status.valueOf(scanner.next());
                     } catch (Exception exception) {
                         System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
                         break;

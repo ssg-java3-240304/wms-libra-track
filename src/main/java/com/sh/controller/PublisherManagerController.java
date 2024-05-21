@@ -5,7 +5,7 @@ import com.sh.model.entity.MemberDto;
 import com.sh.model.entity.PublisherManagerDto;
 import com.sh.model.service.PublisherManagerService;
 import com.sh.model.service.publisherService.PublisherService;
-import com.sh.view.MemberResultView;
+import com.sh.view.result.MemberResultView;
 
 public class PublisherManagerController {
     PublisherManagerService publisherManagerService = new PublisherManagerService();
