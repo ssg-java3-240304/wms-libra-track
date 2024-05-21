@@ -9,7 +9,7 @@ import static com.sh.common.MyBatisTemplate.getSqlSession;
 public class OrderAreaService {
 
 
-    public void insertOrderArea(int orderId, int bookAreaId) {
+    public void insertOrderArea(int bookAreaId, int orderId) {
 
         OrderArea orderArea = new OrderArea();
         orderArea.setBookAreaId(bookAreaId);
@@ -29,5 +29,13 @@ public class OrderAreaService {
         }
 
 
+    }
+
+    public OrderArea findOrderAreaByOrderId(int orderId) {
+        SqlSession sqlSession = getSqlSession();
+        OrderAreaDao orderAreaDao = sqlSession.getMapper(OrderAreaDao.class);
+        OrderArea orderArea = orderAreaDao.findOrderAreaByOrderId(orderId);
+        sqlSession.close();
+        return orderArea;
     }
 }
