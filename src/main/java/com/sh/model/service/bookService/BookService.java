@@ -47,8 +47,8 @@ public class BookService {
     public Book findBookByISBN(String isbn) {
         SqlSession sqlSession =getSqlSession();
         BookDAO bookDAO = sqlSession.getMapper(BookDAO.class);
-
         Book book = bookDAO.findBookByISBN(isbn);
+        sqlSession.close();
         return book;
     }
 
@@ -89,7 +89,7 @@ public class BookService {
         sqlSession = getSqlSession();
         bookDAO = sqlSession.getMapper(BookDAO.class);
         List<Book> bookList = bookDAO.findAll(id);
-        DisplayResultView.displayBookList(bookList);
+        sqlSession.close();
         return bookList;
     }
 
