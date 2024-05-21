@@ -8,6 +8,7 @@ import com.sh.model.entity.Order;
 import com.sh.model.entity.Status;
 import org.apache.ibatis.session.SqlSession;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -73,14 +74,20 @@ public class ExWarehousingService {
         ExWarehousingDao exWarehousingDao = sqlSession.getMapper(ExWarehousingDao.class);
 
         List<ExWarehousing> exWarehousingList = exWarehousingDao.findExWarehousingByPublisherManagerIdAndStatus(publisherManagerId, status);
+        sqlSession.close();
         return exWarehousingList;
     }
 
-    public void insertExWarehousing(HashMap<String, Integer> orders, int publisherManagerId) {
+    public void insertExWarehousing(HashMap<String, Integer> orders, int publisherManagerId, String address, String receiver, String receiverPhone, String receiverEmail) {
         ExWarehousing exWarehousing = new ExWarehousing();
 
         exWarehousing.setPublisherManagerId(publisherManagerId);
+        exWarehousing.setDate(new Timestamp(System.currentTimeMillis()));
         exWarehousing.setStatus(Status.PENDING);
+        exWarehousing.setAddress(address);
+        exWarehousing.setReceiver(receiver);
+        exWarehousing.setReceiverPhone(receiverPhone);
+        exWarehousing.setReceiverEmail(receiverEmail);
 
         // iterate over orders
         List<Order> orderList = new ArrayList<>();

@@ -5,6 +5,7 @@ package com.sh.area.controller;
 //import com.sh.inventory.model.dto.CategoryDto;
 import com.sh.area.model.dto.AreaDto;
 import com.sh.area.model.service.AreaService;
+import com.sh.area.view.AreaErrorView;
 import com.sh.area.view.AreaResultView;
 import com.sh.inventory.model.dto.InventoryDto;
 
@@ -26,55 +27,95 @@ public class AreaController {
     private AreaService areaService = new AreaService();
 
     public void findAllArea() {
-        // n개의 InventoryDto 반환 : List<InventoryDto>
-        List<AreaDto> list = areaService.findAllArea();
-        AreaResultView.displayAreaList(list);
+        try {
+            // n개의 InventoryDto 반환 : List<InventoryDto>
+            List<AreaDto> list = areaService.findAllArea();
+            AreaResultView.displayAreaList(list);
+        } catch (Exception e) {
+            AreaErrorView.displayError("처리 중 오류가 발생하였습니다. 다시 시도해주세요.");
+        }
     }
 
     public void findAreaByAreaId(int areaId) {
-        // 0~1개의 InventoryDto 반환 : InventoryDto
-        AreaDto areaDto = areaService.findAreaByAreaId(areaId);
-        AreaResultView.displayArea(areaDto);
+        try {
+            // 0~1개의 InventoryDto 반환 : InventoryDto
+            AreaDto areaDto = areaService.findAreaByAreaId(areaId);
+            AreaResultView.displayArea(areaDto);
+        } catch (Exception e) {
+            AreaErrorView.displayError("처리 중 오류가 발생하였습니다. 다시 시도해주세요.");
+        }
     }
     public void findByLocationAndAreaName(String location, String areaName) {
-        // 0~1개의 InventoryDto 반환 : InventoryDto
-        AreaDto areaDto = areaService.findByLocationAndAreaName(location, areaName);
-        AreaResultView.displayArea(areaDto);
+        try {
+            // 0~1개의 InventoryDto 반환 : InventoryDto
+            AreaDto areaDto = areaService.findByLocationAndAreaName(location, areaName);
+            AreaResultView.displayArea(areaDto);
+        } catch (Exception e) {
+            AreaErrorView.displayError("처리 중 오류가 발생하였습니다. 다시 시도해주세요.");
+        }
     }
 
     public AreaDto findReservedAreaByAreaId(int areaId) {
-        // 0~1개의 InventoryDto 반환 : InventoryDto
-        return areaService.findAreaByAreaId(areaId);
+        try {
+            return areaService.findAreaByAreaId(areaId);
+        } catch (Exception e) {
+            AreaErrorView.displayError("처리 중 오류가 발생하였습니다. 다시 시도해주세요.");
+            return null;
+        }
     }
 
     public void insertArea(AreaDto areaDto) {
-        int result = areaService.insertArea(areaDto);
-        AreaResultView.displayResult("구역 등록", result);
+        try {
+            int result = areaService.insertArea(areaDto);
+            AreaResultView.displayResult("구역 등록", result);
+        } catch (Exception e) {
+            AreaErrorView.displayError("처리 중 오류가 발생하였습니다. 다시 시도해주세요.");
+        }
     }
 
     public void updateArea(AreaDto areaDto) {
-        int result = areaService.updateArea(areaDto);
-        AreaResultView.displayResult("구역 수정", result);
+        try {
+            int result = areaService.updateArea(areaDto);
+            AreaResultView.displayResult("구역 수정", result);
+        } catch (Exception e) {
+            AreaErrorView.displayError("처리 중 오류가 발생하였습니다. 다시 시도해주세요.");
+        }
     }
 
     public void updateReserved(AreaDto areaDto) {
-        int result = areaService.updateReserved(areaDto);
-        AreaResultView.displayResult("구역 reserved 수정", result);
+        try {
+            int result = areaService.updateReserved(areaDto);
+            AreaResultView.displayResult("구역 reserved 수정", result);
+        } catch (Exception e) {
+            AreaErrorView.displayError("처리 중 오류가 발생하였습니다. 다시 시도해주세요.");
+        }
     }
 
     public void deleteArea(int areaId) {
-        int result = areaService.deleteArea(areaId);
-        AreaResultView.displayResult("구역 삭제", result);
+        try {
+            int result = areaService.deleteArea(areaId);
+            AreaResultView.displayResult("구역 삭제", result);
+        } catch (Exception e) {
+            AreaErrorView.displayError("처리 중 오류가 발생하였습니다. 다시 시도해주세요.");
+        }
     }
 
     public void findAreaByInventoryId(int categoryCode) {
-        List<AreaDto> list = areaService.findAreaByInventoryId(categoryCode);
-        AreaResultView.displayAreaList(list);
+        try {
+            List<AreaDto> list = areaService.findAreaByInventoryId(categoryCode);
+            AreaResultView.displayAreaList(list);
+        } catch (Exception e) {
+            AreaErrorView.displayError("처리 중 오류가 발생하였습니다. 다시 시도해주세요.");
+        }
     }
 
     public void findAllInventory() {
-        List<InventoryDto> inventoryList = areaService.findAllInventory();
-        AreaResultView.displayInventoryList(inventoryList);
+        try {
+            List<InventoryDto> inventoryList = areaService.findAllInventory();
+            AreaResultView.displayInventoryList(inventoryList);
+        } catch (Exception e) {
+            AreaErrorView.displayError("처리 중 오류가 발생하였습니다. 다시 시도해주세요.");
+        }
     }
 
 }

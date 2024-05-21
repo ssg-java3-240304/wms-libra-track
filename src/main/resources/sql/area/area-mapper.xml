@@ -62,7 +62,7 @@
             area
         set
             inventory_id = #{inventoryId},
-            publisher_id = #{publisherId},
+            publisher_id = if(#{publisherId} = 0, null, #{publisherId}),
             area_name = #{areaName},
             capacity = #{capacity},
             reserved = #{reserved},
@@ -85,21 +85,4 @@
         where
             area_id = #{areaId}
     </update>
-<!--    <select id="findMenuOrderable" resultType="areaDto">-->
-<!--        select-->
-<!--            *-->
-<!--        from-->
-<!--            area-->
-<!--        where-->
-<!--            orderable_status = 'Y'-->
-<!--    </select>-->
-<!--    <select id="findMenuOrderableByCategoryCode" resultType="areaDto">-->
-<!--        select-->
-<!--            *-->
-<!--        from-->
-<!--            area-->
-<!--        where-->
-<!--            category_code = #{categoryCode}-->
-<!--            and orderable_status = 'Y'-->
-<!--    </select>-->
 </mapper>
