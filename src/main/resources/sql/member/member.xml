@@ -9,14 +9,54 @@
         values
             (#{name}, #{userName}, #{password}, #{role}, #{phoneNumber}, #{email})
     </insert>
+
     <select id="loginCheck" parameterType="String" resultType="com.sh.model.entity.MemberDto">
+
         select
             *
         from
             member
         where
-            username = #{userName} and password = #{password}
+
+            userName = #{userName}
+            and
+            password = #{password}
     </select>
+
+    <update id="updateId">
+        update
+            member
+        set
+            username = #{userName}
+        where
+            member_id = #{memberId}
+    </update>
+
+    <update id="updatePassword">
+        update
+        member
+        set
+        password = #{password}
+        where
+        member_id = #{memberId}
+    </update>
+
+    <update id="updatePhoneNumber">
+        update
+            member
+        set
+            phone_number = #{phoneNumber}
+
+
+    </update>
+
+    <delete id="deleteInfo">
+        delete from
+            member
+        where
+            userame = #{memberId}
+
+    </delete>
 
 
 </mapper>

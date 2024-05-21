@@ -15,4 +15,42 @@
             #{memberId}
         )
     </insert>
+
+    <select id="findAll" parameterType="int" resultMap="findAll">
+        select
+        *
+        from
+        member m inner join inventory_manager im
+        on
+        im.member_id = m.member_id
+        where im.member_id = #{memberId}
+    </select>
+
+<!--    <select id="findAll" resultType = "InventoryManagerDto">-->
+<!--        select-->
+<!--        *-->
+<!--        from-->
+<!--        member m inner join inventory_manager im-->
+<!--        on-->
+<!--        im.member_id = m.member_id-->
+<!--        where im.member_id = -->
+<!--    </select>-->
+    <resultMap id="findAll" type="inventoryManagerDto">
+        <id column="inventory_manager_id" property="inventoryManagerId"/>
+<!--        result : 그외 컬럼 매핑용 -->
+        <result column="entry_date" property="entryDate"/>
+        <result column="emp_number" property="empNumber"/>
+        <result column="inventory_id" property="inventoryId"/>
+        <result column="member_id" property="memberId"/>
+        <association property="memberDto" javaType="memberDto">
+            <result column="member_id" property="memberId"/>
+            <result column="name" property="name"/>
+            <result column="username" property="userName"/>
+            <result column="password" property="password"/>
+            <result column="role" property="role"/>
+            <result column="phone_number" property="phoneNumber"/>
+            <result column="email" property="email"/>
+        </association>
+    </resultMap>
+
 </mapper>

@@ -11,11 +11,20 @@ import static com.sh.common.MyBatisTemplate.getSqlSession;
 //홍지민 작업 시작
 public class PublisherManagerService {
     // 출판사 매니저 정보 조회
+
+    public PublisherManagerDto findPublisherManager() {
+        try (SqlSession sqlSession = getSqlSession()) {
+            PublisherManagerMapper publisherManagerMapper = sqlSession.getMapper(PublisherManagerMapper.class);
+            PublisherManagerDto result = publisherManagerMapper.findPublisherManager();
+        }
+    }
+
     public PublisherManagerDto findPublisherManagerInfo(MemberDto memberDto) {
         SqlSession sqlSession = getSqlSession();
         PublisherManagerMapper publisherManagerMapper = sqlSession.getMapper(PublisherManagerMapper.class);
         try {
             PublisherManagerDto publisherManagerDto = publisherManagerMapper.findPublisherManagerInfo(memberDto);
+
             sqlSession.commit();
             return publisherManagerDto;
         } catch (Exception e) {

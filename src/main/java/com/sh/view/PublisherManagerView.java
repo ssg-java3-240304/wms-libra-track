@@ -13,7 +13,11 @@ public class PublisherManagerView {
     Scanner sc = new Scanner(System.in);
     PublisherManagerController publisherManagerController = new PublisherManagerController();
 
+
+
+
     public void choicePublisherMenu(MemberDto memberDto) {
+
         String choicePublisherMenu = """
                 📖📖📖출판사 매니저 메뉴📖📖📖
                 =============================
@@ -30,6 +34,7 @@ public class PublisherManagerView {
             int choice = sc.nextInt();
             switch (choice) {
                 case 1:
+
                     publisherManagement(memberDto);
                     break;
 //            case 2 : BookView.(); break;
@@ -42,6 +47,7 @@ public class PublisherManagerView {
             }
         }
     }
+
 
     private void publisherManagement(MemberDto memberDto) {
         String publihserManagement = ("""
@@ -58,6 +64,7 @@ public class PublisherManagerView {
             int choice = sc.nextInt();
 
             switch (choice) {
+
                 case 1:
                     publisherManagerController.findPublisherManagerInfo(memberDto);
                     break;

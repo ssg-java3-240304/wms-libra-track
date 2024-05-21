@@ -51,6 +51,7 @@ CREATE TABLE `Inventory_Manager` (
 	`inventory_id`	INTEGER	NOT NULL,
 	`member_id`	INTEGER	NOT NULL,
     PRIMARY KEY (`inventory_manager_id`)
+
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `Inventory`;
@@ -282,5 +283,6 @@ ALTER TABLE `order_area` ADD CONSTRAINT `FK_order_TO_order_area_1` FOREIGN KEY (
 )
 REFERENCES `order` (
 	`order_id`
+
 );
 

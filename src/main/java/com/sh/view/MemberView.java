@@ -40,6 +40,7 @@ public class MemberView {
         }
     }
 
+
     private void choiceRole() {
         String choiceRole = """
                 =========================
@@ -51,6 +52,7 @@ public class MemberView {
                   4. 뒤로 가기
                 =========================
                 """;
+
         while (true) {
             System.out.print(choiceRole);
             String choice = sc.next();

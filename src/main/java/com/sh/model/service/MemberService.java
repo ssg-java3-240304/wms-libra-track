@@ -72,4 +72,22 @@ public class MemberService {
         }
     }
 
+
+    public int deleteInfo(MemberDto memberDto) {
+         SqlSession sqlSession = getSqlSession();
+         MemberMapper memberMapper = sqlSession.getMapper(MemberMapper.class);
+         try {
+             int result = memberMapper.deleteInfo(memberDto);
+             sqlSession.commit();
+             return result;
+         }catch (Exception e) {
+             sqlSession.rollback();
+             throw new RuntimeException(e);
+         } finally {
+             sqlSession.close();
+
+
+         }
+    }
+
 }
