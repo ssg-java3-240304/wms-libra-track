@@ -27,7 +27,8 @@
     </update>
 
     <select id = "findPublisherInformation" resultType="Publisher">
-        select * from publisher where publisher_id = #{publisherId}
+        select * from
+        where publisher_id = #{publisherId}
     </select>
 
     <delete id = "deletePublisher">

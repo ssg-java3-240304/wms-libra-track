@@ -26,6 +26,26 @@ public class PublisherView
     /**
      * 아이디 , 비밀번호 로그인하고 , 해당 로그인된 정보에 따라서 출판사의 정보 가져오게 해야될거 같은데
      */
+    public void insertPublisherView() {
+        System.out.println("출판사 등록을 도와드리겠습니다.☺️");
+        publisherController.insertPublisher(input());
+    }
+
+    public Publisher input() {
+        System.out.println("출판사의 정보를 정확하게 입력해주세요 !");
+        System.out.println("===============================");
+        System.out.print("출판사 이름 : ");
+        String name = scanner.next();
+        System.out.print("출판사 이메일 : ");
+        String email = scanner.next();
+        System.out.print("출판사 대표자 번호 : ");
+        String phoneNumber = scanner.next();
+        System.out.print("출판사 사업자 번호 : ");
+        String businessNumber = scanner.next();
+
+        return new Publisher(0, name, email, phoneNumber, businessNumber);
+
+    }
     public void startMenu(PublisherManager publisherManager){
         this.publisherManager = publisherManager;
         String menu = """
@@ -101,17 +121,4 @@ public class PublisherView
 
     }
 
-    private Publisher input() {
-        System.out.println("=======================");
-        System.out.print("출판사 정보 입력 : ");
-        String publishName = scanner.next();
-        System.out.print("이메일 입력 ");
-        String email = scanner.next();
-        System.out.print("휴대폰 번호 : ");
-        String phoneNumber = scanner.next();
-        System.out.print("사업자 번호 : ");
-        String businessNumber = scanner.next();
-        System.out.println("=======================");
-        return new Publisher(0, publishName, email, phoneNumber, businessNumber);
-    }
 }

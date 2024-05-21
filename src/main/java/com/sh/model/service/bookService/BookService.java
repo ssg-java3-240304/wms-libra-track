@@ -96,4 +96,10 @@ public class BookService {
     public Book duplicateISBN(String ISBN) {
         return bookDAO.findBookByISBN(ISBN);
     }
+
+    public void findBookIdByPublisherIdAndISBN(int publisherId, String ISBN) {
+        sqlSession = getSqlSession();
+        bookDAO = sqlSession.getMapper(BookDAO.class);
+        int id =  bookDAO.findBookIdByPublisherIdAndISBN(publisherId, ISBN);
+    }
 }

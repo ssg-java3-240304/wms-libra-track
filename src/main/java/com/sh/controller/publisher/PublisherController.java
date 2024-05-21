@@ -1,5 +1,7 @@
 package com.sh.controller.publisher;
 
+import com.sh.common.error.ErrorCode;
+import com.sh.common.error.ErrorView;
 import com.sh.model.dto.publishserDto.Publisher;
 import com.sh.model.service.publisherService.PublisherService;
 import com.sh.view.publisherView.DisplayPublisherView;
@@ -11,8 +13,14 @@ public class PublisherController {
     }
 
     public void insertPublisher(Publisher publisher) {
-       int result =  publisherService.insertPublisher(publisher);
-    }
+        try {
+            int result =  publisherService.insertPublisher(publisher);
+            DisplayPublisherView.displayPublisherInformation(publisher);
+        } catch (Exception e) {
+            e.printStackTrace();
+            ErrorView.displayError(ErrorCode.DUPLICATE_PUBLISHER_INFORMATION);
+        }
+      }
 
     public void updatePublisher(Publisher publisher) {
        int result =  publisherService.updatePublisher(publisher);
@@ -23,10 +31,13 @@ public class PublisherController {
 
     public void findPublisherInformation(int publisherId) {
         Publisher publisher = publisherService.findPublisherInformation(publisherId);
-        DisplayPublisherView.displayPublisherInformaitn(publisher);
+        DisplayPublisherView.displayPublisherInformation(publisher);
     }
 
     public void deletePublisher(int id) {
         int result  = publisherService.deletePublisher(id);
     }
+
+
+
 }

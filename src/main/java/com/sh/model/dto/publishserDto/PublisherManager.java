@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PublisherManager {
-    private int memberid;
+    private int publisherManagerId;
+    private int memberId;
     private int publisherId;
 }
