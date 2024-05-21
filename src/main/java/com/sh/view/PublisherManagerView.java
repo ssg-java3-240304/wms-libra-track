@@ -19,8 +19,9 @@ public class PublisherManagerView {
                 =============================
                 1. 회원 정보 관리
                 2. 도서 관리
-                3. 입/출고 관리
-                4. 나가기
+                3. 입고 관리
+                4. 출고 관리
+                5. 나가기
                 =============================
                 입력 : 
                 """;
@@ -32,8 +33,9 @@ public class PublisherManagerView {
                     publisherManagement(memberDto);
                     break;
 //            case 2 : BookView.(); break;
-//            case 3 : InventoryView(); break;
-                case 4 :
+            case 3 : InWarehousingView.inWarehousingPublisherMenu(); break;
+            case 4 : ExWarehousingView.exWarehousingPublisherMenu(); break;
+                case 5 :
                     return;
                 default:
                     System.out.print("잘못된 입력입니다. 다시 입력해주세요 : ");
@@ -65,13 +67,17 @@ public class PublisherManagerView {
                 case 3:
                     return;
                 default:
-                    System.out.println("잘못 입력된 값입니다. 다시 입력해수제요!");
+                    System.out.println("잘못 입력된 값입니다. 다시 입력해주세요!");
             }
         }
     }
 
     private MemberDto updatePublisherManager(MemberDto memberDto) {
-        System.out.println("️✏️️✏️️✏️회원 정보 수정✏️✏️️✏️");
+        System.out.println("""
+                ============================
+                 ✏️️✏️️✏️회원 정보 수정✏️✏️️✏️
+                ============================
+                """);
         System.out.print("1. 이름 입력: ");
         String name = sc.next();
 

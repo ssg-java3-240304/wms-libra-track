@@ -14,14 +14,15 @@ public class AdminUserView {
 
     public void choiceAdminMenu(MemberDto memberDto) {
         String adminMenu = ("""
+                ==============================
                 📖📖📖 Admin User 메뉴 📖📖📖
                 ==============================
-                1. 회원 관리 메뉴
-                2. 창고 관리 메뉴
-                3. 출판사 관리 메뉴
-                4. 나가기
-                =============================
-                입력 : 
+                    1. 회원 관리 메뉴
+                    2. 창고 관리 메뉴
+                    3. 출판사 관리 메뉴
+                    4. 나가기
+                ==============================
+
                 """);
         while (true) {
             System.out.print(adminMenu);
@@ -74,7 +75,11 @@ public class AdminUserView {
     }
 
     private MemberDto updateAdminUserInfo(MemberDto memberDto) {
-        System.out.println("️✏️️✏️️✏️회원 정보 수정✏️✏️️✏️");
+        System.out.println("""
+                ==========================
+                ✏️️✏️️✏️회원 정보 수정✏️✏️️✏️
+                ==========================
+                """);
         System.out.print("1. 이름 입력: ");
         String name = sc.next();
 
@@ -89,6 +94,7 @@ public class AdminUserView {
 
         System.out.print("5. 이메일 주소 입력 : ");
         String email = sc.next();
+
 
         return new MemberDto(memberDto.getMemberId(), name, username, password, memberDto.getRole() ,phoneNumber, email);
     }

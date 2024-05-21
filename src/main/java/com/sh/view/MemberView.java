@@ -42,13 +42,14 @@ public class MemberView {
 
     private void choiceRole() {
         String choiceRole = """
-                ✅ 회원 선택을 해주세요 ✅
-                =======================
+                =========================
+                 ✅ 회원 선택을 해주세요 ✅
+                =========================
                   1. 출판사 매니저
                   2. 창고 관리자
                   3. Adimin User
                   4. 뒤로 가기
-                =======================
+                =========================
                 """;
         while (true) {
             System.out.print(choiceRole);
@@ -72,6 +73,11 @@ public class MemberView {
     }
 
     private void loginCheck() {
+        System.out.println("""
+                =====================
+                     ✨ 로그인 ✨
+                =====================
+                """);
         System.out.print("▶ ID 입력 : ");
         String id = sc.next();
         System.out.print("▶ Password 입력 : ");
@@ -91,10 +97,13 @@ public class MemberView {
         }
     }
 
-
     // AdminUser 회원가입
     private MemberDto insertAdminUser() {
-        System.out.println("📝📝📝 회원 정보를 입력해주세요. 📝📝📝");
+        System.out.println("""
+                =====================================
+                 📝📝📝 회원 정보를 입력해주세요. 📝📝📝
+                =====================================
+                """);
         System.out.print("▶ 회원 이름 입력 : ");
         String name = sc.next();
         sc.nextLine();
@@ -113,7 +122,11 @@ public class MemberView {
 
     // Publisher 회원가입
     private MemberDto insertPublisherMember() {
-        System.out.println("📝📝📝 회원 정보를 입력해주세요. 📝📝📝");
+        System.out.println("""
+                =====================================
+                 📝📝📝 회원 정보를 입력해주세요. 📝📝📝
+                =====================================
+                """);
         System.out.print("▶ 회원 이름 입력 : ");
         String name = sc.next();
         sc.nextLine();

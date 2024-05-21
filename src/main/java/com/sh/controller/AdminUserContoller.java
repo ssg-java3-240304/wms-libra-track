@@ -13,6 +13,8 @@ public class AdminUserContoller {
 
     public void updateAdminUserInfo(MemberDto memberDto) {
         int result  = adminUserService.updateAdminUserInfo(memberDto);
+        MemberResultView.displayResult("Admin User 정보 수정", result);
+
 
     }
 }
