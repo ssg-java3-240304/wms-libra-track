@@ -1,4 +1,4 @@
-package com.sh.inventory.view;
+package com.sh.view;
 
 public class InventoryErrorView {
     public static void displayError(String errorCode) {

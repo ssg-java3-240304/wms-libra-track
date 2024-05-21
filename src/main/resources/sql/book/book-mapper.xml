@@ -45,6 +45,13 @@
         order by book_id
     </select>
 
+    <select id="findBookIdByPublisherIdAndISBN" resultType="int" >
+        select book_id
+        from book
+        where publisher_id = #{publisherId} AND ISBN = #{ISBN}
+    </select>
+
+
 
 
 

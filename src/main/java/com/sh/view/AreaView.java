@@ -1,10 +1,9 @@
-package com.sh.area.view;
+package com.sh.view;
 
-import com.sh.area.controller.AreaController;
-import com.sh.area.model.dto.AreaDto;
-import com.sh.inventory.controller.InventoryController;
+import com.sh.controller.AreaController;
+import com.sh.model.dto.AreaDto;
+import com.sh.controller.InventoryController;
 
-import java.util.HashMap;
 import java.util.Scanner;
 
 /**

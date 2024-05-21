@@ -1,7 +1,7 @@
-package com.sh.inventory.model.service;
+package com.sh.model.service;
 
-import com.sh.inventory.model.dto.InventoryDto;
-import com.sh.inventory.model.dao.InventoryMapper;
+import com.sh.model.dto.InventoryDto;
+import com.sh.model.dao.InventoryMapper;
 //import com.sh.menu.model.dto.CategoryDto;
 import org.apache.ibatis.session.SqlSession;
 

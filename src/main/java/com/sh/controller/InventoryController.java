@@ -1,12 +1,12 @@
-package com.sh.inventory.controller;
+package com.sh.controller;
 
 //import com.sh.common.ErrorView;
 //import com.sh.common.error.ErrorCode;
 //import com.sh.inventory.model.dto.CategoryDto;
-import com.sh.inventory.model.dto.InventoryDto;
-import com.sh.inventory.model.service.InventoryService;
-import com.sh.inventory.view.InventoryErrorView;
-import com.sh.inventory.view.InventoryResultView;
+import com.sh.model.dto.InventoryDto;
+import com.sh.model.service.InventoryService;
+import com.sh.view.InventoryErrorView;
+import com.sh.view.InventoryResultView;
 
 import java.util.List;
 
