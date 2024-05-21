@@ -13,8 +13,8 @@ public class ExWarehousingController {
     private final ExWarehousingService exWarehousingService = new ExWarehousingService();
 
     //출고 요청
-    public void insertExWarehousing(HashMap<String, Integer> orders, int publisherId) {
-        exWarehousingService.insertExWarehousing(orders, publisherId);
+    public void insertExWarehousing(HashMap<String, Integer> orders, int publisherId, String address, String receiver, String receiverPhone, String receiverEmail ) {
+        exWarehousingService.insertExWarehousing(orders, publisherId, address, receiver, receiverPhone, receiverEmail);
     }
 
     // 출고 상태 내역 조회

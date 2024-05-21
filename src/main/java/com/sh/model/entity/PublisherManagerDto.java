@@ -1,7 +1,5 @@
 package com.sh.model.entity;
 
-import com.sh.view.PublisherManagerView;
-import com.sh.view.PublisherResultView;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

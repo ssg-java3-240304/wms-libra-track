@@ -73,7 +73,7 @@ public class AreaView {
         return new AreaDto(areaId, inventoryId, publisherId, areaName, capacity, reserved, quantity);
     }
     private AreaDto inputAreaReservedUpdated() {
-        System.out.println("> ✏️✏️✏️ 수정할 구역 정보를 작성해주세요. ✏️✏️✏️");
+        System.out.println("> ✏️✏️✏️ Reserved를 수정할 구역 정보를 작성해주세요. ✏️✏️✏️");
         areaController.findAllArea();
         System.out.println("> 수정하고 싶은 구역의 코드 : ");
         int areaId = sc.nextInt();
@@ -101,6 +101,7 @@ public class AreaView {
     }
 
     private int inputAreaId(String type) {
+        areaController.findAllArea();
         System.out.printf("> %s할 구역코드 : ", type);
         return sc.nextInt();
     }
@@ -116,6 +117,7 @@ public class AreaView {
         return sc.nextInt();
     }
     private String inputLocation() {
+        inventoryController.findAllInventory();
         System.out.print("> 조회할 창고 위치 : ");
         return sc.next();
     }

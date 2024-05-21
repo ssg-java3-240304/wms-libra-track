@@ -16,11 +16,11 @@ public class ExWarehousingView {
 
     private static Scanner scanner = new Scanner(System.in);
 
-    public static String PUB_MANAGER = "publisherManager";
-    public static Integer PUB_MANAGER_ID = 0;
-    public static String PUB_NAME = "publisherName";
-    public static Integer PUB_ID = 0;
-    public static Integer INVEN_MANAGER_ID  = 0;
+//    public static String PUB_MANAGER = "publisherManager";
+    public static Integer PUB_MANAGER_ID = 1;
+//    public static String PUB_NAME = "publisherName";
+    public static Integer PUB_ID = 1;
+    public static Integer INVEN_MANAGER_ID  = 1;
 
     private static OrderView orderView;
 
@@ -60,6 +60,10 @@ public class ExWarehousingView {
     public static void exWarehousingRegister() {
         System.out.println("출고 정보를 등록합니다.");
         HashMap<String, Integer> orders = new HashMap<>();
+        String address = null;
+        String receiver = null;
+        String receiverPhone = null;
+        String receiverEmail = null;
 
         while(true) {
             System.out.println("도서 ISBN 번호를 입력해주세요. (exit 입력시 종료)");
@@ -70,9 +74,17 @@ public class ExWarehousingView {
             System.out.println("도서 출고 수량을 입력해주세요.");
             int quantity = Integer.parseInt(scanner.nextLine());
             orders.put(isbn, quantity);
+            System.out.println("주소를 입력해주세요.");
+            address = scanner.nextLine();
+            System.out.println("수취인 성함을 입력해주세요.");
+            receiver = scanner.nextLine();
+            System.out.println("수취인 전화번호를 입력해주세요.");
+            receiverPhone = scanner.nextLine();
+            System.out.println("수취인 이메일을 입력해주세요");
+            receiverEmail = scanner.nextLine();
         }
 
-//        exWarehousingController.insertExWarehousing(orders, PUB_MANAGER_ID);
+        exWarehousingController.insertExWarehousing(orders, PUB_MANAGER_ID, address, receiver, receiverPhone, receiverEmail);
 
         System.out.println("출고 정보 등록이 완료되었습니다.");
 
@@ -239,6 +251,7 @@ public class ExWarehousingView {
                     break;
                 case "2":
                     System.out.printf("출고 정보 ID를 입력해주세요. (출고 정보 ID : %s)\n", ids);
+                    int index = ids.get(Integer.parseInt(scanner.nextLine()) - 1);
                     System.out.println("출고 상태를 입력해주세요. (ACCEPTED, REJECTED, COMPLETED)");
                     Status status;
                     try {
@@ -247,7 +260,7 @@ public class ExWarehousingView {
                         System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
                         break;
                     }
-                    exWarehousingController.updateExWarehousingStatus(ids.get(Integer.parseInt(scanner.nextLine()) - 1), INVEN_MANAGER_ID, status);
+                    exWarehousingController.updateExWarehousingStatus(index, INVEN_MANAGER_ID, status);
                     break;
                 case "0":
                     return;
