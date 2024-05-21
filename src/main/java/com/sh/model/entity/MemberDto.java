@@ -1,8 +1,16 @@
 package com.sh.model.entity;
 
-
+=
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+
 public class MemberDto {
 
     private int memberId;
@@ -44,70 +52,26 @@ public class MemberDto {
     }
 
 
-
-
     public MemberDto( String phoneNumber){
         this.phoneNumber = phoneNumber;
 
     }
 
-    public int getMemberId() {
-        return memberId;
-    }
-
-    public void setMemberId(int memberId) {
-        this.memberId = memberId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
+  
+    public MemberDto(String password, String userName) {
+        this.password = password;
         this.userName = userName;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
+    public MemberDto(int memberId, String name, String userName, String password, String phoneNumber, String email) {
+        this.memberId = memberId;
+        this.name = name;
+        this.userName = userName;
         this.password = password;
-    }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
         this.email = email;
     }
 
-    @Override
     public String toString() {
         return "MemberDto{" +
                 "memberId=" + memberId +
@@ -120,3 +84,5 @@ public class MemberDto {
                 '}';
     }
 }
+
+

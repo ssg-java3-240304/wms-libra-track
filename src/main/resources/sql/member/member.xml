@@ -3,18 +3,21 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sh.model.dao.MemberMapper">
-    <insert id="addMember" useGeneratedKeys="true" keyProperty="memberId">
-        insert into member (name, userName, password, role, phone_number, email)
-        values(
-        #{name}, #{userName}, #{password}, #{role}, #{phoneNumber}, #{email}
-        )
+    <insert id="insertMember" useGeneratedKeys="true" keyProperty="memberId">
+        insert into
+            member (name, userName, password, role, phone_number, email)
+        values
+            (#{name}, #{userName}, #{password}, #{role}, #{phoneNumber}, #{email})
     </insert>
-    <select id="loginCheck" resultType="com.sh.model.entity.MemberDto">
+
+    <select id="loginCheck" parameterType="String" resultType="com.sh.model.entity.MemberDto">
+
         select
             *
         from
             member
         where
+
             userName = #{userName}
             and
             password = #{password}
@@ -54,9 +57,6 @@
             userame = #{memberId}
 
     </delete>
-
-
-
 
 
 </mapper>

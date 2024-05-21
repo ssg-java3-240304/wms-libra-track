@@ -4,6 +4,32 @@
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sh.model.dao.PublisherManagerMapper">
 
+    <resultMap id="findPublisherInfo" type ="com.sh.model.entity.PublisherManagerDto">
+        <id column="publisher_manager_id" property="publisherManagerId"/>
+        <!-- result : 그외 컬럼 매핑용 -->
+        <result column="member_id" property="memberId"/>
+        <result column="publisher_id" property="publisherId"/>
+        <association property="memberDto" javaType="com.sh.model.entity.MemberDto">
+            <id column="member_id" property="memberId"/>
+            <result column="name" property="name"/>
+            <result column="username" property="userName"/>
+            <result column="password" property="password"/>
+            <result column="role" property="role"/>
+            <result column="phone_number" property="phoneNumber"/>
+            <result column="email" property="email"/>
+        </association>
+    </resultMap>
+
+    <select id="findPublisherManagerInfo" parameterType="com.sh.model.entity.MemberDto" resultMap="findPublisherInfo">
+        select
+            *
+        from
+            member m left join publisher_manager pm
+                on m.member_id = pm.member_id
+        where
+            pm.member_id = #{memberId}
+    </select>
+
     <insert id="insertPublisherManager" useGeneratedKeys="true" keyProperty="publisherManagerId">
         insert into
             publisher_manager(member_id, publisher_id)
@@ -12,26 +38,16 @@
             #{publisherId}
         )
     </insert>
-
-<!--    <select id="findPublisherManager" resultType="PublisherManagerDto">-->
-<!--        select-->
-<!--            *-->
-<!--        from-->
-<!--            member m join publisher_manager pm-->
-<!--                on m.member_id = pm.member_id-->
-<!--        where-->
-<!--            publisher_manager_id = #{publisherManagerId}-->
-<!--    </select>-->
-
-<!--    <select id="loginCheck" resultType="">-->
-
-<!--    </select>-->
-
-<!--    <select id="findPublisher" resultType="Publisher">-->
-<!--        select distinct name-->
-<!--        from publisher;-->
-<!--    </select>-->
-<!--    <delete id="">-->
-
-<!--    </delete>-->
+    <update id="updatePublisherManagerInfo">
+        update
+            member
+        set
+            name = #{name},
+            username = #{userName},
+            password = #{password},
+            phone_number = #{phoneNumber},
+            email = #{email}
+        where
+            member_id = #{memberId}
+    </update>
 </mapper>

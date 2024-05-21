@@ -9,6 +9,7 @@ import com.sh.model.entity.MemberDto;
 import java.util.Scanner;
 
 public class InventoryManagerView {
+
     Scanner sc = new Scanner(System.in);
     InventoryManagerController inventoryManagerController = new InventoryManagerController();
     MemberController memberController = new MemberController();
@@ -129,5 +130,6 @@ public class InventoryManagerView {
                 }
             }
         }
+
 }
 

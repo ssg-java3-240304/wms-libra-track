@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sh.area.model.dao.AreaMapper">
+<mapper namespace="com.sh.model.dao.AreaMapper">
     <select id="findAllArea" resultType="areaDto">
         select
             *
@@ -18,6 +18,16 @@
             area
         where
             area_id = #{areaId}
+    </select>
+    <select id="findByLocationAndAreaName" parameterType="hashMap" resultType="areaDto">
+        select
+            *
+        from
+            inventory i join area a
+            on i.inventory_id = a.inventory_id
+        where
+            i.location = #{location}
+            and a.area_name = #{areaName}
     </select>
     <select id="findAreaByInventoryId" resultType="areaDto">
         select
@@ -52,7 +62,7 @@
             area
         set
             inventory_id = #{inventoryId},
-            publisher_id = #{publisherId},
+            publisher_id = if(#{publisherId} = 0, null, #{publisherId}),
             area_name = #{areaName},
             capacity = #{capacity},
             reserved = #{reserved},
@@ -67,21 +77,12 @@
         where
             area_id = #{areaId}
     </delete>
-<!--    <select id="findMenuOrderable" resultType="areaDto">-->
-<!--        select-->
-<!--            *-->
-<!--        from-->
-<!--            area-->
-<!--        where-->
-<!--            orderable_status = 'Y'-->
-<!--    </select>-->
-<!--    <select id="findMenuOrderableByCategoryCode" resultType="areaDto">-->
-<!--        select-->
-<!--            *-->
-<!--        from-->
-<!--            area-->
-<!--        where-->
-<!--            category_code = #{categoryCode}-->
-<!--            and orderable_status = 'Y'-->
-<!--    </select>-->
+    <update id="updateReserved">
+        update
+            area
+        set
+            reserved = #{reserved}
+        where
+            area_id = #{areaId}
+    </update>
 </mapper>

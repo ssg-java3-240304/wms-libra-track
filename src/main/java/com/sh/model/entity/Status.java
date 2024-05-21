@@ -1,5 +1,5 @@
 package com.sh.model.entity;
 
 public enum Status {
-    PENDING, APPROVED, REJECTED, COMPLETED
+    PENDING, ACCEPTED, REJECTED, COMPLETED
 }

@@ -42,5 +42,22 @@ public class OrderService {
     }
 
 
+    public List<OrderDto> findOrdersByExWarehousingId(int exWarehousingId) {
+        SqlSession sqlSession = getSqlSession();
+        OrderDao orderDAO = sqlSession.getMapper(OrderDao.class);
 
+        List<OrderDto> orderList = orderDAO.findOrdersByExWarehousingId(exWarehousingId);
+        sqlSession.close();
+        return orderList;
+    }
+
+    public int findPublisherIdByOrderId(int orderId) {
+        SqlSession sqlSession = getSqlSession();
+        OrderDao orderDAO = sqlSession.getMapper(OrderDao.class);
+
+        int publisherId = orderDAO.findPublisherIdByOrderId(orderId);
+        sqlSession.close();
+
+        return publisherId;
+    }
 }

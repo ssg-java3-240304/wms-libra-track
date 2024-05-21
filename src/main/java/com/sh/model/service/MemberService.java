@@ -2,9 +2,7 @@ package com.sh.model.service;
 
 import com.sh.model.dao.InventoryManagerMapper;
 import com.sh.model.dao.MemberMapper;
-import com.sh.model.dao.PublisherManagerMapper;
 import com.sh.model.entity.InventoryManagerDto;
-import com.sh.model.entity.PublisherManagerDto;
 import com.sh.model.entity.MemberDto;
 import org.apache.ibatis.session.SqlSession;
 
@@ -14,31 +12,44 @@ import static com.sh.common.MyBatisTemplate.getSqlSession;
 
 public class MemberService {
 
-    InventoryManagerService inventoryManagerService = new InventoryManagerService();
-
-    public int insertPublisherMember(MemberDto memberDto) {
-        try (SqlSession sqlSession = getSqlSession()) {
-            MemberMapper memberMapper = sqlSession.getMapper(MemberMapper.class);
-            int result1 = memberMapper.addMember(memberDto);
-
-            //🆘🆘🆘publisherId 스캐너로 입력받기!!🆘🆘🆘
-            PublisherManagerMapper publisherManagerMapper = sqlSession.getMapper(PublisherManagerMapper.class);
-            PublisherManagerDto publisherManagerDto = new PublisherManagerDto(memberDto.getMemberId(), 10000);
-            int result2 = publisherManagerMapper.insertPublisherManager(publisherManagerDto);
+    //홍지민 작업 시작
+    // AdminUser 회원가입
+    public int insertAdminUser(MemberDto memberDto) {
+        SqlSession sqlSession = getSqlSession();
+        MemberMapper memberMapper = sqlSession.getMapper(MemberMapper.class);
+        try {
+            int result = memberMapper.insertMember(memberDto);
             sqlSession.commit();
-            return result1;
+            return result;
         } catch (Exception e) {
-            // 예외 처리
-            // 로그 기록 등
-            // 롤백 처리
+            sqlSession.rollback();
             throw new RuntimeException("Failed to add member", e);
+        } finally {
+            sqlSession.close();
         }
     }
+
+    // 출판사 매니저 회원 가입
+    public int insertPublisherMember(MemberDto memberDto) {
+        SqlSession sqlSession = getSqlSession();
+        MemberMapper memberMapper = sqlSession.getMapper(MemberMapper.class);
+        try {
+            int result = memberMapper.insertMember(memberDto);
+            sqlSession.commit();
+            return result;
+        } catch (Exception e) {
+            sqlSession.rollback();
+            throw new RuntimeException("Failed to add member", e);
+        } finally {
+            sqlSession.close();
+        }
+    }
+    //홍지민 작업 끝
 
     public int insertInventoryMember(MemberDto memberDto) {
         try (SqlSession sqlSession = getSqlSession()) {
             MemberMapper memberMapper = sqlSession.getMapper(MemberMapper.class);
-            int result = memberMapper.addMember(memberDto);
+            int result = memberMapper.insertMember(memberDto);
 
             InventoryManagerMapper inventoryManagerMapper = sqlSession.getMapper(InventoryManagerMapper.class);
             InventoryManagerDto inventoryManagerDto = new InventoryManagerDto(new Timestamp(System.currentTimeMillis()), 0, 10, memberDto.getMemberId());
@@ -47,7 +58,6 @@ public class MemberService {
             return result;
         } catch (Exception e) {
             throw new RuntimeException("Failed to selectMember", e);
-
         }
     }
 
@@ -55,14 +65,13 @@ public class MemberService {
         try (SqlSession sqlSession = getSqlSession()) {
             MemberMapper memberMapper = sqlSession.getMapper(MemberMapper.class);
             MemberDto memberDto = memberMapper.loginCheck(id, password);
-
             return memberDto;
-        } catch (Exception e){
-            throw new RuntimeException("~~~", e);
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to login", e);
+
         }
-
-
     }
+
 
     public int deleteInfo(MemberDto memberDto) {
          SqlSession sqlSession = getSqlSession();
@@ -80,4 +89,5 @@ public class MemberService {
 
          }
     }
+
 }

@@ -1,4 +1,4 @@
-﻿DROP TABLE IF EXISTS Publisher;
+DROP TABLE IF EXISTS Publisher;
 
 CREATE TABLE Publisher (
 	`publisher_id`	INTEGER	NOT NULL AUTO_INCREMENT,
@@ -73,6 +73,7 @@ CREATE TABLE `Area` (
 	`inventory_id`	INTEGER	NULL,
 	`publisher_id`	INTEGER	NULL,
 	`reserved`	INTEGER	NULL,
+    `quantity` INTEGER	NULL,
     PRIMARY KEY (`area_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
@@ -191,7 +192,7 @@ ALTER TABLE `Area` ADD CONSTRAINT `FK_Publisher_TO_Area_1` FOREIGN KEY (
 )
 REFERENCES `Publisher` (
 	`publisher_id`
-);
+)on delete set null;
 
 ALTER TABLE `in_warehousing` ADD CONSTRAINT `FK_PublisherManager_TO_in_warehousing_1` FOREIGN KEY (
 	`publisher_manager_id`

@@ -18,6 +18,7 @@ public interface InWarehousingDao {
 
     int findPublisherIdByInWarehousingId(int inWarehousingId);
 
+
     List<InWarehousing> findInWarehousingByPublisher(int publisherId);
 
     List<InWarehousing> findInWarehousingByPublisherManagerId(int publisherManagerId);

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sh.model.dao.BookDAO">
+    <insert id="insertBook" useGeneratedKeys="true" keyProperty="bookId">
+        insert into Book
+        (book_id, title, ISBN, publisher_id, pub_date,genre_id, price, author, pages, size )
+        values
+        (0, #{title}, #{ISBN}, #{publisherId}, #{pubDate},#{genreId}, #{price}, #{author}, #{pages}, #{size})
+    </insert>
+
+    <select id="findBookByISBN" resultType = "Book">
+        select *
+        from book
+        where ISBN = #{ISBN}
+    </select>
+
+    <update id = "updateInforamtion">
+        Update Book
+        <set>
+            <if test="title != null">title = #{title},</if>
+            <if test="ISBN != null">ISBN = #{ISBN},</if>
+            <if test="publisherId != null">publisher_id = #{publisherId},</if>
+            <if test="genreId != null">genre_id = #{genreId},</if>
+            <if test="price != null">price = #{price},</if>
+            <if test="pubDate != null">pub_date = #{pubDate},</if>
+            <if test="author != null">author = #{author},</if>
+            <if test="pages != null">pages = #{pages},</if>
+            <if test="size != null">size = #{size}</if>
+        </set>
+        where ISBN = #{ISBN}
+    </update>
+
+    <delete id = 'deleteBook'>
+        delete from book
+        where ISBN = #{ISBN}
+    </delete>
+
+    <select id="findAll" resultType="Book">
+        select b.* , p.name
+        from Book b join publisher p
+        on b.publisher_id = p.publisher_id
+        where b.publisher_id = #{id}
+        order by book_id
+    </select>
+
+    <select id="findBookIdByPublisherIdAndISBN" resultType="int" >
+        select book_id
+        from book
+        where publisher_id = #{publisherId} AND ISBN = #{ISBN}
+    </select>
+
+
+
+
+
+</mapper>

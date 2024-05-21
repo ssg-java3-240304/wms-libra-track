@@ -15,6 +15,7 @@ import java.util.List;
 
 //홍지민 작업 시작
 public class ExWarehousing {
+    private int exWarehousingId;
     private String address;
     private String receiver;
     private String receiverPhone;
@@ -22,5 +23,7 @@ public class ExWarehousing {
     private Timestamp date;
     private List<Order> orderList;
     private Status status;
+    private int publisherManagerId;
+    private int inventoryManagerId;
 }
 //홍지민 작업 끝
