@@ -12,6 +12,7 @@ import org.junit.jupiter.api.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -172,15 +173,21 @@ public class inputTest {
 
     }
 
-//    @Test
-//    @DisplayName("ISBN코드와 PublisherId를 이용해서 book_id값 찾기 ")
-//    void  test9() {
-//        //given
-//        String ISBN = "ISBN1234";
-//        int publiserId = 1;
-//        bookDAO.findBookIdByPublisherIdAndISBN(1,ISBN);
-//        //when
-//        //then
-//
-//    }
+    @Test
+    @DisplayName("ISBN코드와 PublisherId를 이용해서 book_id값 찾기 ")
+    void  test9() {
+        //given
+        String ISBN = "ISBN1234";
+        int publisherId = 1;
+
+
+        Book book = new Book();
+        book.setPublisherId(publisherId);
+        book.setISBN(ISBN);
+
+        //when
+        int result = bookDAO.findBookIdByPublisherIdAndISBN(Map.of("publisherId", publisherId, "ISBN", ISBN));
+        //then
+        Assertions.assertThat(result).isEqualTo(7);
+    }
 }
