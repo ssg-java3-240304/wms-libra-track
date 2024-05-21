@@ -91,4 +91,8 @@ public class OrderController {
 
     }
 
+    // 출고 내역의 상세 정보 조회
+    public List<OrderDto> findOrderByExWarehousingId(int exWarehousingId) {
+        return orderService.findOrdersByExWarehousingId(exWarehousingId);
+    }
 }
