@@ -2,6 +2,7 @@ package com.sh.view;
 
 import com.sh.controller.InWarehousingController;
 import com.sh.controller.OrderController;
+import com.sh.exception.StockException;
 import com.sh.model.entity.InWarehousing;
 import com.sh.model.entity.Status;
 import lombok.*;
@@ -217,6 +218,10 @@ public class InWarehousingView {
                     default:
                         System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
                 }
+            } catch (StockException e) {
+                e.printStackTrace();
+                System.out.println("입고 주문 등록에 실패하였습니다.");
+                System.out.printf(e.getMessage());
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println("잘못된 입력입니다. 다시 입력해주세요.");
