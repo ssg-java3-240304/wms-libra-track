@@ -69,4 +69,7 @@ public class BookController {
             return duplicate;
         }
     }
+    public void findBookIdByPublisherIdAndISBN(int publisherId, String ISBN) {
+        bookService.findBookIdByPublisherIdAndISBN(publisherId,ISBN);
+    }
 }

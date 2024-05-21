@@ -18,4 +18,5 @@ public interface BookDAO {
    List<Book> findAll(int id);
 
 
+    int findBookIdByPublisherIdAndISBN(int publisherId, String isbn);
 }

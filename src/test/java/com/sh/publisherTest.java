@@ -32,10 +32,10 @@ public class publisherTest {
     @DisplayName("출판사 정보 추가하기 ")
     void test1() {
         //given
-        String name = "오형동출판사1";
-        String email = "12@naver.com";
-        String phoneNumber = "01011111111";
-        String businessNumber = "3333";
+        String name = "오형동출판231";
+        String email = "11234@naver.com";
+        String phoneNumber = "01023111111";
+        String businessNumber = "7157482";
 
         Publisher publisher = new Publisher(0, name, email, phoneNumber, businessNumber);
         //when
@@ -49,7 +49,7 @@ public class publisherTest {
     @DisplayName("출판사 정보 수정하기")
     void test2() {
         //given
-        PublisherManager publisherManager = new PublisherManager(1, 1);
+        PublisherManager publisherManager = new PublisherManager(1,1, 1);
         int publisherId = publisherManager.getPublisherId();
         String name = "형동출판사11";
         String email = "123@naver.com";

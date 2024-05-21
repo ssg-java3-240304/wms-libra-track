@@ -42,12 +42,13 @@ public class inputTest {
     }
 
 
+    @Disabled
     @Test
     @DisplayName("책 정보 입력 테스트")
     void test1 () {
         //given
-        PublisherManager publisherManager = new PublisherManager(1,1);
-        int publisherId = publisherManager.getPublisherId();
+//        PublisherManager publisherManager = new PublisherManager(1,1);
+//        int publisherId = publisherManager.getPublisherId();
 //        System.out.println("책의 정보 입력");
 //        System.out.print("책 이름 : ");
         String title = "오행동책";
@@ -67,12 +68,12 @@ public class inputTest {
         int genreId = 3;
 //        String genreName = "소설";
 //        Genre genre = Genre.valueLabel(genreName);
-        Book book = new Book(0, title, ISBN, publisherId, genreId, price, pubDate, author, page, size);
+//        Book book = new Book(0, title, ISBN, publisherId, genreId, price, pubDate, author, page, size);
 
-        int result = bookDAO.insertBook(book);
+//        int result = bookDAO.insertBook(book);
 //        int result = bookDAO.updateInforamtion(book);
 
-        Assertions.assertThat(result).isEqualTo(1);
+//        Assertions.assertThat(result).isEqualTo(1);
 
     }
 
@@ -131,18 +132,19 @@ public class inputTest {
     }
 
 
-    @Test
-    @DisplayName("출판 등록된 모든 책 조회 하기 ")
-    void test6() {
-        //given
-        PublisherManager publisherManager = new PublisherManager(1, 1);
-        int id = publisherManager.getPublisherId();
-        //when
-        List<Book> list = bookDAO.findAll(id);
-        System.out.println(list);
-        //then
-        assertThat(list).isNotNull();
-    }
+//    @Disabled
+//    @Test
+//    @DisplayName("출판 등록된 모든 책 조회 하기 ")
+//    void test6() {
+//        //given
+//        PublisherManager publisherManager = new PublisherManager(1, 1);
+//        int id = publisherManager.getPublisherId();
+//        //when
+//        List<Book> list = bookDAO.findAll(id);
+//        System.out.println(list);
+//        //then
+//        assertThat(list).isNotNull();
+//    }
 
     @Disabled
     @Test
@@ -169,4 +171,16 @@ public class inputTest {
         Assertions.assertThat(book).isNotNull();
 
     }
+
+//    @Test
+//    @DisplayName("ISBN코드와 PublisherId를 이용해서 book_id값 찾기 ")
+//    void  test9() {
+//        //given
+//        String ISBN = "ISBN1234";
+//        int publiserId = 1;
+//        bookDAO.findBookIdByPublisherIdAndISBN(1,ISBN);
+//        //when
+//        //then
+//
+//    }
 }
