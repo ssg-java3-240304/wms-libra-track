@@ -16,9 +16,9 @@ public class InWarehousingView {
 
     private static Scanner scanner = new Scanner(System.in);
 
-    public static Integer PUB_MANAGER_ID = 0;
-    public static Integer PUB_ID = 0;
-    public static Integer INVEN_MANAGER_ID  = 1;
+    public static Integer PUB_MANAGER_ID = 1;
+    public static Integer PUB_ID = 1;
+    public static Integer INVEN_MANAGER_ID  = 0;
 
     private static OrderView orderView;
 
@@ -27,7 +27,7 @@ public class InWarehousingView {
     public static OrderController orderController = new OrderController();
 
     // 출판사 직원 메뉴
-    public static void inWarehousingPublisherMenu() {
+    public static void inWarehousingPublisherMainMenu() {
         try {
             String inWarehousingMenu = """
                     📦📦📦 입고 관리 📦📦📦
@@ -104,12 +104,14 @@ public class InWarehousingView {
                     inWarehousingController.findByPublisherId(PUB_ID);
                     break;
                 case "2":
+                    System.out.println("입고 상태를 입력해주세요. (PENDING, ACCEPTED, REJECTED, COMPLETED)");
                     inWarehousingController.findByPublisherIdAndStatus(PUB_ID, Status.valueOf(scanner.nextLine()));
                     break;
                 case "3":
                     inWarehousingController.findByPublisherManager(PUB_MANAGER_ID);
                     break;
                 case "4":
+                    System.out.println("입고 상태를 입력해주세요. (PENDING, ACCEPTED, REJECTED, COMPLETED)");
                     inWarehousingController.findByPublisherManagerAndStatus(PUB_MANAGER_ID, Status.valueOf(scanner.nextLine()));
                     break;
                 case "0":

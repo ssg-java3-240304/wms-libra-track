@@ -18,7 +18,7 @@ public class InWarehousingViewTest {
         InWarehousingView.PUB_MANAGER_ID = 1;
         InWarehousingView.PUB_ID = 1;
 
-        InWarehousingView.inWarehousingPublisherMenu();
+        InWarehousingView.inWarehousingPublisherMainMenu();
 
     }
 
@@ -32,7 +32,7 @@ public class InWarehousingViewTest {
         InWarehousingView.PUB_MANAGER_ID = 1;
         InWarehousingView.PUB_ID = 1;
 
-        InWarehousingView.inWarehousingPublisherMenu();
+        InWarehousingView.inWarehousingPublisherMainMenu();
 
     }
 
