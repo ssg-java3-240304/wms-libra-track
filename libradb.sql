@@ -191,7 +191,7 @@ ALTER TABLE `Area` ADD CONSTRAINT `FK_Publisher_TO_Area_1` FOREIGN KEY (
 )
 REFERENCES `Publisher` (
 	`publisher_id`
-);
+)on delete set null;
 
 ALTER TABLE `in_warehousing` ADD CONSTRAINT `FK_PublisherManager_TO_in_warehousing_1` FOREIGN KEY (
 	`publisher_manager_id`
