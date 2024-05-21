@@ -44,8 +44,18 @@ public class MemberView {
         String id = sc.next();
         System.out.println("비밀번호 입력 : ");
         String password = sc.next();
-//        MemberDto member =  memberController.loginCheck(id, password);
-    }
+        MemberDto memberDto = memberController.loginCheck(id, password);
+
+
+            if (memberDto.getRole() == Role.PUBLISHER) {
+                PublisherManagerView publisherManagerView = new PublisherManagerView();
+                publisherManagerView.choicePublisherMenu();
+            } else {
+                InventoryManagerView inventoryManagerView = new InventoryManagerView();
+                inventoryManagerView.choiceInventoryManagerMenu(memberDto);
+            }
+        }
+
 
 
     private void choiceMenu() {
@@ -56,6 +66,7 @@ public class MemberView {
                 2. 창고 관리자
                 ======================
                 """;
+
         while (true) {
             System.out.print(choiceMenu);
             String choice = sc.next();

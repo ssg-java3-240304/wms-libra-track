@@ -1,5 +1,8 @@
 package com.sh.model.entity;
 
+
+import lombok.Getter;
+import lombok.Setter;
 public class MemberDto {
 
     private int memberId;
@@ -10,16 +13,8 @@ public class MemberDto {
     private String phoneNumber;
     private String email;
 
-    public MemberDto() {
-    }
 
-    public MemberDto(int memberId, String name, String userName, String password, String phoneNumber, String email) {
-        this.memberId = memberId;
-        this.name = name;
-        this.userName = userName;
-        this.password = password;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
+    public MemberDto() {
     }
 
     public MemberDto(int memberId, String name, String userName, String password, Role role, String phoneNumber, String email) {
@@ -30,6 +25,30 @@ public class MemberDto {
         this.role = role;
         this.phoneNumber = phoneNumber;
         this.email = email;
+    }
+
+
+    public MemberDto(int memberId, String userName) {
+        this.memberId = memberId;
+        this.userName = userName;
+
+        }
+
+
+    public MemberDto(String password, int memberId){
+        this.memberId = memberId;
+        if(password != null){
+            this.password = password;
+        }
+
+    }
+
+
+
+
+    public MemberDto( String phoneNumber){
+        this.phoneNumber = phoneNumber;
+
     }
 
     public int getMemberId() {

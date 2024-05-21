@@ -15,5 +15,14 @@ public class MemberController {
         memberService.insertInventoryMember(memberDto);
         return memberDto;
 
+
+    }
+
+    public MemberDto loginCheck(String id, String password) {
+            return memberService.loginCheck(id, password);
+    }
+
+    public void deleteInfo(MemberDto memberDto) {
+        int result = memberService.deleteInfo(memberDto);
     }
 }

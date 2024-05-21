@@ -19,7 +19,7 @@ public class PublisherManagerView {
 
     }
 
-    public void choicePublisherMenu(String id) {
+    public void choicePublisherMenu() {
         String choicePublisherMenu = """
                  📖📖📖메뉴를 선택해주세요📖📖📖
                  =============================
@@ -34,7 +34,7 @@ public class PublisherManagerView {
             int choice = sc.nextInt();
             switch (choice) {
                 case 1:
-                    publisherManagement(id);
+                    publisherManagement();
 //            case 2 : BookView.(); break;
 //            case 3 : InventoryView(); break;
                 default:
@@ -45,7 +45,7 @@ public class PublisherManagerView {
 
     }
 
-    private void publisherManagement(String id) {
+    private void publisherManagement() {
         String publihserManagement = ("""
             ℹ️ 회원 정보 관리 ℹ️
             ==================
@@ -60,7 +60,7 @@ public class PublisherManagerView {
             int choice = sc.nextInt();
             switch (choice) {
                 case 1 :
-                    publisherManagerController.findPublisherManager(id); break;
+                    publisherManagerController.findPublisherManager(); break;
                 case 2 :
 //                    publisherManagerController.updatePublisherManager(); break;
                 case 3 :

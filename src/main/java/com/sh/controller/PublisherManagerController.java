@@ -10,7 +10,7 @@ public class PublisherManagerController {
 
 
 
-    public PublisherManagerDto findPublisherManager(String id) {
-        return publisherManagerService.findPublisherManager(id);
+    public PublisherManagerDto findPublisherManager() {
+        return publisherManagerService.findPublisherManager();
     }
 }
