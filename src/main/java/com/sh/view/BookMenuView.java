@@ -1,24 +1,23 @@
-package com.sh.view.bookView;
+package com.sh.view;
 
 import com.sh.controller.book.BookController;
 
 import com.sh.controller.publisher.PublisherController;
 import com.sh.model.dto.bookDto.Book;
-import com.sh.model.dto.publishserDto.PublisherManager;
-import com.sh.view.bookView.bookResultView.DisplayResultView;
+import com.sh.view.result.DisplayResultView;
 
 import java.time.LocalDateTime;
 import java.util.Scanner;
+
+import static com.sh.WMSApplication.PUB_MANAGER_ID;
 
 public class BookMenuView {
     BookController bookController = new BookController();
     PublisherController publisherController = new PublisherController();
 
-    PublisherManager publisherManager;
     Scanner scanner = new Scanner(System.in);
-    public void showMenu(PublisherManager publisherManger) {
+    public void showMenu() {
 
-        this.publisherManager = publisherManger;
         String menu = """
         ======================
         1. 출판 등록된 책 조회하기
@@ -36,10 +35,10 @@ public class BookMenuView {
             int n  = scanner.nextInt();
 
             switch (n) {
-                case 1 : bookController.findAll(publisherManager.getPublisherId()); // 출판 등록된 모든 도서 확인하기
+                case 1 : bookController.findAll(PUB_MANAGER_ID); // 출판 등록된 모든 도서 확인하기
                     break;
                 case 2 :
-                    bookController.insertBook(input(publisherManager.getPublisherId())); //도서정보 입력하기
+                    bookController.insertBook(input(PUB_MANAGER_ID)); //도서정보 입력하기
                     break;
                 case 3 : bookController.findBookByISBN(inputISBN());// ISBN으로 책 찾기
                     break;

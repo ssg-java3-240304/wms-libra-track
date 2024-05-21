@@ -4,12 +4,11 @@ import com.sh.model.dao.BookDAO;
 import com.sh.model.dao.GenreDAO;
 
 import com.sh.model.dto.bookDto.Book;
-import com.sh.view.bookView.bookResultView.DisplayResultView;
+import com.sh.view.result.DisplayResultView;
 import org.apache.ibatis.session.SqlSession;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
 import static com.sh.common.MyBatisTemplate.getSqlSession;
 
