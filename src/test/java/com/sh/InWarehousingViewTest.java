@@ -31,7 +31,6 @@ public class InWarehousingViewTest {
 
         InWarehousingView.PUB_MANAGER_ID = 1;
         InWarehousingView.PUB_ID = 1;
-        InWarehousingView.PUB_MANAGER = "희민";
 
         InWarehousingView.inWarehousingPublisherMenu();
 
@@ -40,7 +39,7 @@ public class InWarehousingViewTest {
     @Test
     public void inventoryManagerQueryTest() {
 
-        String input = "1\nPENDING\n1\n1\n1\n1\n0\n0\n0";
+        String input = "1\nPENDING\n1\n1\n1\n1\n2\n1\n서울\na\n3\n1";
         InputStream in = new ByteArrayInputStream(input.getBytes());
         System.setIn(in);
 
