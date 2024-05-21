@@ -1,5 +1,6 @@
 package com.sh.view;
 
+import com.sh.model.entity.MemberDto;
 import com.sh.model.entity.PublisherManagerDto;
 
 import java.util.Scanner;
@@ -14,7 +15,7 @@ public class MemberResultView {
 
     public static void displayPublisherManager(PublisherManagerDto publisherManagerDto) {
         if (publisherManagerDto == null) System.out.println("조회되지 않는 회원 정보입니다.");
-        System.out.println("ℹℹ회원 정보ℹℹ");
+        System.out.println("ℹ️ 회원 정보 ℹ️ ");
         System.out.printf(
                 "1. 회원 ID : %d \n" +
                 "2. 이름 :  %s \n" +
@@ -34,6 +35,27 @@ public class MemberResultView {
                 publisherManagerDto.getMemberDto().getEmail(),
                 publisherManagerDto.getPublisherManagerId(),
                 publisherManagerDto.getPublisherId()
+        );
+    }
+
+    public static void displayAdminUser(MemberDto adminUser) {
+        if (adminUser == null) System.out.println("조회되지 않는 회원 정보입니다.");
+        System.out.println("ℹ️ 회원 정보 ℹ️");
+        System.out.printf(
+                "1. 회원 ID : %d \n" +
+                "2. 이름 :  %s \n" +
+                "3. 아이디 : %s \n" +
+                "4. 비밀 번호 :  %s \n" +
+                "5. 구분 : %s \n" +
+                "6. 개인 핸드폰 : %s \n" +
+                "7. 이메일주소 : %s \n",
+                adminUser.getMemberId(),
+                adminUser.getName(),
+                adminUser.getUserName(),
+                adminUser.getPassword(),
+                adminUser.getRole(),
+                adminUser.getPhoneNumber(),
+                adminUser.getEmail()
         );
     }
 

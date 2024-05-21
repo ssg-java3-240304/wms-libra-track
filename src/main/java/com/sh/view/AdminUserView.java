@@ -63,7 +63,7 @@ public class AdminUserView {
                     adminUserContoller.findAdminUserInfo(memberDto);
                     break;
                 case 2:
-                    adminUserContoller.findAdminUserInfo(memberDto);
+                    adminUserContoller.updateAdminUserInfo(updateAdminUserInfo(memberDto));
                     break;
                 case 3:
                     return;
@@ -71,5 +71,25 @@ public class AdminUserView {
                     System.out.println("잘못 입력된 값입니다. 다시 입력해수제요!");
             }
         }
+    }
+
+    private MemberDto updateAdminUserInfo(MemberDto memberDto) {
+        System.out.println("️✏️️✏️️✏️회원 정보 수정✏️✏️️✏️");
+        System.out.print("1. 이름 입력: ");
+        String name = sc.next();
+
+        System.out.print("2. 아이디 입력 : ");
+        String username = sc.next();
+
+        System.out.print("3. 비밀 번호 입력 : ");
+        String password = sc.next();
+
+        System.out.print("4. 연락처 입력: ");
+        String phoneNumber = sc.next();
+
+        System.out.print("5. 이메일 주소 입력 : ");
+        String email = sc.next();
+
+        return new MemberDto(memberDto.getMemberId(), name, username, password, memberDto.getRole() ,phoneNumber, email);
     }
 }

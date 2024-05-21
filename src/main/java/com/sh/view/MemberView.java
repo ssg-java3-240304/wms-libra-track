@@ -85,7 +85,7 @@ public class MemberView {
         } else if (memberDto.getRole() == Role.INVENTORY) {
             InventoryManagerView inventoryManagerView = new InventoryManagerView();
 //            inventoryManagerView.choiceInventoryManagerMenu();
-        } else {
+        } else if(memberDto.getRole() == Role.ADMIN) {
             AdminUserView adminUserView = new AdminUserView();
             adminUserView.choiceAdminMenu(memberDto);
         }
