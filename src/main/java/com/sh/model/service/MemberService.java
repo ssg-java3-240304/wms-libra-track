@@ -1,31 +1,34 @@
 package com.sh.model.service;
 
+import com.sh.model.dao.InventoryManagerMapper;
 import com.sh.model.dao.MemberMapper;
-import com.sh.view.InventoryManagerView;
+import com.sh.model.dao.PublisherManagerMapper;
+import com.sh.model.entity.InventoryManagerDto;
+import com.sh.model.entity.PublisherManagerDto;
 import com.sh.model.entity.MemberDto;
 import com.sh.model.entity.Role;
-import com.sh.view.PublisherManagerView;
 import org.apache.ibatis.session.SqlSession;
+
+import java.lang.reflect.Member;
+import java.sql.Timestamp;
 
 import static com.sh.common.MyBatisTemplate.getSqlSession;
 
 public class MemberService {
 
-    PublisherManagerService publisherManagerService = new PublisherManagerService();
-    PublisherManagerView publisherManagerView = new PublisherManagerView();
-    InventoryManagerView inventoryManagerView = new InventoryManagerView();
+    InventoryManagerService inventoryManagerService = new InventoryManagerService();
 
-    public int addMember(MemberDto memberDto) {
+    public int insertPublisherMember(MemberDto memberDto) {
         try (SqlSession sqlSession = getSqlSession()) {
             MemberMapper memberMapper = sqlSession.getMapper(MemberMapper.class);
-            int result = memberMapper.addMember(memberDto);
+            int result1 = memberMapper.addMember(memberDto);
 
             //🆘🆘🆘publisherId 스캐너로 입력받기!!🆘🆘🆘
-            publisherManagerService.insertPublisherManager(sqlSession, memberDto.getMemberId(),10000);
-
-
+            PublisherManagerMapper publisherManagerMapper = sqlSession.getMapper(PublisherManagerMapper.class);
+            PublisherManagerDto publisherManagerDto = new PublisherManagerDto(memberDto.getMemberId(), 10000);
+            int result2 = publisherManagerMapper.insertPublisherManager(publisherManagerDto);
             sqlSession.commit();
-            return result;
+            return result1;
         } catch (Exception e) {
             // 예외 처리
             // 로그 기록 등
@@ -34,16 +37,29 @@ public class MemberService {
         }
     }
 
-    public MemberDto loginCheck(String id, String password) {
-        try (SqlSession sqlSession = getSqlSession()){
+    public int insertInventoryMember(MemberDto memberDto) {
+        try (SqlSession sqlSession = getSqlSession()) {
             MemberMapper memberMapper = sqlSession.getMapper(MemberMapper.class);
-            MemberDto memberChoice = memberMapper.loginCheck(id, password);
-            if(memberChoice.getRole() == Role.PUBLISHER) {
-                publisherManagerView.choicePublisherMenu(memberChoice.getUserName());
-            }
-            return memberChoice;
+            int result = memberMapper.addMember(memberDto);
+
+            InventoryManagerMapper inventoryManagerMapper = sqlSession.getMapper(InventoryManagerMapper.class);
+            InventoryManagerDto inventoryManagerDto = new InventoryManagerDto(new Timestamp(System.currentTimeMillis()), 0, 10, memberDto.getMemberId());
+            int result2 = inventoryManagerMapper.insertInventoryManager(inventoryManagerDto);
+            sqlSession.commit();
+            return result;
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Failed to selectMember", e);
+        }
+    }
+
+    public MemberDto loginCheck(String id, String password) {
+        try (SqlSession sqlSession = getSqlSession()) {
+            MemberMapper memberMapper = sqlSession.getMapper(MemberMapper.class);
+            MemberDto memberDto = memberMapper.loginCheck(id, password);
+        return memberDto;
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to login", e);
+
         }
     }
 }

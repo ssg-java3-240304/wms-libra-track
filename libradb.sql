@@ -1,6 +1,6 @@
-﻿DROP TABLE IF EXISTS `Publisher`;
+﻿DROP TABLE IF EXISTS Publisher;
 
-CREATE TABLE `Publisher` (
+CREATE TABLE Publisher (
 	`publisher_id`	INTEGER	NOT NULL AUTO_INCREMENT,
 	`name`	VARCHAR(20)	NOT NULL,
 	`email`	VARCHAR(65)	NOT NULL,

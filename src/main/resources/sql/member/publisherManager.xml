@@ -3,35 +3,49 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sh.model.dao.PublisherManagerMapper">
+    <resultMap id="findPublisherInfo" type ="publisherManagerDto">
+        <id column="publisher_manager_id" property="publisherManagerId"/>
+        <!-- result : 그외 컬럼 매핑용 -->
+        <result column="member_id" property="memberId"/>
+        <result column="publisher_id" property="publisherId"/>
+        <association property="memberDto" javaType="memberDto">
+            <id column="member_id" property="memberId"/>
+            <result column="name" property="name"/>
+            <result column="username" property="userName"/>
+            <result column="password" property="password"/>
+            <result column="role" property="role"/>
+            <result column="phone_number" property="phoneNumber"/>
+            <result column="email" property="email"/>
+        </association>
+    </resultMap>
+
+    <select id="findPmInfo" parameterType="int" resultMap="findPublisherInfo">
+        select
+            *
+        from
+            member m left join publisher_manager pm
+                on m.member_id = pm.member_id
+        where
+            pm.member_id = #{memberId};
+    </select>
+
+    <select id="updatePmInfo" parameterType="int" resultMap="findPublisherInfo">
+        select
+        *
+        from
+        member m left join publisher_manager pm
+        on m.member_id = pm.member_id
+        where
+        pm.member_id = #{memberId};
+    </select>
 
     <insert id="insertPublisherManager" useGeneratedKeys="true" keyProperty="publisherManagerId">
         insert into
-            publishermanager(member_id, publisher_id)
+        publisher_manager(member_id, publisher_id)
         values(
-            #{memberId},
-            #{publisherId}
+        #{memberId},
+        #{publisherId}
         )
     </insert>
 
-<!--    <select id="findPublisherManager" resultType="PublisherManagerDto">-->
-<!--        select-->
-<!--            *-->
-<!--        from-->
-<!--            member m join publisher_manager pm-->
-<!--                on m.member_id = pm.member_id-->
-<!--        where-->
-<!--            publisher_manager_id = #{publisherManagerId}-->
-<!--    </select>-->
-
-<!--    <select id="loginCheck" resultType="">-->
-
-<!--    </select>-->
-
-<!--    <select id="findPublisher" resultType="Publisher">-->
-<!--        select distinct name-->
-<!--        from publisher;-->
-<!--    </select>-->
-<!--    <delete id="">-->
-
-<!--    </delete>-->
 </mapper>

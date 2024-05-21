@@ -1,10 +1,11 @@
 package com.sh.model.dao;
 
 import com.sh.model.entity.MemberDto;
-import com.sh.model.entity.Role;
+import org.apache.ibatis.annotations.Param;
 
 public interface MemberMapper {
+    //홍지민 작업 시작
     int addMember(MemberDto memberDto);
-
-    MemberDto loginCheck(String id, String password);
+    MemberDto loginCheck(@Param("userName") String userName, @Param("password") String password);
+    // 홍지민 작업 끝
 }

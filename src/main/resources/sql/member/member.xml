@@ -9,16 +9,14 @@
         #{name}, #{userName}, #{password}, #{role}, #{phoneNumber}, #{email}
         )
     </insert>
-<!--    <select id="loginCheck" resultType="com.sh.model.entity.MemberDto">-->
-<!--        select-->
-<!--            *-->
-<!--        from-->
-<!--            member-->
-<!--        where-->
-<!--            userName = #{userName}-->
-<!--            and-->
-<!--            password = #{password}-->
-<!--    </select>-->
+    <select id="loginCheck" parameterType="String" resultType="com.sh.model.entity.MemberDto">
+        select
+            *
+        from
+            member
+        where
+            username = #{userName} and password = #{password}
+    </select>
 
 
 </mapper>

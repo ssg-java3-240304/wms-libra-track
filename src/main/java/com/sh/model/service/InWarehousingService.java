@@ -15,7 +15,7 @@ import static com.sh.common.MyBatisTemplate.getSqlSession;
 public class InWarehousingService {
 
 
-    public void insertInWarehousing(HashMap<String, Integer> orders, String publisherName) {
+    public void insertInWarehousing(HashMap<String, Integer> orders, int publisherManagerId) {
 
 
         InWarehousing inWarehousing = new InWarehousing();
@@ -23,11 +23,8 @@ public class InWarehousingService {
         inWarehousing.setDate(new Timestamp(System.currentTimeMillis()));
         inWarehousing.setStatus(Status.PENDING);
 
-        //int publisherId = publisherService.findPublisherId(publisherName);
-        int publisherId = 1;
-        inWarehousing.setPublisherManagerId(publisherId);
-
-
+        inWarehousing.setPublisherManagerId(publisherManagerId);
+        
         // iterate over orders
         List<Order> orderList = new ArrayList<>();
         for (String ISBN : orders.keySet()) {
