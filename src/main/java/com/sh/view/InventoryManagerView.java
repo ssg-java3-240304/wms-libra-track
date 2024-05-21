@@ -15,14 +15,18 @@ public class InventoryManagerView {
 
     BookMenuView bookMenuView = new BookMenuView();
 
+    InventoryView inventoryView = new InventoryView();
+
     InventoryManagerController inventoryManagerController = new InventoryManagerController();
 
     public void inventoryManagerMainView(MemberDto memberDto) {
         String choicePublisherMenu = """
                 📖📖📖출판사 매니저 메뉴📖📖📖
                 =============================
-                1. 입고 관리
-                2. 출고 관리
+                1. 창고 관리
+                2. 입고 관리
+                3. 출고 관리
+                4. 재고 관리
                 0. 나가기
                 =============================
                 입력 : 
@@ -48,19 +52,28 @@ public class InventoryManagerView {
 
             switch (choice) {
                 case 1 :
+                    inventoryView.inventoryManagerMenu(); break;
+                case 2 :
                     if (inventoryManagerDto == null) {
                         System.out.println("창고 정보가 없습니다. 창고 정보를 먼저 등록해주세요.");
                         break;
                     }
                     EX = false;
                     InWarehousingView.inWarehousingInventoryManagerMainMenu(); break;
-                case 2 :
+                case 3 :
                     if (inventoryManagerDto == null) {
                         System.out.println("창고 정보가 없습니다. 창고 정보를 먼저 등록해주세요.");
                         break;
                     }
                     EX = true;
                     ExWarehousingView.exWarehousingInventoryManagerMainMenu(); break;
+                case 4 :
+                    if (inventoryManagerDto == null) {
+                        System.out.println("창고 정보가 없습니다. 창고 정보를 먼저 등록해주세요.");
+                        break;
+                    }
+                    bookMenuView.inventoryManagerBookMenu(); break;
+
                 case 0 :
                     return;
                 default:

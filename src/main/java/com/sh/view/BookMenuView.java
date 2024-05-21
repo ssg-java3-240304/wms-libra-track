@@ -9,7 +9,8 @@ import com.sh.view.result.DisplayResultView;
 import java.time.LocalDateTime;
 import java.util.Scanner;
 
-import static com.sh.WMSApplication.PUB_MANAGER_ID;
+import static com.sh.WMSApplication.PUB_ID;
+
 
 public class BookMenuView {
     BookController bookController = new BookController();
@@ -35,16 +36,43 @@ public class BookMenuView {
             int n  = scanner.nextInt();
 
             switch (n) {
-                case 1 : bookController.findAll(PUB_MANAGER_ID); // 출판 등록된 모든 도서 확인하기
+                case 1 : bookController.findAll(PUB_ID); // 출판 등록된 모든 도서 확인하기
                     break;
                 case 2 :
-                    bookController.insertBook(input(PUB_MANAGER_ID)); //도서정보 입력하기
+                    bookController.insertBook(input(PUB_ID)); //도서정보 입력하기
                     break;
                 case 3 : bookController.findBookByISBN(inputISBN());// ISBN으로 책 찾기
                     break;
                 case 4 : bookController.updateInforamtion(inputUpdate()); //도서 상세 정보 수정
                     break;
                 case 5 : bookController.deleteBook(inputISBN()); // 도서 삭제
+                    break;
+                case 0 : return;
+                default :
+                    System.out.println("숫자를 다시 입력해주세요!");
+                    break;
+            }
+        }
+    }
+    public void inventoryManagerBookMenu() {
+
+        String menu = """
+        ======================
+        1. 도서 재고 검색
+        2. 도서 위치 검색
+        0. 종료
+        ======================
+        """;
+        while (true) {
+            System.out.println(menu);
+            System.out.println("원하시는 메뉴를 선택해주세요!");
+            int n  = scanner.nextInt();
+
+            switch (n) {
+                case 1 : bookController.findBookByISBN(inputISBN());// ISBN으로 책 찾기
+                    break;
+                case 2 :
+                    bookController.findBookLocation(inputISBN()); //도서 위치 찾기
                     break;
                 case 0 : return;
                 default :
@@ -105,8 +133,19 @@ public class BookMenuView {
 
         System.out.println("================================");
 
+        Book book = new Book();
 
-        return new Book(0, title, ISBN, publisherId,genreId,price,pubDate,author,pages,size);
+        book.setAuthor(author);
+        book.setTitle(title);
+        book.setISBN(ISBN);
+        book.setPublisherId(id);
+        book.setGenreId(genreId);
+        book.setPrice(price);
+        book.setPubDate(pubDate);
+        book.setPages(pages);
+        book.setSize(size);
+
+        return book;
     }
 
     //이름 입력하고 -> 이름에 해당하는 genreId값 반환하는 메소드
