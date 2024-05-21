@@ -26,6 +26,7 @@ public class PublisherManagerView {
                 1. 회원 정보 관리
                 2. 도서 관리
                 3. 입/출고 관리
+                4. 나가기
                 =============================
                 입력 : 
                 """;
@@ -35,11 +36,13 @@ public class PublisherManagerView {
             switch (choice) {
                 case 1:
                     publisherManagement(memberDto);
+                    break;
 //            case 2 : BookView.(); break;
 //            case 3 : InventoryView(); break;
+                case 4 :
+                    return;
                 default:
                     System.out.print("잘못된 입력입니다. 다시 입력해주세요 : ");
-                    ;
             }
         }
     }
@@ -52,6 +55,7 @@ public class PublisherManagerView {
                  1. 회원 정보 조회
                  2. 회원 정보 수정
                  3. 회원 정보 삭제
+                 4. 나가기
                 ===================
                 """);
         while (true) {
@@ -64,17 +68,21 @@ public class PublisherManagerView {
                     publisherManagerController.findPublisherManagerInfo(memberDto);
                     break;
                 case 2:
-                    publisherManagerController.updatePublisherManager(updatePublisherManager());
+                    publisherManagerController.updatePublisherManager(updatePublisherManager(memberDto));
 
                     break;
                 case 3:
 //                    publisherManagerController.deletePublisherManager(); break;
+                case 4 :
+                    return;
+                default:
+                    System.out.println("잘못 입력된 값입니다. 다시 입력해수제요!");
             }
         }
     }
 
 
-    private MemberDto updatePublisherManager() {
+    private MemberDto updatePublisherManager(MemberDto memberDto) {
         System.out.println("️✏️️✏️️✏️회원 정보 수정✏️✏️️✏️");
         System.out.print("1. 이름 입력: ");
         String name = sc.next();
@@ -91,7 +99,7 @@ public class PublisherManagerView {
         System.out.print("5. 이메일 주소 입력 : ");
         String email = sc.next();
 
-        return new MemberDto(name, username, password, phoneNumber, email);
+        return new MemberDto(memberDto.getMemberId(), name, username, password, memberDto.getRole() ,phoneNumber, email);
     }
 
 }

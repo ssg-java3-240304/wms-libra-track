@@ -24,9 +24,10 @@ public class MemberDto {
         this.userName = userName;
     }
 
-    public MemberDto(String name, String username, String password, String phoneNumber, String email) {
+    public MemberDto(int memberId, String name, String userName, String password, String phoneNumber, String email) {
+        this.memberId = memberId;
         this.name = name;
-        this.userName = username;
+        this.userName = userName;
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.email = email;
