@@ -23,13 +23,13 @@
 ## 📌 프로젝트 기획서
 
 
-![프로젝트 기획서](https://github.com/jectgenius/oop2-vendburglars-vendventures/blob/master/flow-chart.png)
+![프로젝트 기획서](https://docs.google.com/document/d/1WdfxYECtnvHkZX4NT8OzvlEo0i1ThCWz/edit?usp=sharing&ouid=103827366866195688523&rtpof=true&sd=true)
 
 
 ## 📌 요구 사항 명세
 
 
-![요구 사항 명세](https://github.com/jectgenius/oop2-vendburglars-vendventures/blob/master/flow-chart.png)
+![요구 사항 명세](https://docs.google.com/spreadsheets/d/1r0ahh92YLbjsqMw7BdyDTLuBHixo6c2-a-Uygqm-Hb4/edit?usp=sharing)
 
 
 ## 📌 유스케이스 다이어그램
@@ -41,25 +41,25 @@
 ## 📌 시퀀스 다이어그램
 
 
-![시퀀스 다이어그램](https://github.com/jectgenius/oop2-vendburglars-vendventures/blob/master/flow-chart.png)
+![시퀀스 다이어그램](https://github.com/jectgenius/wms-libra-track/blob/master/about/%EB%8F%84%EC%84%9C%20%EC%B0%BD%EA%B3%A0%20%EA%B4%80%EB%A6%AC%20%EC%8B%9C%EC%8A%A4%ED%85%9C_%EC%9C%A0%EC%8A%A4%EC%BC%80%EC%9D%B4%EC%8A%A4%20%EB%8B%A4%EC%9D%B4%EC%96%B4%EA%B7%B8%EB%9E%A8.png)
 
 
 ## 📌 클래스 다이어그램
 
 
-![클래스 다이어그램](https://github.com/jectgenius/oop2-vendburglars-vendventures/blob/master/class-diagram.png)
+![클래스 다이어그램](https://github.com/jectgenius/wms-libra-track/blob/master/about/%EB%8F%84%EC%84%9C%20%EC%B0%BD%EA%B3%A0%20%EA%B4%80%EB%A6%AC%20%EC%8B%9C%EC%8A%A4%ED%85%9C_%ED%81%B4%EB%9E%98%EC%8A%A4%20%EB%8B%A4%EC%9D%B4%EC%96%B4%EA%B7%B8%EB%9E%A8.png)
 
 
 ## 📌 논리적 데이터 베이스 모델링(ERD)
 
 
-![논리적 데이터 베이스 모델링(ERD)](https://github.com/jectgenius/oop2-vendburglars-vendventures/blob/master/class-diagram.png)
+![논리적 데이터 베이스 모델링(ERD)](https://github.com/jectgenius/wms-libra-track/blob/master/about/%EB%8F%84%EC%84%9C%20%EC%B0%BD%EA%B3%A0%20%EA%B4%80%EB%A6%AC%20%EC%8B%9C%EC%8A%A4%ED%85%9C_ERD.png)
 
 
 ## 📌 메뉴 구조도
 
 
-![메뉴 구조도](https://github.com/jectgenius/oop2-vendburglars-vendventures/blob/master/class-diagram.png)
+![메뉴 구조도](https://github.com/jectgenius/wms-libra-track/blob/master/about/%EB%8F%84%EC%84%9C%20%EC%B0%BD%EA%B3%A0%20%EA%B4%80%EB%A6%AC%20%EC%8B%9C%EC%8A%A4%ED%85%9C_%EB%A9%94%EB%89%B4%20%EA%B5%AC%EC%A1%B0%EB%8F%84.png)
 
 
 ## 🎨 기능
