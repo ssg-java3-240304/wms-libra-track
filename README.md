@@ -21,8 +21,7 @@
 ## 📌 요구 사항 명세
 
 
-![요구 사항 명세](https://github.com/jectgenius/wms-libra-track/blob/master/about/%EB%8F%84%EC%84%9C%20%EC%B0%BD%EA%B3%A0%20%EA%B4%80%EB%A6%AC%20%EC%8B%9C%EC%8A%A4%ED%85%9C_%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%20%EB%AA%85%EC%84%B81.png)
-![요구 사항 명세](https://github.com/jectgenius/wms-libra-track/blob/master/about/%EB%8F%84%EC%84%9C%20%EC%B0%BD%EA%B3%A0%20%EA%B4%80%EB%A6%AC%20%EC%8B%9C%EC%8A%A4%ED%85%9C_%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%20%EB%AA%85%EC%84%B82.png)
+![요구 사항 명세](https://github.com/jectgenius/wms-libra-track/blob/master/about/%EB%8F%84%EC%84%9C%20%EC%B0%BD%EA%B3%A0%20%EA%B4%80%EB%A6%AC%20%EC%8B%9C%EC%8A%A4%ED%85%9C_%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%20%EB%AA%85%EC%84%B8.png)
 
 
 ## 📌 유스케이스 다이어그램
