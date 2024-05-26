@@ -1,14 +1,6 @@
 # 📦 문헌 털이단의 도서 창고 관리 시스템(WMS)
 
 
-[//]: # (- 문헌 털이단의 도서 창고 관리 시스템&#40;WMS&#41;)
-
-[//]: # (## 🔥 핵심 기능)
-
-[//]: # ()
-[//]: # ()
-[//]: # (- ✨ 도서 입고 및 출고 처리와 상태 조회)
-
 
 ## ✏️ 프로젝트 소개
 
@@ -21,13 +13,16 @@
 ## 📌 프로젝트 기획서
 
 
-![프로젝트 기획서](https://docs.google.com/document/d/1WdfxYECtnvHkZX4NT8OzvlEo0i1ThCWz/edit?usp=sharing&ouid=103827366866195688523&rtpof=true&sd=true)
+![프로젝트 기획서](https://github.com/jectgenius/wms-libra-track/blob/master/about/%EB%8F%84%EC%84%9C%20%EC%B0%BD%EA%B3%A0%20%EA%B4%80%EB%A6%AC%20%EC%8B%9C%EC%8A%A4%ED%85%9C_%EB%AF%B8%EB%8B%88%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B8%B0%ED%9A%8D%EC%95%881.png)
+![프로젝트 기획서](https://github.com/jectgenius/wms-libra-track/blob/master/about/%EB%8F%84%EC%84%9C%20%EC%B0%BD%EA%B3%A0%20%EA%B4%80%EB%A6%AC%20%EC%8B%9C%EC%8A%A4%ED%85%9C_%EB%AF%B8%EB%8B%88%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B8%B0%ED%9A%8D%EC%95%882.png)
+![프로젝트 기획서](https://github.com/jectgenius/wms-libra-track/blob/master/about/%EB%8F%84%EC%84%9C%20%EC%B0%BD%EA%B3%A0%20%EA%B4%80%EB%A6%AC%20%EC%8B%9C%EC%8A%A4%ED%85%9C_%EB%AF%B8%EB%8B%88%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B8%B0%ED%9A%8D%EC%95%883.png)
 
 
 ## 📌 요구 사항 명세
 
 
-![요구 사항 명세](https://docs.google.com/spreadsheets/d/1r0ahh92YLbjsqMw7BdyDTLuBHixo6c2-a-Uygqm-Hb4/edit?usp=sharing)
+![요구 사항 명세](https://github.com/jectgenius/wms-libra-track/blob/master/about/%EB%8F%84%EC%84%9C%20%EC%B0%BD%EA%B3%A0%20%EA%B4%80%EB%A6%AC%20%EC%8B%9C%EC%8A%A4%ED%85%9C_%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%20%EB%AA%85%EC%84%B81.png)
+![요구 사항 명세](https://github.com/jectgenius/wms-libra-track/blob/master/about/%EB%8F%84%EC%84%9C%20%EC%B0%BD%EA%B3%A0%20%EA%B4%80%EB%A6%AC%20%EC%8B%9C%EC%8A%A4%ED%85%9C_%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%20%EB%AA%85%EC%84%B82.png)
 
 
 ## 📌 유스케이스 다이어그램
