@@ -1,35 +1,27 @@
 # 📦 문헌 털이단의 도서 창고 관리 시스템(WMS)
 
 
-[//]: # (- 문헌 털이단의 도서 창고 관리 시스템&#40;WMS&#41;)
 
-[//]: # (## 🔥 핵심 기능)
-
-[//]: # ()
-[//]: # ()
-[//]: # (- ✨ 도서 입고 및 출고 처리와 상태 조회)
+## ✏️ 프로젝트 소개
 
 
-## 🏦 프로젝트 소개
+1. 이 프로젝트는 출판사와 창고 간의 도서 재고 관리를 효율적으로 처리하기 위한 시스템입니다.
 
-[//]: # ()
-[//]: # (1. 관리자 기능: 관리자는 로그인, 비밀번호 변경, 로그아웃, 관리자 등록 기능을 수행할 수 있습니다.)
-
-[//]: # (2. 자판기 기능: 사용자 선택, 관리자 모드 시작, 매출 확인, 상품 구매와 같은 기능을 사용할 수 있습니다.)
-
-[//]: # (3. ✨ 상품 관리 기능 ✨: 상품 조회, 추가, 삭제, 재고 관리 등 다양한 기능을 이용할 수 있습니다.)
+2.  주요 기능은 사용자 관리, 재고 및 입출고 관리, 그리고 창고 및 출판사 관리로 구성되어 있습니다.
 
 
 ## 📌 프로젝트 기획서
 
 
-![프로젝트 기획서](https://docs.google.com/document/d/1WdfxYECtnvHkZX4NT8OzvlEo0i1ThCWz/edit?usp=sharing&ouid=103827366866195688523&rtpof=true&sd=true)
+![프로젝트 기획서](https://github.com/jectgenius/wms-libra-track/blob/master/about/%EB%8F%84%EC%84%9C%20%EC%B0%BD%EA%B3%A0%20%EA%B4%80%EB%A6%AC%20%EC%8B%9C%EC%8A%A4%ED%85%9C_%EB%AF%B8%EB%8B%88%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B8%B0%ED%9A%8D%EC%95%881.png)
+![프로젝트 기획서](https://github.com/jectgenius/wms-libra-track/blob/master/about/%EB%8F%84%EC%84%9C%20%EC%B0%BD%EA%B3%A0%20%EA%B4%80%EB%A6%AC%20%EC%8B%9C%EC%8A%A4%ED%85%9C_%EB%AF%B8%EB%8B%88%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B8%B0%ED%9A%8D%EC%95%882.png)
+![프로젝트 기획서](https://github.com/jectgenius/wms-libra-track/blob/master/about/%EB%8F%84%EC%84%9C%20%EC%B0%BD%EA%B3%A0%20%EA%B4%80%EB%A6%AC%20%EC%8B%9C%EC%8A%A4%ED%85%9C_%EB%AF%B8%EB%8B%88%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B8%B0%ED%9A%8D%EC%95%883.png)
 
 
 ## 📌 요구 사항 명세
 
 
-![요구 사항 명세](https://docs.google.com/spreadsheets/d/1r0ahh92YLbjsqMw7BdyDTLuBHixo6c2-a-Uygqm-Hb4/edit?usp=sharing)
+![요구 사항 명세](https://github.com/jectgenius/wms-libra-track/blob/master/about/%EB%8F%84%EC%84%9C%20%EC%B0%BD%EA%B3%A0%20%EA%B4%80%EB%A6%AC%20%EC%8B%9C%EC%8A%A4%ED%85%9C_%EC%9A%94%EA%B5%AC%EC%82%AC%ED%95%AD%20%EB%AA%85%EC%84%B8.png)
 
 
 ## 📌 유스케이스 다이어그램
@@ -66,103 +58,99 @@
 
 
 
-### 🔆 도메인
+### 🔆 주요 액터
 
 ---
-####  ️🙋‍♂️ Admin User(WMS 관리자), Inventory Manager(창고 직원), Publisher Manager (출판사 직원)
-- 로그인, 로그아웃, 비밀번호 변경, 관리자 등록
-#### 📚 Book (도서)
-- 모든 상품 조회, 이름으로 상품 조회, 종류별 상품 조회, 특정 상품 조회, 상품 삭제, 상품 추가, 상품 수량 업데이트, 상품 수량 조회
-#### 📦 Inventory, Area (창고, 구역)
-- 사용자 선택, 관리자 메뉴 시작, 매출확인, 상품 삭제
-#### 🦺 InWarehousing, ExWarehousing (입고, 출고)
-- 사용자 선택, 관리자 메뉴 시작, 매출확인, 상품 삭제
+#### ️🙋‍♂️ Admin User (WMS 관리자)
+- 계정 관리, 창고 관리, 출판사 관리
+#### 🦺 Inventory Manager (창고 직원)
+- 계정 관리, 재고 관리, 입고 관리, 출고 관리, 구역 관리
+#### 📚 Publisher Manager (출판사 직원)
+- 계정 관리, 입고 요청, 입고 요청 조회, 출고 요청, 출고 요청 조회, 출판 관리
 
-
-### 🎈 주요 메소드
+### 🎈 주요 기능
 
 ---
-#### 🙋‍♂️ Admin User(WMS 관리자)
-1️⃣ 로그인 (logIn)
--  등록된 관리자와 입력한 이메일과 비밀번호를 비교하여 로그인을 수행합니다.
+#### 🛑 회원 관리 
+1️⃣ 회원 가입
+- 출판사 매니저 가입 (insertPublisherMember)
+- 창고 관리자 가입 (insertInventoryManager)
+- 관리자 가입 (insertAdminUser)
 
-2️⃣ 비밀번호 변경 (changePassword)
-- 등록된 관리자와 이메일과 비밀번호를 비교하여 맞다면 새로운 비밀번호로 변경합니다.
+2️⃣ 로그인 (loginCheck)
 
-3️⃣ 로그아웃 (logOut)
-- 관리자가 로그아웃을 선택하면 관리자 메뉴를 종료합니다.
-
-4️⃣ 관리자 등록 (registerManager)
-- 사전에 입력한 이메일, 비밀번호, 이름을 사용하여 관리자를 등록합니다.
-
----
-#### 🙋‍♂️ Inventory Manager(창고 직원)
-1️⃣ 로그인 (logIn)
--  등록된 관리자와 입력한 이메일과 비밀번호를 비교하여 로그인을 수행합니다.
-
-2️⃣ 비밀번호 변경 (changePassword)
-- 등록된 관리자와 이메일과 비밀번호를 비교하여 맞다면 새로운 비밀번호로 변경합니다.
-
-3️⃣ 로그아웃 (logOut)
-- 관리자가 로그아웃을 선택하면 관리자 메뉴를 종료합니다.
-
-4️⃣ 관리자 등록 (registerManager)
-- 사전에 입력한 이메일, 비밀번호, 이름을 사용하여 관리자를 등록합니다.
+3️⃣ 사용자 인터페이스
+- 출판사 매니저 메뉴 (choicePublisherMenu)
+- 창고 관리자 메뉴 (choiceInventoryManagerMenu)
+- 관리자 메뉴 (choiceAdminMenu)
 
 ---
-#### 🙋‍♂️ Publisher Manager (출판사 직원)
-1️⃣ 로그인 (logIn)
--  등록된 관리자와 입력한 이메일과 비밀번호를 비교하여 로그인을 수행합니다.
+#### 🙋‍♂️ 관리자 기능
+1️⃣ 회원 관리 
+- 회원 정보 조회 (findAdminUserInfo)
+- 회원 정보 수정 (updateAdminUserInfo)
 
-2️⃣ 비밀번호 변경 (changePassword)
-- 등록된 관리자와 이메일과 비밀번호를 비교하여 맞다면 새로운 비밀번호로 변경합니다.
+2️⃣ 출판사 등록
+- 출판사 등록 (insertPublisherMember)
 
-3️⃣ 로그아웃 (logOut)
-- 관리자가 로그아웃을 선택하면 관리자 메뉴를 종료합니다.
+3️⃣ 회원 정보 관리
+- 출판사 매니저 정보 조회 (findPublisherManagerInfo)
+- 출판사 매니저 정보 수정 (updatePublisherManager)
 
-4️⃣ 관리자 등록 (registerManager)
-- 사전에 입력한 이메일, 비밀번호, 이름을 사용하여 관리자를 등록합니다.
-
----
-#### 🧃 자판기
-1️⃣ 사용자 선택 (choiceUser)
-- 자판기 사용자로서 관리자 또는 소비자를 선택할 수 있는 메뉴를 출력합니다.
-
-2️⃣ 관리자 메뉴 시작 (startManager)
-- 관리자 등록 후 로그인을 수행하여 자판기를 관리할 수 있는 환경으로 접속합니다.
-
-3️⃣ 매출 확인 (checkMoney)
-- 매출 확인을 합니다.
-
-4️⃣ 상품 삭제 (deleteItem)
-- 이름과 용량에 해당하는 상품을 삭제합니다.
+4️⃣ 창고 관리
+- 전체 창고 조회 (findAllInventory)
+- 창고 코드로 창고 조회 (findInventoryByInventoryId)
+- 창고 등록 (insertInventory)
+- 창고 수정 (updateInventory)
+- 창고 삭제 (deleteInventory)
 
 ---
-#### 💎 상품
-1️⃣ 모든 상품 조회 (listItems)
-- 모든 저장된 아이템을 리스트로 반환합니다.
+#### 📚️ 출판사 직원 기능
+1️⃣ 출판사 정보 관리
+- 출판사 정보 조회 (findPublisherInformation)
+- 출판사 정보 수정 (updatePublisher)
+- 출판사 정보 삭제 (deletePublisherId)
 
-2️⃣ 이름으로 상품 조회 (findAllByName)
-- 같은 이름의 아이템들을 리스트로 반환합니다.
+2️⃣ 도서 관리
+- 도서 등록 (insertBook)
+- 도서 조회 (findAll)
+- 도서 수정 (updateInformation)
+- 도서 삭제 (deleteBook)
+- ISBN 코드로 도서 검색 (findBookISBN)
+- 도서 상세 정보 출력 (displayBook)
+- 등록된 도서 목록 출력 (displayBookList)
 
-3️⃣ 종류별 상품 조회 (findAllByKind)
-- 같은 종류의 아이템들을 리스트로 반환합니다.
+---
+#### 🦺 창고 직원 기능
+1️⃣ 입고 관리
+- 입고 요청 (insertInWarehousing)
+- 입고 내역 조회 (findInWarehousingByStatus)
+- 입고 상태 변경 (updateInWarehousingStatus)
+- 입고 주문별 구역 배정 (reserveOrder)
+- 입고 주문별 입하 처리 (completeOrder)
+- 입고 내역 상세 조회 (findOrdersWithInWarehousingId)
+- 입고 상태별 내역 조회 (findInWarehousingByStatus)
+- 입고 주문별 구역 상세 조회 (findOrderAreaDetailByOrderId)
 
-4️⃣ 이름과 용량으로 상품 조회 (findByNameAndVolume)
-- 아이템이 이름으로 특정 되지 않기 때문에, 이름과 용량으로 특정 아이템을 반환합니다.
+2️⃣ 출고 관리
+- 출고 요청 (insertInWarehousing)
+- 출고 내역 조회 (findInWarehousingByStatus)
+- 출고 상태 변경 (updateInWarehousingStatus)
+- 출고 주문별 구역 배정 (reserveOrder)
+- 출고 주문별 출하 처리 (completeOrder)
+- 출고 내역 상세 조회 (findOrdersWithInWarehousingId)
+- 출고 상태별 내역 조회 (findInWarehousingByStatus)
 
-5️⃣ 상품 삭제 (deleteByNameAndVolume)
-- 이름과 용량에 해당하는 상품을 삭제합니다.
-
-6️⃣ 상품 추가 (insertItem)
-- 주어진 정보를 가지고 아이템을 저장합니다.
-
-7️⃣ 상품 수량 업데이트 (updateQuantity)
-- 특정 상품의 재고 수량을 업데이트합니다.
-
-8️⃣ 상품 수량 조회 (checkQuantity)
-- 특정 아이템의 재고 수량을 반환합니다.
-
+3️⃣ 구역 관리
+- 구역 조회 (findAllArea)
+- 구역 상세 조회 (findAreaByAreaId)
+- 창고별 구역 조회 (findAreaByInventoryId)
+- 구역 등록 (insertArea)
+- 구역 수정 (updateArea)
+- 구역 삭제 (deleteArea)
+- 구역 reserved 수정 (updateReserved)
+- 창고 위치와 구역 이름으로 구역 조회 (findByLocationAndAreaName)
+- 구역 상세 정보 출력 (displayArea)
 
 
 ## 😆 팀원 소개 및 소감
@@ -216,3 +204,7 @@
   * 스캐너로 사용자의 입력 값을 받을 때, 타입이 맞지 않거나 올바른 값이 아닐 경우, 예외 처리를 했어야 했지만, 시간 상 구현하지 못한 점이 아쉬웠습니다. 다음 프로젝트를 할 때에는 예외 처리까지도 완벽하게 해보고 싶습니다. 
   * 하나의 메소드가 리턴되었을 때, 처리된 결과를 보여주고 싶어서 RESULT VIEW 클래스를 따로 만들었지만, 많이 활용하지 못한 아쉬움이 있습니다. 
   * 이번 프로젝트를 진행하면서, 사용했던 툴은 더 사용해보면서 익혀보고 싶고, 이번에 구현하지 못했던 기능들은 더 보완해서 구현해보고 싶습니다. 또한, 기능들이 제대로 실행되지 않을 때, 다들 잘 도와주셔서 감사했고, 여러가지 질문을 해도 다 들어주셔서 감사합니다…!!! 지금처럼 많이 부족했던 시절을 잊지 않고, 나중에 실무를 할 수 있을 정도의 실력을 갖춘다면 팀원분들 처럼 눈높이에 맞게 설명해줄 수 있는 사람이 되고 싶습니다!
+
+
+## 🛠️ 라이선스
+- 이 프로젝트는 MIT 라이선스에 따라 배포됩니다. 자세한 내용은 LICENSE 파일을 참고하세요.
